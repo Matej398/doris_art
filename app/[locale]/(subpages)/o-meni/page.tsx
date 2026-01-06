@@ -70,13 +70,13 @@ export default function AboutPage() {
           <div className="flex flex-col items-center gap-12 md:gap-16">
             {/* Circular Author Image */}
             <div className="flex-shrink-0">
-              <div className="relative w-80 h-80 md:w-[28rem] md:h-[28rem] rounded-full overflow-hidden bg-stone-200">
+              <div className="relative w-96 h-96 md:w-[32rem] md:h-[32rem] rounded-full overflow-hidden bg-stone-200">
                 <Image
                   src="/images/author/doris.jpeg"
                   alt={t("imageAlt")}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 320px, 448px"
+                  sizes="(max-width: 768px) 384px, 512px"
                 />
               </div>
             </div>

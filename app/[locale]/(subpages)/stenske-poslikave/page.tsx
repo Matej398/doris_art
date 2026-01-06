@@ -69,25 +69,24 @@ export default function StenskePoslikavePage() {
           >
             {t("title")}
           </h1>
-          <p className="text-lg md:text-xl text-stone-500 italic">
+          <p className="text-lg md:text-xl text-stone-500 italic mb-8">
             {t("subtitle")}
+          </p>
+          <p className="text-lg md:text-xl text-stone-600 max-w-4xl mx-auto mb-8">
+            {t("description")}
           </p>
         </div>
       </section>
 
-      {/* Description Section */}
+      {/* What I Offer & Process Section */}
       <section className="px-6 md:px-10 py-12 md:py-16 bg-white">
         <div className="max-w-5xl mx-auto text-center">
-          <p className="text-lg md:text-xl text-stone-700 leading-relaxed mb-16 md:mb-20">
-            {t("description")}
-          </p>
-
           {/* What I Offer */}
           <div className="mb-16 md:mb-20">
             <h2 className="text-2xl md:text-3xl font-semibold text-stone-900 mb-4">
               {t("whatIOffer")}
             </h2>
-            <p className="text-stone-600 leading-relaxed">
+            <p className="text-lg md:text-xl text-stone-600 leading-relaxed">
               {t("offerText")}
             </p>
           </div>
@@ -149,7 +148,7 @@ export default function StenskePoslikavePage() {
           <h2 className="text-2xl md:text-3xl font-semibold text-stone-900 mb-4">
             {t("ctaTitle")}
           </h2>
-          <p className="text-stone-600 mb-8">
+          <p className="text-lg md:text-xl text-stone-600 mb-8">
             {t("ctaDescription")}
           </p>
           <a

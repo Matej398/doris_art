@@ -124,7 +124,7 @@ export default function DelavnicePage() {
             <p className="text-lg md:text-xl text-stone-500 italic mb-8">
               {t("subtitle")}
             </p>
-            <p className="text-stone-600 max-w-4xl mx-auto">
+            <p className="text-lg md:text-xl text-stone-600 max-w-4xl mx-auto">
               {t("intro")}
             </p>
           </div>
@@ -185,7 +185,7 @@ export default function DelavnicePage() {
             <h2 className="text-2xl md:text-3xl font-semibold text-stone-900 mb-4">
               {t("cta.title")}
             </h2>
-            <p className="text-stone-600 mb-8">
+            <p className="text-lg md:text-xl text-stone-600 mb-8">
               {t("cta.description")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

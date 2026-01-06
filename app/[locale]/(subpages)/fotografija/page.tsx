@@ -62,7 +62,7 @@ export default function FotografijaPage() {
           <h2 className="text-2xl md:text-3xl font-semibold text-stone-900 mb-4">
             {t("cta.title")}
           </h2>
-          <p className="text-stone-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-stone-600 mb-8 max-w-3xl mx-auto">
             {t("cta.description")}
           </p>
           <a
