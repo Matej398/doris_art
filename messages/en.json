@@ -23,27 +23,45 @@
   "wallPaintings": {
     "title": "Wall paintings",
     "subtitle": "Unique paintings for your space",
-    "description": "I create unique wall paintings that bring your space to life. From children's rooms to business spaces - each painting is a unique story.",
+    "description": "I create unique wall paintings that bring your space to life. From kids' rooms to business spaces - each painting is a unique story.",
     "whatIOffer": "What I offer",
-    "offerText": "Paintings for children's rooms, kindergartens, schools, business spaces, cafes, and other public spaces. Each painting is designed according to your wishes and adapted to the space.",
-    "process": "Work process",
+    "offerText": "Paintings for kids' rooms, kindergartens, schools, business spaces, cafes, and other public spaces. Each painting is designed according to your wishes and adapted to the space.",
+    "process": "How it works",
     "processSteps": {
-      "consultation": "Consultation and space viewing",
-      "design": "Sketch and proposal preparation",
+      "consultation": "Chat & space viewing",
+      "design": "Sketch & proposal",
       "approval": "Design approval",
-      "painting": "Painting execution",
-      "finishing": "Final treatment and protection"
+      "painting": "Painting time",
+      "finishing": "Final touches & protection"
     },
     "gallery": "Gallery",
     "galleryComingSoon": "Gallery coming soon.",
     "galleryImageAlt": "Wall painting",
     "ctaTitle": "Interested in a wall painting?",
-    "ctaDescription": "Contact me for a free consultation and quote.",
-    "ctaButton": "Contact me"
+    "ctaDescription": "Get in touch for a free chat and quote.",
+    "ctaButton": "Get in touch"
   },
   "about": {
     "title": "About me",
     "subtitle": "Doris Einfalt - artist"
+  },
+  "paintings": {
+    "title": "Paintings",
+    "subtitle": "Unique artworks",
+    "gallery": "Gallery",
+    "noResults": "No paintings available at the moment.",
+    "detail": {
+      "size": "Size",
+      "technique": "Technique",
+      "location": "Location",
+      "close": "Close",
+      "nextImage": "Next image",
+      "prevImage": "Previous image"
+    },
+    "cta": {
+      "title": "Want a custom painting?",
+      "description": "I'll create a unique painting just for you - from portraits to landscapes, in the technique of your choice. Each piece is a one-of-a-kind story, made especially for you.",
+      "button": "Let's talk"
+    }
   }
 }
-

@@ -2,24 +2,14 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
+import type { Painting } from "@/lib/paintings";
 
-interface Image3DProps {
-  src: string;
-  alt: string;
-  width?: number;
-  height?: number;
-  className?: string;
-  onClick?: () => void;
+interface PaintingCardProps {
+  painting: Painting;
+  onClick: () => void;
 }
 
-export function Image3D({ 
-  src, 
-  alt, 
-  width = 400, 
-  height = 400, 
-  className = "",
-  onClick 
-}: Image3DProps) {
+export function PaintingCard({ painting, onClick }: PaintingCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState("");
 
@@ -43,28 +33,34 @@ export function Image3D({
     setTransform("");
   };
 
+  // Get the first image as thumbnail
+  const thumbnailImage = painting.images[0];
+
+  if (!thumbnailImage) return null;
+
   return (
     <div 
       ref={cardRef}
+      onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      onClick={onClick}
-      className={`relative w-full overflow-hidden transition-transform duration-200 ease-out ${onClick ? 'cursor-pointer' : ''} ${className || 'aspect-square'}`}
+      className="cursor-pointer overflow-hidden transition-transform duration-200 ease-out group"
       style={{ 
         transform,
         transformStyle: "preserve-3d",
       }}
     >
-      <Image
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        className="w-full h-full object-cover"
-      />
+      {/* Image container - flexible aspect ratio */}
+      <div className="relative w-full aspect-[4/5] overflow-hidden">
+        <Image
+          src={thumbnailImage.src}
+          alt={thumbnailImage.alt}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover"
+        />
+      </div>
     </div>
   );
 }
-
-
 

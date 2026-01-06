@@ -22,10 +22,10 @@
   },
   "wallPaintings": {
     "title": "Stenske poslikave",
-    "subtitle": "Unikatne poslikave za vaš prostor",
-    "description": "Ustvarjam edinstvene stenske poslikave, ki oživijo vaš prostor. Od otroških sob do poslovnih prostorov - vsaka poslikava je unikatna zgodba.",
+    "subtitle": "Unikatne poslikave za tvoj prostor",
+    "description": "Ustvarjam edinstvene stenske poslikave, ki oživijo tvoj prostor. Od otroških sob do poslovnih prostorov - vsaka poslikava je unikatna zgodba.",
     "whatIOffer": "Kaj ponujam",
-    "offerText": "Poslikave za otroške sobe, vrtce, šole, poslovne prostore, kavarne in druge javne prostore. Vsaka poslikava je zasnovana po vaših željah in prilagojena prostoru.",
+    "offerText": "Poslikave za otroške sobe, vrtce, šole, poslovne prostore, kavarne in druge javne prostore. Vsaka poslikava je zasnovana po tvojih željah in prilagojena prostoru.",
     "process": "Postopek dela",
     "processSteps": {
       "consultation": "Posvetovanje in ogled prostora",
@@ -37,13 +37,31 @@
     "gallery": "Galerija del",
     "galleryComingSoon": "Galerija slik bo kmalu na voljo.",
     "galleryImageAlt": "Stenska poslikava",
-    "ctaTitle": "Vas zanima poslikava?",
-    "ctaDescription": "Kontaktirajte me za brezplačno posvetovanje in ponudbo.",
+    "ctaTitle": "Te zanima poslikava?",
+    "ctaDescription": "Kontaktiraj me za brezplačno posvetovanje in ponudbo.",
     "ctaButton": "Kontaktiraj me"
   },
   "about": {
     "title": "O meni",
     "subtitle": "Doris Einfalt - umetnica"
+  },
+  "paintings": {
+    "title": "Slike",
+    "subtitle": "Unikatna umetniška dela",
+    "gallery": "Galerija slik",
+    "noResults": "Trenutno ni slik na voljo.",
+    "detail": {
+      "size": "Velikost",
+      "technique": "Tehnika",
+      "location": "Lokacija",
+      "close": "Zapri",
+      "nextImage": "Naslednja slika",
+      "prevImage": "Prejšnja slika"
+    },
+    "cta": {
+      "title": "Želiš sliko po naročilu?",
+      "description": "Ustvarim unikatno sliko po tvojih željah - od portretov do pokrajin, v tehniki po tvoji izbiri. Vsaka slika je edinstvena zgodba, ustvarjena posebej zate.",
+      "button": "Naroči sliko"
+    }
   }
 }
-

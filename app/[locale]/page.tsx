@@ -112,7 +112,7 @@ export default function Home() {
         {/* Invisible logo spacer to match height */}
         <span 
           className="text-3xl md:text-4xl lg:text-5xl invisible"
-          style={{ fontFamily: 'var(--font-dalton)' }}
+          style={{ fontFamily: 'var(--font-quentin)' }}
           aria-hidden="true"
         >
           doris einfalt
@@ -123,7 +123,7 @@ export default function Home() {
       </div>
 
       {/* Header with logo */}
-      <header className="py-6 md:py-8">
+      <header className="pt-12 md:pt-16 pb-6 md:pb-8">
         {/* Logo - Centered */}
         <div className="flex justify-center">
           <Link
@@ -133,8 +133,8 @@ export default function Home() {
             }`}
           >
             <span 
-              className="text-6xl md:text-7xl lg:text-8xl text-stone-900"
-              style={{ fontFamily: 'var(--font-dalton)' }}
+              className="text-[3.5rem] md:text-6xl lg:text-7xl text-stone-900"
+              style={{ fontFamily: 'var(--font-quentin)' }}
             >
               doris einfalt
             </span>

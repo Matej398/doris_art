@@ -9,8 +9,8 @@ export default function DelavnicePage() {
     <div className="min-h-screen bg-cream px-6 md:px-10 py-12 md:py-20">
       <div className="max-w-4xl mx-auto text-center">
         <h1 
-          className="text-4xl md:text-5xl lg:text-6xl text-stone-900 mb-6"
-          style={{ fontFamily: "var(--font-dalton)" }}
+          className="text-5xl md:text-6xl lg:text-7xl text-stone-900 mb-6"
+          style={{ fontFamily: "var(--font-quentin)" }}
         >
           {t("workshops")}
         </h1>

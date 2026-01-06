@@ -14,6 +14,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-epilogue)', 'system-ui', 'sans-serif'],
+        quentin: ['var(--font-quentin)', 'cursive'],
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-out forwards',

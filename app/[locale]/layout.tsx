@@ -64,6 +64,12 @@ const daltonWhite = localFont({
   display: "swap",
 });
 
+const quentin = localFont({
+  src: "../../public/fonts/Quentin.otf",
+  variable: "--font-quentin",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "doriseinfalt.art",
   description: "Stenske poslikave, umetniške delavnice, slike po naročilu in izposoja dekoracij.",
@@ -96,7 +102,7 @@ export default async function LocaleLayout({
   const messages = await getMessages({ locale });
 
   return (
-    <html lang={locale} className={`${epilogue.variable} ${daltonWhite.variable} ${epilogue.className}`}>
+    <html lang={locale} className={`${epilogue.variable} ${daltonWhite.variable} ${quentin.variable} ${epilogue.className}`}>
       <body className="min-h-screen">
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}

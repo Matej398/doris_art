@@ -33,9 +33,9 @@ export function Header() {
             className={`text-stone-900 transition-all duration-300 ${
               isScrolled 
                 ? "text-2xl md:text-3xl" 
-                : "text-3xl md:text-4xl lg:text-5xl"
+                : "text-2xl md:text-3xl lg:text-4xl"
             }`}
-            style={{ fontFamily: "var(--font-dalton)" }}
+            style={{ fontFamily: "var(--font-quentin)" }}
           >
             doris einfalt
           </span>
