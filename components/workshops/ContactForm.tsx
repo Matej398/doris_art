@@ -18,6 +18,17 @@ export function ContactForm({ workshops, eventTypes, preselectedWorkshop }: Cont
   const tCard = useTranslations("workshops.card");
   const locale = useLocale();
 
+  // Helper function to format spots text in Slovenian with proper pluralization
+  const formatSpotsText = (spots: number, locale: string): string => {
+    if (locale === "sl") {
+      if (spots === 1) return "1 mesto";
+      if (spots >= 2 && spots <= 4) return `${spots} mesta`;
+      return `${spots} mest`;
+    }
+    // English
+    return spots === 1 ? "1 spot" : `${spots} spots`;
+  };
+
   // Form state
   const [mode, setMode] = useState<InquiryMode>(preselectedWorkshop ? "scheduled" : "scheduled");
   const [name, setName] = useState("");
@@ -190,7 +201,7 @@ export function ContactForm({ workshops, eventTypes, preselectedWorkshop }: Cont
                   
                   return (
                     <option key={workshop.id} value={workshop.id}>
-                      {title} ({dateStr} - {spots} {tCard("spots")})
+                      {title} ({dateStr} - {formatSpotsText(spots, locale)})
                     </option>
                   );
                 })}

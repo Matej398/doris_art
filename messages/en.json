@@ -12,6 +12,7 @@
   "navigation": {
     "wallPaintings": "Wall paintings",
     "workshops": "Workshops",
+    "other": "Other",
     "paintings": "Paintings",
     "rentals": "Rentals",
     "photography": "Photography"
@@ -43,7 +44,18 @@
   },
   "about": {
     "title": "About me",
-    "subtitle": "Doris Einfalt - artist"
+    "subtitle": "Doris Einfalt - artist",
+    "imageAlt": "Doris Einfalt - Slovenian artist",
+    "biography": {
+      "p1": "I've been passionate about drawing and creating since childhood. I specialize in art for children - from wall paintings for children's spaces to illustrations for children's picture books and art workshops.",
+      "p2": "My work is based on the belief that children's motifs allow for endless imagination and the creation of stories that inspire and delight children. I enjoy sharing my artworks and creative process on social media, where you can follow my work.",
+      "p3": "I've already illustrated several children's picture books and had several exhibitions of my work. My work brings joy to families and inspires young artists."
+    },
+    "interviews": {
+      "title": "Interviews",
+      "bibaleze": "Read interview on Bibaleze.si",
+      "mcdd": "Read interview on MCDD.si"
+    }
   },
   "paintings": {
     "title": "Paintings",
@@ -63,6 +75,21 @@
       "description": "I'll create a unique painting just for you - from portraits to landscapes, in the technique of your choice. Each piece is a one-of-a-kind story, made especially for you.",
       "button": "Let's talk"
     }
+  },
+  "photography": {
+    "title": "Photography",
+    "subtitle": "Artistic photography",
+    "galleryComingSoon": "Photography gallery coming soon.",
+    "cta": {
+      "title": "Need a photographer?",
+      "description": "I offer artistic photography for various occasions - from portraits to events. Get in touch for more information.",
+      "button": "Get in touch"
+    }
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Random pictures from projects",
+    "galleryComingSoon": "Gallery coming soon."
   },
   "workshops": {
     "title": "Workshops",
@@ -149,6 +176,33 @@
       "description": "I also organize private workshops, birthday parties, bachelorette parties, team building events and more. Just reach out!",
       "emailButton": "Send an email",
       "callButton": "Give me a call"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "info": {
+      "title": "Contact Information",
+      "company": "Company",
+      "address": "Address",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "form": {
+      "title": "Send a message",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "Your phone",
+      "subject": "Subject",
+      "subjectPlaceholder": "Message subject",
+      "message": "Message",
+      "messagePlaceholder": "Your message...",
+      "submit": "Send",
+      "sending": "Sending...",
+      "successMessage": "Thank you! Your message has been sent.",
+      "errorMessage": "Error sending message. Please try again."
     }
   }
 }

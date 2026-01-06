@@ -12,6 +12,7 @@
   "navigation": {
     "wallPaintings": "Stenske poslikave",
     "workshops": "Delavnice",
+    "other": "Ostalo",
     "paintings": "Slike",
     "rentals": "Izposoja",
     "photography": "Fotografija"
@@ -34,7 +35,7 @@
       "painting": "Izvedba poslikave",
       "finishing": "Zaključna obdelava in zaščita"
     },
-    "gallery": "Galerija del",
+    "gallery": "Galerija stenskih poslikav",
     "galleryComingSoon": "Galerija slik bo kmalu na voljo.",
     "galleryImageAlt": "Stenska poslikava",
     "ctaTitle": "Te zanima poslikava?",
@@ -43,7 +44,18 @@
   },
   "about": {
     "title": "O meni",
-    "subtitle": "Doris Einfalt - umetnica"
+    "subtitle": "Doris Einfalt - umetnica",
+    "imageAlt": "Doris Einfalt - slovenska umetnica",
+    "biography": {
+      "p1": "Že od otroštva se navdušujem nad risanjem in ustvarjanjem. Specializirana sem za umetnost, namenjeno otrokom - od stenskih poslikav za otroške prostore do ilustracij otroških slikanic in umetniških delavnic.",
+      "p2": "Moje delo temelji na prepričanju, da otroški motivi omogočajo neskončno domišljijo in ustvarjanje zgodb, ki navdušujejo in navdihujejo otroke. Z veseljem delim svoje umetnine in ustvarjalni proces na družbenih omrežjih, kjer lahko spremljate moje delo.",
+      "p3": "Ilustrirala sem že več otroških slikanic in imela več razstav svojih del. Moje delo prinaša veselje družinam in navdihuje mlade umetnike."
+    },
+    "interviews": {
+      "title": "Intervjuji",
+      "bibaleze": "Preberi intervju na Bibaleze.si",
+      "mcdd": "Preberi intervju na MCDD.si"
+    }
   },
   "paintings": {
     "title": "Slike",
@@ -63,6 +75,21 @@
       "description": "Ustvarim unikatno sliko po tvojih željah - od portretov do pokrajin, v tehniki po tvoji izbiri. Vsaka slika je edinstvena zgodba, ustvarjena posebej zate.",
       "button": "Naroči sliko"
     }
+  },
+  "photography": {
+    "title": "Fotografija",
+    "subtitle": "Umetniška fotografija",
+    "galleryComingSoon": "Galerija fotografij bo kmalu na voljo.",
+    "cta": {
+      "title": "Potrebuješ fotografa?",
+      "description": "Ponujam umetniško fotografijo za različne priložnosti - od portretov do dogodkov. Kontaktiraj me za več informacij.",
+      "button": "Kontaktiraj me"
+    }
+  },
+  "gallery": {
+    "title": "Galerija",
+    "subtitle": "Naključne slike iz projektov",
+    "galleryComingSoon": "Galerija bo kmalu na voljo."
   },
   "workshops": {
     "title": "Delavnice",
@@ -149,6 +176,33 @@
       "description": "Organiziram tudi individualne delavnice, delavnice za rojstne dneve, dekliščine, teambuilding in druge dogodke. Piši mi!",
       "emailButton": "Pošlji e-pošto",
       "callButton": "Pokliči me"
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "info": {
+      "title": "Kontaktni podatki",
+      "company": "Podjetje",
+      "address": "Naslov",
+      "email": "E-pošta",
+      "phone": "Telefon"
+    },
+    "form": {
+      "title": "Pošlji sporočilo",
+      "name": "Ime",
+      "namePlaceholder": "Tvoje ime",
+      "email": "E-pošta",
+      "emailPlaceholder": "tvoj@email.si",
+      "phone": "Telefon",
+      "phonePlaceholder": "Tvoj telefon",
+      "subject": "Zadeva",
+      "subjectPlaceholder": "Zadeva sporočila",
+      "message": "Sporočilo",
+      "messagePlaceholder": "Tvoje sporočilo...",
+      "submit": "Pošlji",
+      "sending": "Pošiljanje...",
+      "successMessage": "Hvala! Tvoja sporočilo je bilo poslano.",
+      "errorMessage": "Napaka pri pošiljanju. Poskusi znova."
     }
   }
 }

@@ -56,7 +56,7 @@ export function PaintingCard({ painting, onClick }: PaintingCardProps) {
           src={thumbnailImage.src}
           alt={thumbnailImage.alt}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
           className="object-cover"
         />
       </div>

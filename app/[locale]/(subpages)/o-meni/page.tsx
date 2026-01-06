@@ -1,27 +1,135 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useTranslations, useLocale } from "next-intl";
 
-export default function AboutPage() {
-  const t = useTranslations("about");
+// JSON-LD structured data for Person schema
+function PersonJsonLd({ locale }: { locale: string }) {
+  const baseUrl = "https://doriseinfalt.art";
+  
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Doris Einfalt",
+    "jobTitle": locale === "sl" ? "Slovenska umetnica" : "Slovenian artist",
+    "description": locale === "sl" 
+      ? "Slovenska umetnica, specializirana za umetnost za otroke - stenske poslikave, ilustracije otroških slikanic in umetniške delavnice."
+      : "Slovenian artist specializing in art for children - wall paintings, children's book illustrations, and art workshops.",
+    "url": `${baseUrl}/${locale}/o-meni`,
+    "image": `${baseUrl}/images/author/doris.jpeg`,
+    "sameAs": [
+      "https://instagram.com/doriseinfalt",
+      "https://facebook.com/doriseinfalt"
+    ],
+    "knowsAbout": [
+      locale === "sl" ? "Stenske poslikave" : "Wall paintings",
+      locale === "sl" ? "Ilustracije knjig" : "Book illustrations",
+      locale === "sl" ? "Umetniške delavnice" : "Art workshops",
+      locale === "sl" ? "Umetnost za otroke" : "Art for children"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Brežice",
+      "addressCountry": "SI"
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-cream px-6 md:px-10 py-12 md:py-20">
-      <div className="max-w-5xl mx-auto text-center">
-        <h1 
-          className="text-5xl md:text-6xl lg:text-7xl text-stone-900 mb-6"
-          style={{ fontFamily: "var(--font-quentin)" }}
-        >
-          {t("title")}
-        </h1>
-        <p className="text-lg text-stone-500 italic mb-8">
-          {t("subtitle")}
-        </p>
-        <p className="text-stone-500">
-          Stran v pripravi / Page coming soon
-        </p>
-      </div>
-    </div>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
   );
 }
 
+export default function AboutPage() {
+  const t = useTranslations("about");
+  const locale = useLocale();
+
+  return (
+    <>
+      {/* SEO JSON-LD Structured Data */}
+      <PersonJsonLd locale={locale} />
+      
+      <div className="min-h-screen bg-cream">
+      {/* Hero Section */}
+      <section className="px-6 md:px-10 py-8 md:py-12">
+        <div className="max-w-5xl mx-auto text-center">
+          <h1 
+            className="text-5xl md:text-6xl lg:text-7xl text-stone-900"
+            style={{ fontFamily: "var(--font-quentin)" }}
+          >
+            {t("title")}
+          </h1>
+        </div>
+      </section>
+
+      {/* Author Section */}
+      <section className="px-6 md:px-10 pt-4 md:pt-6 pb-8 md:py-12">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col items-center gap-12 md:gap-16">
+            {/* Circular Author Image */}
+            <div className="flex-shrink-0">
+              <div className="relative w-80 h-80 md:w-[28rem] md:h-[28rem] rounded-full overflow-hidden bg-stone-200">
+                <Image
+                  src="/images/author/doris.jpeg"
+                  alt={t("imageAlt")}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 320px, 448px"
+                />
+              </div>
+            </div>
+
+            {/* Biography Text */}
+            <div className="flex-1 text-center">
+              <div className="prose prose-stone max-w-none">
+                <p className="text-lg md:text-xl text-stone-700 leading-relaxed mb-6">
+                  {t("biography.p1")}
+                </p>
+                <p className="text-lg md:text-xl text-stone-700 leading-relaxed mb-6">
+                  {t("biography.p2")}
+                </p>
+                <p className="text-lg md:text-xl text-stone-700 leading-relaxed">
+                  {t("biography.p3")}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interview Links Section */}
+      <section className="px-6 md:px-10 py-12 md:py-16 bg-cream">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-semibold text-stone-900 mb-6 text-center">
+            {t("interviews.title")}
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://www.bibaleze.si/novice/doris-einfalt-umetnica-ki-slika-za-otroke.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 border border-stone-300 text-stone-700 font-medium rounded-lg hover:bg-stone-100 transition-colors text-center"
+            >
+              <span style={{ marginTop: '2pt', display: 'block' }}>
+                {t("interviews.bibaleze")}
+              </span>
+            </a>
+            <a
+              href="https://www.mcdd.si/objave/patriot/pogled-v-pravljicni-svet/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 border border-stone-300 text-stone-700 font-medium rounded-lg hover:bg-stone-100 transition-colors text-center"
+            >
+              <span style={{ marginTop: '2pt', display: 'block' }}>
+                {t("interviews.mcdd")}
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+    </>
+  );
+}

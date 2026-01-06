@@ -34,6 +34,7 @@ export function Navigation({ isScrolled }: NavigationProps) {
     { id: "paintings", label: t("navigation.paintings"), href: `/${locale}/slike` },
     { id: "rentals", label: t("navigation.rentals"), href: `/${locale}/izposoja` },
     { id: "photography", label: t("navigation.photography"), href: `/${locale}/fotografija` },
+    { id: "other", label: t("navigation.other"), href: `/${locale}/ostalo` },
   ];
 
   // Get the path for the other language
@@ -72,13 +73,13 @@ export function Navigation({ isScrolled }: NavigationProps) {
         {/* Dropdown menu */}
         {isDropdownOpen && (
           <div className="absolute top-full right-0 pt-2 z-50">
-            <div className="w-48 py-2 bg-white rounded-lg shadow-lg border border-stone-100">
+            <div className="w-48 py-2 bg-white rounded-lg shadow-lg">
               {services.map((service) => (
                 <Link
                   key={service.id}
                   href={service.href}
                   onClick={() => setIsDropdownOpen(false)}
-                  className="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 hover:text-stone-900 transition-colors"
+                  className="block px-4 py-2 text-sm md:text-base font-medium text-stone-700 hover:bg-stone-50 hover:text-accent transition-colors"
                 >
                   {service.label}
                 </Link>

@@ -33,7 +33,18 @@ export function WorkshopCard({ workshop, onBookClick }: WorkshopCardProps) {
   const getVacancyStatus = () => {
     if (!nextSchedule) return { text: t("noUpcoming"), color: "text-stone-400" };
     if (availableSpots <= 0) return { text: t("full"), color: "text-red-500" };
-    if (availableSpots === 1) return { text: t("onlyOneSpot"), color: "text-pink-500" };
+    if (availableSpots === 1) return { text: t("onlyOneSpot"), color: "text-[#D27095]" };
+    
+    // Handle Slovenian pluralization correctly
+    if (locale === "sl") {
+      if (availableSpots >= 2 && availableSpots <= 4) {
+        return { text: `${availableSpots} ${t("spotsLeft")}`, color: availableSpots <= 2 ? "text-orange-500" : "text-accent" };
+      }
+      // 5+ spots
+      return { text: `${availableSpots} ${t("spotsAvailable")}`, color: "text-accent" };
+    }
+    
+    // English
     if (availableSpots <= 2) return { text: `${availableSpots} ${t("spotsLeft")}`, color: "text-orange-500" };
     return { text: `${availableSpots} ${t("spotsAvailable")}`, color: "text-accent" };
   };

@@ -132,20 +132,29 @@ export default function DelavnicePage() {
 
         {/* Tabs Section */}
         <section className="px-6 md:px-10 pb-10 pt-2">
-          <WorkshopTabs activeTab={activeTab} onTabChange={setActiveTab} />
+          <div className="max-w-6xl mx-auto">
+            {filteredWorkshops.length > 0 ? (
+              <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+                <WorkshopTabs activeTab={activeTab} onTabChange={setActiveTab} />
+              </div>
+            ) : (
+              <WorkshopTabs activeTab={activeTab} onTabChange={setActiveTab} />
+            )}
+          </div>
         </section>
 
         {/* Workshops Grid */}
         <section className="px-6 md:px-10 pb-16 md:pb-20">
           <div className="max-w-6xl mx-auto">
             {filteredWorkshops.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              <div className="flex flex-wrap justify-center gap-6 md:gap-8">
                 {filteredWorkshops.map((workshop) => (
-                  <WorkshopCard
-                    key={workshop.id}
-                    workshop={workshop}
-                    onBookClick={handleBookClick}
-                  />
+                  <div key={workshop.id} className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.33rem)] max-w-sm">
+                    <WorkshopCard
+                      workshop={workshop}
+                      onBookClick={handleBookClick}
+                    />
+                  </div>
                 ))}
               </div>
             ) : (

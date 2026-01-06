@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
-export default function IzposojaPage() {
+export default function OstaloPage() {
   const t = useTranslations("navigation");
 
   return (
@@ -13,7 +13,7 @@ export default function IzposojaPage() {
           className="text-5xl md:text-6xl lg:text-7xl text-stone-900 mb-6"
           style={{ fontFamily: "var(--font-quentin)" }}
         >
-          {t("rentals")}
+          {t("other")}
         </h1>
         <p className="text-lg text-stone-500">
           Stran v pripravi / Page coming soon

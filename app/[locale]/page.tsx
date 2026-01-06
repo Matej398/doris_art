@@ -52,8 +52,9 @@ function Card3D({ category, locale }: { category: { id: string; title: string; h
       </div>
 
       {/* Title */}
-      <span className="mt-4 text-base md:text-lg lg:text-xl font-semibold text-stone-900 group-hover:text-black transition-colors lowercase">
+      <span className="mt-4 text-base md:text-lg lg:text-xl font-semibold text-stone-900 group-hover:text-black transition-colors lowercase relative inline-block">
         {category.title}
+        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
       </span>
     </Link>
   );
@@ -123,7 +124,7 @@ export default function Home() {
       </div>
 
       {/* Header with logo */}
-      <header className="pt-12 md:pt-16 pb-6 md:pb-8">
+      <header className="pt-20 md:pt-24 pb-6 md:pb-8">
         {/* Logo - Centered */}
         <div className="flex justify-center">
           <Link

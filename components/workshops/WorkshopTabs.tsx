@@ -12,7 +12,7 @@ export function WorkshopTabs({ activeTab, onTabChange }: WorkshopTabsProps) {
   const t = useTranslations("workshops.tabs");
 
   return (
-    <div className="flex justify-center gap-2 md:gap-4">
+    <div className="flex justify-center items-center gap-2 md:gap-4">
       <button
         onClick={() => onTabChange("children")}
         className={`px-6 py-3 md:px-8 md:py-4 rounded-lg font-medium text-base md:text-lg transition-all duration-200 ${

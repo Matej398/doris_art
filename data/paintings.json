@@ -40,6 +40,20 @@
           "alt": "Morski val - glavna slika"
         }
       ]
+    },
+    {
+      "id": 4,
+      "title": "Gozdna pot",
+      "size": "50x70 cm",
+      "technique": "Akvarel",
+      "location": "Na voljo",
+      "images": [
+        {
+          "id": 1,
+          "src": "/images/cards/fotografija.JPG",
+          "alt": "Gozdna pot - glavna slika"
+        }
+      ]
     }
   ]
 }

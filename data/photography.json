@@ -1,0 +1,45 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "src": "/images/cards/fotografija.JPG",
+      "alt": "Fotografija 1"
+    },
+    {
+      "id": 2,
+      "src": "/images/cards/poslikave.png",
+      "alt": "Fotografija 2"
+    },
+    {
+      "id": 3,
+      "src": "/images/cards/delavnice.png",
+      "alt": "Fotografija 3"
+    },
+    {
+      "id": 4,
+      "src": "/images/cards/slike.png",
+      "alt": "Fotografija 4"
+    },
+    {
+      "id": 5,
+      "src": "/images/cards/izposoja.jpg",
+      "alt": "Fotografija 5"
+    },
+    {
+      "id": 6,
+      "src": "/images/cards/fotografija.JPG",
+      "alt": "Fotografija 6"
+    },
+    {
+      "id": 7,
+      "src": "/images/cards/poslikave.png",
+      "alt": "Fotografija 7"
+    },
+    {
+      "id": 8,
+      "src": "/images/cards/delavnice.png",
+      "alt": "Fotografija 8"
+    }
+  ]
+}
+

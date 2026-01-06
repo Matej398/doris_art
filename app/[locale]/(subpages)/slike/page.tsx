@@ -18,7 +18,7 @@ export default function SlikePage() {
   return (
     <div className="min-h-screen bg-cream">
       {/* Hero Section */}
-      <section className="px-6 md:px-10 py-6 md:py-10">
+      <section className="px-6 md:px-10 py-8 md:py-12">
         <div className="max-w-5xl mx-auto text-center">
           <h1 
             className="text-5xl md:text-6xl lg:text-7xl text-stone-900 mb-4"
@@ -33,10 +33,10 @@ export default function SlikePage() {
       </section>
 
       {/* Gallery Section */}
-      <section className="px-6 md:px-10 pt-6 md:pt-10 pb-12 md:pb-20">
-        <div className="max-w-6xl mx-auto">
+      <section className="px-4 md:px-6 pt-6 md:pt-10 pb-12 md:pb-20">
+        <div className="max-w-[95rem] mx-auto">
           {paintings.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               {paintings.map((painting) => (
                 <PaintingCard
                   key={painting.id}

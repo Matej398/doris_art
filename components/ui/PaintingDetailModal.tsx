@@ -13,9 +13,16 @@ interface PaintingDetailModalProps {
 export function PaintingDetailModal({ painting, onClose }: PaintingDetailModalProps) {
   const t = useTranslations("paintings.detail");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   
   const hasMultipleImages = painting.images.length > 1;
   const currentImage = painting.images[currentImageIndex];
+
+  // Reset image loaded state when image changes
+  useEffect(() => {
+    setImageLoaded(false);
+  }, [currentImageIndex]);
 
   const goToNextImage = useCallback(() => {
     if (hasMultipleImages) {
@@ -29,7 +36,7 @@ export function PaintingDetailModal({ painting, onClose }: PaintingDetailModalPr
     }
   }, [hasMultipleImages, painting.images.length]);
 
-  // Handle keyboard navigation
+  // Handle keyboard navigation and trigger fade-in
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -45,26 +52,41 @@ export function PaintingDetailModal({ painting, onClose }: PaintingDetailModalPr
     // Prevent body scroll when modal is open
     document.body.style.overflow = "hidden";
 
+    // Trigger fade-in animation
+    setTimeout(() => setIsVisible(true), 10);
+
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
   }, [onClose, goToNextImage, goToPrevImage]);
 
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
   return (
     <div 
-      className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center"
+      className={`fixed inset-0 z-50 bg-black/60 flex items-center justify-center transition-opacity duration-500 ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
       onClick={onClose}
     >
       {/* Modal content - fullscreen white background */}
       <div 
-        className="relative bg-white w-full h-full md:w-[95vw] md:h-[95vh] md:max-w-[1800px] md:rounded-lg overflow-hidden flex flex-col lg:flex-row"
+        className={`relative bg-white w-full h-full md:w-[95vw] md:h-[95vh] md:max-w-[1800px] md:rounded-lg overflow-hidden flex flex-col lg:flex-row transition-all duration-700 ${
+          imageLoaded && isVisible 
+            ? "opacity-100 scale-100" 
+            : "opacity-0 scale-95"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2 text-stone-500 hover:text-stone-900 transition-colors bg-white/80 rounded-full"
+          className={`absolute top-4 right-4 z-20 p-2 text-stone-500 hover:text-stone-900 transition-all duration-500 bg-white/80 rounded-full ${
+            isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
+          }`}
           aria-label={t("close")}
         >
           <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,6 +118,7 @@ export function PaintingDetailModal({ painting, onClose }: PaintingDetailModalPr
               className="object-contain p-4 md:p-8"
               sizes="(max-width: 1024px) 100vw, 70vw"
               priority
+              onLoad={handleImageLoad}
             />
           </div>
 
