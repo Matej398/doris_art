@@ -3,41 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
+import { useTranslations, useLocale } from "next-intl";
+import { Navigation } from "@/components/layout/Navigation";
 
-const categories = [
-  {
-    id: "poslikave",
-    title: "STENSKE POSLIKAVE",
-    href: "/stenske-poslikave",
-    image: "/images/cards/poslikave.png",
-  },
-  {
-    id: "delavnice",
-    title: "DELAVNICE",
-    href: "/delavnice",
-    image: "/images/cards/delavnice.png",
-  },
-  {
-    id: "slike",
-    title: "SLIKE",
-    href: "/slike",
-    image: "/images/cards/slike.png",
-  },
-  {
-    id: "izposoja",
-    title: "IZPOSOJA",
-    href: "/izposoja",
-    image: "/images/cards/izposoja.jpg",
-  },
-  {
-    id: "fotografija",
-    title: "FOTOGRAFIJA",
-    href: "/fotografija",
-    image: "/images/cards/fotografija.JPG",
-  },
-];
-
-function Card3D({ category }: { category: typeof categories[0] }) {
+function Card3D({ category, locale }: { category: { id: string; title: string; href: string; image: string }; locale: string }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState("");
 
@@ -62,7 +31,7 @@ function Card3D({ category }: { category: typeof categories[0] }) {
   };
 
   return (
-    <Link href={category.href} className="group flex flex-col items-start flex-shrink-0">
+    <Link href={`/${locale}${category.href}`} className="group flex flex-col items-start flex-shrink-0">
       <div 
         ref={cardRef}
         onMouseMove={handleMouseMove}
@@ -92,28 +61,85 @@ function Card3D({ category }: { category: typeof categories[0] }) {
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const t = useTranslations();
+  const locale = useLocale();
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
+  const categories = [
+    {
+      id: "poslikave",
+      title: t("navigation.wallPaintings"),
+      href: "/stenske-poslikave",
+      image: "/images/cards/poslikave.png",
+    },
+    {
+      id: "delavnice",
+      title: t("navigation.workshops"),
+      href: "/delavnice",
+      image: "/images/cards/delavnice.png",
+    },
+    {
+      id: "slike",
+      title: t("navigation.paintings"),
+      href: "/slike",
+      image: "/images/cards/slike.png",
+    },
+    {
+      id: "izposoja",
+      title: t("navigation.rentals"),
+      href: "/izposoja",
+      image: "/images/cards/izposoja.jpg",
+    },
+    {
+      id: "fotografija",
+      title: t("navigation.photography"),
+      href: "/fotografija",
+      image: "/images/cards/fotografija.JPG",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-cream flex flex-col">
-      {/* Header with logo - Centered */}
-      <header className="py-6 md:py-8 flex justify-center">
-        <Link
-          href="/"
-          className={`transition-all duration-1000 inline-block relative ${
-            isLoaded ? "opacity-100" : "opacity-0"
-          }`}
+      {/* Navigation - Fixed position top right (same as subpage header) */}
+      <div 
+        className={`fixed top-0 left-0 right-0 z-50 py-6 md:py-8 px-8 md:px-16 lg:px-20 flex justify-end items-center transition-all duration-1000 pointer-events-none ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        {/* Invisible logo spacer to match height */}
+        <span 
+          className="text-3xl md:text-4xl lg:text-5xl invisible"
+          style={{ fontFamily: 'var(--font-dalton)' }}
+          aria-hidden="true"
         >
-          <span 
-            className="text-6xl md:text-7xl lg:text-8xl text-stone-900"
-            style={{ fontFamily: 'var(--font-dalton)' }}
+          doris einfalt
+        </span>
+        <div className="pointer-events-auto">
+          <Navigation />
+        </div>
+      </div>
+
+      {/* Header with logo */}
+      <header className="py-6 md:py-8">
+        {/* Logo - Centered */}
+        <div className="flex justify-center">
+          <Link
+            href={`/${locale}`}
+            className={`transition-all duration-1000 inline-block ${
+              isLoaded ? "opacity-100" : "opacity-0"
+            }`}
           >
-            doris einfalt
-          </span>
-        </Link>
+            <span 
+              className="text-6xl md:text-7xl lg:text-8xl text-stone-900"
+              style={{ fontFamily: 'var(--font-dalton)' }}
+            >
+              doris einfalt
+            </span>
+          </Link>
+        </div>
       </header>
 
       {/* Main - Category Grid */}
@@ -124,7 +150,7 @@ export default function Home() {
               isLoaded ? "opacity-100" : "opacity-0"
             }`}
           >
-            Od stenskih poslikav do umetniških delavnic<br />- ustvarjam unikatna doživetja, ki bodo ostala v spominu.
+            {t("home.tagline")}<br />{t("home.taglineSub")}
           </h2>
           <div
             className={`flex flex-wrap justify-center gap-5 md:gap-6 lg:gap-7 transition-all duration-1000 delay-200 ${
@@ -132,7 +158,7 @@ export default function Home() {
             }`}
           >
             {categories.map((category) => (
-              <Card3D key={category.id} category={category} />
+              <Card3D key={category.id} category={category} locale={locale} />
             ))}
           </div>
         </div>
@@ -162,3 +188,4 @@ export default function Home() {
     </div>
   );
 }
+

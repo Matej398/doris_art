@@ -1,0 +1,49 @@
+{
+  "common": {
+    "home": "Domov",
+    "about": "O meni",
+    "offers": "Ponudba",
+    "gallery": "Galerija",
+    "contact": "Kontakt",
+    "language": "Jezik",
+    "followMe": "Sledi mi",
+    "copyright": "© {year} doriseinfalt.art"
+  },
+  "navigation": {
+    "wallPaintings": "Stenske poslikave",
+    "workshops": "Delavnice",
+    "paintings": "Slike",
+    "rentals": "Izposoja",
+    "photography": "Fotografija"
+  },
+  "home": {
+    "tagline": "Od stenskih poslikav do umetniških delavnic",
+    "taglineSub": "- ustvarjam unikatna doživetja, ki bodo ostala v spominu."
+  },
+  "wallPaintings": {
+    "title": "Stenske poslikave",
+    "subtitle": "Unikatne poslikave za vaš prostor",
+    "description": "Ustvarjam edinstvene stenske poslikave, ki oživijo vaš prostor. Od otroških sob do poslovnih prostorov - vsaka poslikava je unikatna zgodba.",
+    "whatIOffer": "Kaj ponujam",
+    "offerText": "Poslikave za otroške sobe, vrtce, šole, poslovne prostore, kavarne in druge javne prostore. Vsaka poslikava je zasnovana po vaših željah in prilagojena prostoru.",
+    "process": "Postopek dela",
+    "processSteps": {
+      "consultation": "Posvetovanje in ogled prostora",
+      "design": "Priprava skice in predloga",
+      "approval": "Potrditev dizajna",
+      "painting": "Izvedba poslikave",
+      "finishing": "Zaključna obdelava in zaščita"
+    },
+    "gallery": "Galerija del",
+    "galleryComingSoon": "Galerija slik bo kmalu na voljo.",
+    "galleryImageAlt": "Stenska poslikava",
+    "ctaTitle": "Vas zanima poslikava?",
+    "ctaDescription": "Kontaktirajte me za brezplačno posvetovanje in ponudbo.",
+    "ctaButton": "Kontaktiraj me"
+  },
+  "about": {
+    "title": "O meni",
+    "subtitle": "Doris Einfalt - umetnica"
+  }
+}
+

@@ -1,0 +1,49 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About me",
+    "offers": "Services",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "language": "Language",
+    "followMe": "Follow me",
+    "copyright": "© {year} doriseinfalt.art"
+  },
+  "navigation": {
+    "wallPaintings": "Wall paintings",
+    "workshops": "Workshops",
+    "paintings": "Paintings",
+    "rentals": "Rentals",
+    "photography": "Photography"
+  },
+  "home": {
+    "tagline": "From wall paintings to art workshops",
+    "taglineSub": "- I create unique experiences that will stay in your memory."
+  },
+  "wallPaintings": {
+    "title": "Wall paintings",
+    "subtitle": "Unique paintings for your space",
+    "description": "I create unique wall paintings that bring your space to life. From children's rooms to business spaces - each painting is a unique story.",
+    "whatIOffer": "What I offer",
+    "offerText": "Paintings for children's rooms, kindergartens, schools, business spaces, cafes, and other public spaces. Each painting is designed according to your wishes and adapted to the space.",
+    "process": "Work process",
+    "processSteps": {
+      "consultation": "Consultation and space viewing",
+      "design": "Sketch and proposal preparation",
+      "approval": "Design approval",
+      "painting": "Painting execution",
+      "finishing": "Final treatment and protection"
+    },
+    "gallery": "Gallery",
+    "galleryComingSoon": "Gallery coming soon.",
+    "galleryImageAlt": "Wall painting",
+    "ctaTitle": "Interested in a wall painting?",
+    "ctaDescription": "Contact me for a free consultation and quote.",
+    "ctaButton": "Contact me"
+  },
+  "about": {
+    "title": "About me",
+    "subtitle": "Doris Einfalt - artist"
+  }
+}
+
