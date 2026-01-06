@@ -27,7 +27,7 @@ export default function StenskePoslikavePage() {
     <div className="min-h-screen bg-cream">
       {/* Hero Section */}
       <section className="px-6 md:px-10 py-12 md:py-20">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <h1 
             className="text-5xl md:text-6xl lg:text-7xl text-stone-900 mb-6"
             style={{ fontFamily: "var(--font-quentin)" }}
@@ -42,7 +42,7 @@ export default function StenskePoslikavePage() {
 
       {/* Description Section */}
       <section className="px-6 md:px-10 py-12 md:py-16 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <p className="text-lg md:text-xl text-stone-700 leading-relaxed mb-12">
             {t("description")}
           </p>
@@ -118,7 +118,7 @@ export default function StenskePoslikavePage() {
 
       {/* Contact CTA */}
       <section className="px-6 md:px-10 py-12 md:py-16 bg-accent/5">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-semibold text-stone-900 mb-4">
             {t("ctaTitle")}
           </h2>
@@ -129,7 +129,7 @@ export default function StenskePoslikavePage() {
             href="mailto:info@doriseinfalt.art"
             className="inline-block px-8 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 transition-colors"
           >
-            {t("ctaButton")}
+            <span style={{ marginTop: '2pt', display: 'block' }}>{t("ctaButton")}</span>
           </a>
         </div>
       </section>

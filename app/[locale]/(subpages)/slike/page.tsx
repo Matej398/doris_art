@@ -19,7 +19,7 @@ export default function SlikePage() {
     <div className="min-h-screen bg-cream">
       {/* Hero Section */}
       <section className="px-6 md:px-10 py-6 md:py-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <h1 
             className="text-5xl md:text-6xl lg:text-7xl text-stone-900 mb-4"
             style={{ fontFamily: "var(--font-quentin)" }}
@@ -55,18 +55,18 @@ export default function SlikePage() {
 
       {/* CTA - Custom Paintings */}
       <section className="px-6 md:px-10 py-16 md:py-20 bg-accent/5">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-semibold text-stone-900 mb-4">
             {t("cta.title")}
           </h2>
-          <p className="text-stone-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-stone-600 mb-8 max-w-3xl mx-auto">
             {t("cta.description")}
           </p>
           <a
             href="mailto:info@doriseinfalt.art"
             className="inline-block px-8 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 transition-colors"
           >
-            {t("cta.button")}
+            <span style={{ marginTop: '2pt', display: 'block' }}>{t("cta.button")}</span>
           </a>
         </div>
       </section>

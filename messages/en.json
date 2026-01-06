@@ -63,5 +63,92 @@
       "description": "I'll create a unique painting just for you - from portraits to landscapes, in the technique of your choice. Each piece is a one-of-a-kind story, made especially for you.",
       "button": "Let's talk"
     }
+  },
+  "workshops": {
+    "title": "Workshops",
+    "subtitle": "Art workshops for kids and adults",
+    "intro": "Join creative workshops where you'll learn new techniques, enjoy the painting process, and take home your own artwork. Workshops are suitable for everyone - from beginners to experienced artists.",
+    "noWorkshops": "No workshops scheduled at the moment.",
+    "tabs": {
+      "children": "For kids",
+      "adults": "For adults"
+    },
+    "card": {
+      "nextDate": "Next session",
+      "at": "at",
+      "book": "Book now",
+      "full": "Fully booked",
+      "onlyOneSpot": "Only 1 spot left!",
+      "spotsLeft": "spots left",
+      "spotsAvailable": "spots available",
+      "spots": "spots",
+      "noUpcoming": "No dates"
+    },
+    "benefits": {
+      "title": "What you get",
+      "subtitle": "Every workshop includes everything you need to create - just show up!",
+      "items": {
+        "materials": {
+          "title": "All materials included",
+          "description": "Paints, brushes, canvases and all other materials are included."
+        },
+        "artwork": {
+          "title": "Take your artwork home",
+          "description": "Your painting goes home with you as a lasting memory."
+        },
+        "guidance": {
+          "title": "Expert guidance",
+          "description": "I guide you step by step through the entire process."
+        },
+        "refreshments": {
+          "title": "Refreshments included",
+          "description": "Drinks and snacks provided while you create."
+        },
+        "fun": {
+          "title": "Fun atmosphere",
+          "description": "Relaxed and creative environment for all ages."
+        },
+        "small-groups": {
+          "title": "Small groups",
+          "description": "Maximum 8-12 participants for personal attention."
+        }
+      }
+    },
+    "form": {
+      "title": "Sign up for a workshop",
+      "modeScheduled": "Book a session",
+      "modeCustom": "Custom event inquiry",
+      "name": "Full name",
+      "namePlaceholder": "Enter your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+386 40 123 456",
+      "selectWorkshop": "Select workshop",
+      "selectWorkshopPlaceholder": "Choose a workshop and date",
+      "eventType": "Event type",
+      "eventTypePlaceholder": "Select event type",
+      "numberOfPeople": "Number of people",
+      "numberOfPeoplePlaceholder": "e.g. 10",
+      "preferredDate": "Preferred date",
+      "preferredDatePlaceholder": "e.g. end of January",
+      "message": "Message",
+      "messagePlaceholder": "Tell me more about what you have in mind...",
+      "submit": "Send request",
+      "sending": "Sending...",
+      "directEmail": "Email me directly",
+      "successMessage": "Thanks! Your request has been sent.",
+      "emailSubjectBooking": "Workshop booking",
+      "emailSubjectCustom": "Custom event inquiry",
+      "selectedWorkshop": "Workshop",
+      "date": "Date",
+      "at": "at"
+    },
+    "cta": {
+      "title": "Have a question or special request?",
+      "description": "I also organize private workshops, birthday parties, bachelorette parties, team building events and more. Just reach out!",
+      "emailButton": "Send an email",
+      "callButton": "Give me a call"
+    }
   }
 }

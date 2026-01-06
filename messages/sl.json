@@ -63,5 +63,92 @@
       "description": "Ustvarim unikatno sliko po tvojih željah - od portretov do pokrajin, v tehniki po tvoji izbiri. Vsaka slika je edinstvena zgodba, ustvarjena posebej zate.",
       "button": "Naroči sliko"
     }
+  },
+  "workshops": {
+    "title": "Delavnice",
+    "subtitle": "Umetniške delavnice za otroke in odrasle",
+    "intro": "Pridruži se ustvarjalnim delavnicam, kjer se naučiš novih tehnik, uživaš v procesu slikanja in domov odneseš svoje umetniško delo. Delavnice so primerne za vse - od začetnikov do izkušenih umetnikov.",
+    "noWorkshops": "Trenutno ni razpisanih delavnic.",
+    "tabs": {
+      "children": "Za otroke",
+      "adults": "Za odrasle"
+    },
+    "card": {
+      "nextDate": "Naslednji termin",
+      "at": "ob",
+      "book": "Prijava",
+      "full": "Zasedeno",
+      "onlyOneSpot": "Samo še 1 prosto mesto!",
+      "spotsLeft": "prosta mesta",
+      "spotsAvailable": "prostih mest",
+      "spots": "mest",
+      "noUpcoming": "Ni terminov"
+    },
+    "benefits": {
+      "title": "Kaj dobiš na delavnici",
+      "subtitle": "Vsaka delavnica vključuje vse potrebno za ustvarjanje - ti samo pridi!",
+      "items": {
+        "materials": {
+          "title": "Ves material vključen",
+          "description": "Barve, čopiči, platna in ostali materiali so vključeni v ceno."
+        },
+        "artwork": {
+          "title": "Odneseš svoje delo",
+          "description": "Tvoja slika gre s teboj domov kot trajen spomin."
+        },
+        "guidance": {
+          "title": "Strokovno vodenje",
+          "description": "Korak za korakom te vodim skozi celoten proces."
+        },
+        "refreshments": {
+          "title": "Prigrizki vključeni",
+          "description": "Poskrbim za pijačo in prigrizke med ustvarjanjem."
+        },
+        "fun": {
+          "title": "Zabavno vzdušje",
+          "description": "Sproščeno in ustvarjalno okolje za vse starosti."
+        },
+        "small-groups": {
+          "title": "Majhne skupine",
+          "description": "Največ 8-12 udeležencev za osebni pristop."
+        }
+      }
+    },
+    "form": {
+      "title": "Prijava na delavnico",
+      "modeScheduled": "Prijava na termin",
+      "modeCustom": "Povpraševanje za dogodek",
+      "name": "Ime in priimek",
+      "namePlaceholder": "Vnesi svoje ime",
+      "email": "E-pošta",
+      "emailPlaceholder": "tvoj@email.com",
+      "phone": "Telefon",
+      "phonePlaceholder": "+386 40 123 456",
+      "selectWorkshop": "Izberi delavnico",
+      "selectWorkshopPlaceholder": "Izberi delavnico in termin",
+      "eventType": "Vrsta dogodka",
+      "eventTypePlaceholder": "Izberi vrsto dogodka",
+      "numberOfPeople": "Število oseb",
+      "numberOfPeoplePlaceholder": "npr. 10",
+      "preferredDate": "Želeni datum",
+      "preferredDatePlaceholder": "npr. konec januarja",
+      "message": "Sporočilo",
+      "messagePlaceholder": "Povej mi več o svojih željah...",
+      "submit": "Pošlji prijavo",
+      "sending": "Pošiljam...",
+      "directEmail": "Piši mi direktno",
+      "successMessage": "Hvala! Tvoja prijava je bila poslana.",
+      "emailSubjectBooking": "Prijava na delavnico",
+      "emailSubjectCustom": "Povpraševanje za dogodek",
+      "selectedWorkshop": "Delavnica",
+      "date": "Datum",
+      "at": "ob"
+    },
+    "cta": {
+      "title": "Imaš vprašanje ali željo?",
+      "description": "Organiziram tudi individualne delavnice, delavnice za rojstne dneve, dekliščine, teambuilding in druge dogodke. Piši mi!",
+      "emailButton": "Pošlji e-pošto",
+      "callButton": "Pokliči me"
+    }
   }
 }
