@@ -1,0 +1,164 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useState, useRef } from "react";
+
+const categories = [
+  {
+    id: "poslikave",
+    title: "STENSKE POSLIKAVE",
+    href: "/stenske-poslikave",
+    image: "/images/cards/poslikave.png",
+  },
+  {
+    id: "delavnice",
+    title: "DELAVNICE",
+    href: "/delavnice",
+    image: "/images/cards/delavnice.png",
+  },
+  {
+    id: "slike",
+    title: "SLIKE",
+    href: "/slike",
+    image: "/images/cards/slike.png",
+  },
+  {
+    id: "izposoja",
+    title: "IZPOSOJA",
+    href: "/izposoja",
+    image: "/images/cards/izposoja.jpg",
+  },
+  {
+    id: "fotografija",
+    title: "FOTOGRAFIJA",
+    href: "/fotografija",
+    image: "/images/cards/fotografija.JPG",
+  },
+];
+
+function Card3D({ category }: { category: typeof categories[0] }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [transform, setTransform] = useState("");
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    
+    const card = cardRef.current;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = (y - centerY) / 15;
+    const rotateY = (centerX - x) / 15;
+    
+    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`);
+  };
+
+  const handleMouseLeave = () => {
+    setTransform("");
+  };
+
+  return (
+    <Link href={category.href} className="group flex flex-col items-start flex-shrink-0">
+      <div 
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 overflow-hidden transition-transform duration-200 ease-out"
+        style={{ 
+          transform,
+          transformStyle: "preserve-3d",
+        }}
+      >
+        <Image
+          src={category.image}
+          alt={category.title}
+          width={288}
+          height={288}
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Title */}
+      <span className="mt-4 text-base md:text-lg lg:text-xl font-semibold text-stone-900 group-hover:text-black transition-colors lowercase">
+        {category.title}
+      </span>
+    </Link>
+  );
+}
+
+export default function Home() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-cream flex flex-col">
+      {/* Header with logo - Centered */}
+      <header className="py-6 md:py-8 flex justify-center">
+        <Link
+          href="/"
+          className={`transition-all duration-1000 inline-block relative ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <span 
+            className="text-6xl md:text-7xl lg:text-8xl text-stone-900"
+            style={{ fontFamily: 'var(--font-dalton)' }}
+          >
+            doris einfalt
+          </span>
+        </Link>
+      </header>
+
+      {/* Main - Category Grid */}
+      <main className="flex-grow flex flex-col items-center justify-center px-6 md:px-12 py-6">
+        <div className="w-full max-w-fit">
+          <h2 
+            className={`text-center text-lg md:text-xl lg:text-2xl font-normal italic text-stone-400 mt-0 mb-28 transition-all duration-1000 delay-100 ${
+              isLoaded ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            Od stenskih poslikav do umetniških delavnic<br />- ustvarjam unikatna doživetja, ki bodo ostala v spominu.
+          </h2>
+          <div
+            className={`flex flex-wrap justify-center gap-5 md:gap-6 lg:gap-7 transition-all duration-1000 delay-200 ${
+              isLoaded ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            {categories.map((category) => (
+              <Card3D key={category.id} category={category} />
+            ))}
+          </div>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="px-6 md:px-10 py-10">
+        {/* Social Section - Centered */}
+        <div className="flex flex-col items-center mb-8">
+          <div className="flex items-center gap-6">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-stone-900 hover:text-accent transition-colors">
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-stone-900 hover:text-accent transition-colors">
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        {/* Copyright */}
+        <p className="text-center text-xs font-medium text-stone-400">© {new Date().getFullYear()} doriseinfalt.art</p>
+      </footer>
+    </div>
+  );
+}
