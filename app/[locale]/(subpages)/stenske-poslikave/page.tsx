@@ -1,66 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { Image3D } from "@/components/ui/Image3D";
+import { Lightbox } from "@/components/ui/Lightbox";
 
 // Placeholder gallery images - replace with actual images
 const galleryImages = [
   { id: 1, src: "/images/cards/poslikave.png" },
   // Add more images as they become available
 ];
-
-function GalleryImage({ src, alt, onClick }: { src: string; alt: string; onClick: () => void }) {
-  return (
-    <div 
-      className="relative aspect-square overflow-hidden cursor-pointer group"
-      onClick={onClick}
-    >
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        className="object-cover transition-transform duration-300 group-hover:scale-105"
-      />
-      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-    </div>
-  );
-}
-
-function Lightbox({ 
-  src, 
-  alt, 
-  onClose 
-}: { 
-  src: string; 
-  alt: string; 
-  onClose: () => void;
-}) {
-  return (
-    <div 
-      className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-      onClick={onClose}
-    >
-      <button
-        onClick={onClose}
-        className="absolute top-4 right-4 text-white hover:text-stone-300 transition-colors"
-      >
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-      <div className="relative max-w-5xl max-h-[90vh] w-full h-full">
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          className="object-contain"
-          onClick={(e) => e.stopPropagation()}
-        />
-      </div>
-    </div>
-  );
-}
 
 export default function StenskePoslikavePage() {
   const t = useTranslations("wallPaintings");
@@ -148,12 +97,13 @@ export default function StenskePoslikavePage() {
           </h2>
           
           {galleryImages.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {galleryImages.map((image, index) => (
-                <GalleryImage
+                <Image3D
                   key={image.id}
                   src={image.src}
                   alt={`${t("galleryImageAlt")} ${index + 1}`}
+                  className="aspect-square"
                   onClick={() => setLightboxImage({ src: image.src, alt: `${t("galleryImageAlt")} ${index + 1}` })}
                 />
               ))}
