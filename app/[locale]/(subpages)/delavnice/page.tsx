@@ -7,7 +7,7 @@ import { WorkshopCard } from "@/components/workshops/WorkshopCard";
 import { ContactForm } from "@/components/workshops/ContactForm";
 import { WhatYouGet } from "@/components/workshops/WhatYouGet";
 import type { Workshop, Audience } from "@/lib/workshops";
-import { filterByAudience, getNextSchedule } from "@/lib/workshops";
+import { filterByAudience, getNextSchedule, isWorkshopActive } from "@/lib/workshops";
 
 // Import data directly for client component
 import workshopsData from "@/data/workshops.json";
@@ -16,8 +16,11 @@ import workshopsData from "@/data/workshops.json";
 function WorkshopJsonLd({ workshops, locale }: { workshops: Workshop[]; locale: string }) {
   const baseUrl = "https://doriseinfalt.art";
   
+  // Filter to only include active workshops for structured data
+  const activeWorkshops = workshops.filter(w => w.active !== false);
+  
   // Create Course schema for each workshop
-  const courseSchemas = workshops.map((workshop) => {
+  const courseSchemas = activeWorkshops.map((workshop) => {
     const nextSchedule = getNextSchedule(workshop);
     const title = locale === "en" && workshop.titleEn ? workshop.titleEn : workshop.title;
     const description = locale === "en" && workshop.descriptionEn ? workshop.descriptionEn : workshop.description;
@@ -98,7 +101,11 @@ export default function DelavnicePage() {
   const workshops = workshopsData.workshops as Workshop[];
   const eventTypes = workshopsData.eventTypes;
 
-  const filteredWorkshops = filterByAudience(workshops, activeTab);
+  // Filter to only show active workshops (active !== false)
+  const activeWorkshops = workshops.filter(w => w.active !== false);
+  
+  // Then filter by audience
+  const filteredWorkshops = filterByAudience(activeWorkshops, activeTab);
 
   const handleBookClick = (workshop: Workshop) => {
     setSelectedWorkshop(workshop);

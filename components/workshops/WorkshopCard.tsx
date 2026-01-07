@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import type { Workshop } from "@/lib/workshops";
-import { getNextSchedule, getAvailableSpots, formatDateSl, formatDateEn } from "@/lib/workshops";
+import { getNextSchedule, getAvailableSpots, formatDateSl, formatDateEn, isWorkshopSoldOut } from "@/lib/workshops";
 
 interface WorkshopCardProps {
   workshop: Workshop;
@@ -16,6 +16,7 @@ export function WorkshopCard({ workshop, onBookClick }: WorkshopCardProps) {
   
   const nextSchedule = getNextSchedule(workshop);
   const availableSpots = nextSchedule ? getAvailableSpots(nextSchedule) : 0;
+  const isSoldOut = isWorkshopSoldOut(workshop);
   
   // Get localized content
   const title = locale === "en" && workshop.titleEn ? workshop.titleEn : workshop.title;
@@ -31,8 +32,8 @@ export function WorkshopCard({ workshop, onBookClick }: WorkshopCardProps) {
 
   // Vacancy status
   const getVacancyStatus = () => {
+    if (isSoldOut) return { text: t("soldOut"), color: "text-red-500" };
     if (!nextSchedule) return { text: t("noUpcoming"), color: "text-stone-400" };
-    if (availableSpots <= 0) return { text: t("full"), color: "text-red-500" };
     if (availableSpots === 1) return { text: t("onlyOneSpot"), color: "text-[#D27095]" };
     
     // Handle Slovenian pluralization correctly
@@ -50,9 +51,10 @@ export function WorkshopCard({ workshop, onBookClick }: WorkshopCardProps) {
   };
 
   const vacancy = getVacancyStatus();
+  const isBookable = !isSoldOut && nextSchedule && availableSpots > 0;
 
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
+    <div className="bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
       {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
@@ -117,17 +119,21 @@ export function WorkshopCard({ workshop, onBookClick }: WorkshopCardProps) {
             <span className="text-2xl font-bold text-stone-900">{workshop.price}</span>
             <span className="text-stone-500 ml-1">{workshop.currency}</span>
           </div>
-          <button
-            onClick={() => onBookClick(workshop)}
-            disabled={!nextSchedule || availableSpots <= 0}
-            className={`px-5 py-2 rounded-lg font-medium transition-colors ${
-              nextSchedule && availableSpots > 0
-                ? "bg-accent text-white hover:bg-accent/90"
-                : "bg-stone-200 text-stone-400 cursor-not-allowed"
-            }`}
-          >
-            {t("book")}
-          </button>
+          {isBookable ? (
+            <button
+              onClick={() => onBookClick(workshop)}
+              className="px-5 py-2 rounded-lg font-medium transition-colors bg-accent text-white hover:bg-accent/90"
+            >
+              {t("book")}
+            </button>
+          ) : (
+            <button
+              disabled
+              className="px-5 py-2 rounded-lg font-medium bg-stone-200 text-stone-400 cursor-not-allowed"
+            >
+              {t("soldOut")}
+            </button>
+          )}
         </div>
       </div>
     </div>

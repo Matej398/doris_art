@@ -124,7 +124,7 @@ export default function Home() {
       </div>
 
       {/* Header with logo */}
-      <header className="pt-20 md:pt-24 pb-6 md:pb-8">
+      <header className="pt-20 md:pt-24 pb-0 md:pb-1">
         {/* Logo - Centered */}
         <div className="flex justify-center">
           <Link
@@ -144,7 +144,7 @@ export default function Home() {
       </header>
 
       {/* Main - Category Grid */}
-      <main className="flex-grow flex flex-col items-center justify-center px-6 md:px-12 py-6">
+      <main className="flex-grow flex flex-col items-center justify-center px-6 md:px-12 pt-0 pb-6">
         <div className="w-full max-w-fit">
           <h2 
             className={`text-center text-lg md:text-xl lg:text-2xl font-normal italic text-stone-400 mt-0 mb-28 transition-all duration-1000 delay-100 ${

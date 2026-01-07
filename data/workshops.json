@@ -5,6 +5,7 @@
       "title": "Slikanje na platno",
       "titleEn": "Canvas Painting",
       "audience": "children",
+      "active": true,
       "technique": "Akril",
       "techniqueEn": "Acrylic",
       "description": "Ustvarjalna delavnica za otroke, kjer se naučijo osnov slikanja z akrilnimi barvami na platno.",
@@ -25,14 +26,14 @@
           "date": "2026-01-25",
           "time": "10:00",
           "spotsTotal": 8,
-          "spotsTaken": 7
+          "spotsTaken": 8
         },
         {
           "id": 2,
           "date": "2026-02-08",
           "time": "10:00",
           "spotsTotal": 8,
-          "spotsTaken": 2
+          "spotsTaken": 8
         }
       ]
     },
@@ -41,6 +42,7 @@
       "title": "Risanje s pasteli",
       "titleEn": "Pastel Drawing",
       "audience": "children",
+      "active": true,
       "technique": "Pasteli",
       "techniqueEn": "Pastels",
       "description": "Zabavna delavnica risanja s suhimi pasteli. Primerno za začetnike.",
@@ -70,6 +72,7 @@
       "title": "Večerno slikanje z vinom",
       "titleEn": "Evening Painting with Wine",
       "audience": "adults",
+      "active": true,
       "technique": "Akril",
       "techniqueEn": "Acrylic",
       "description": "Sproščena večerna delavnica slikanja ob kozarcu vina. Idealno za prijateljice ali dekliščino.",
@@ -104,6 +107,7 @@
       "title": "Akvarel za začetnike",
       "titleEn": "Watercolor for Beginners",
       "audience": "adults",
+      "active": false,
       "technique": "Akvarel",
       "techniqueEn": "Watercolor",
       "description": "Naučite se osnov akvarelnega slikanja v sproščenem vzdušju.",

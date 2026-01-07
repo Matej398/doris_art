@@ -105,6 +105,7 @@
       "at": "ob",
       "book": "Prijava",
       "full": "Zasedeno",
+      "soldOut": "Razprodano",
       "onlyOneSpot": "Samo še 1 prosto mesto!",
       "spotsLeft": "prosta mesta",
       "spotsAvailable": "prostih mest",
@@ -203,6 +204,50 @@
       "sending": "Pošiljanje...",
       "successMessage": "Hvala! Tvoja sporočilo je bilo poslano.",
       "errorMessage": "Napaka pri pošiljanju. Poskusi znova."
+    }
+  },
+  "rentals": {
+    "title": "Izposoja",
+    "subtitle": "Dekoracije in rekviziti za izposojo",
+    "description": "Ponujam izposojo dekoracij in rekvizitov za vaše dogodke, fotografiranje ali posebne priložnosti.",
+    "reservation": "Rezervacija",
+    "noRentals": "Trenutno ni razpoložljivih izposoj.",
+    "details": "Podrobnosti",
+    "category": "Kategorija",
+    "dimensions": "Dimenzije",
+    "pricing": "Cenik",
+    "pricePerDay": "Cena na dan",
+    "deposit": "Varščina",
+    "depositInfo": "Varščina se vrača ob vrniti predmeta v dobrem stanju.",
+    "card": {
+      "pricePerDay": "Cena na dan",
+      "selectDate": "Izberi termin",
+      "day": "dan"
+    },
+    "datePicker": {
+      "pickupDate": "Datum prevzema",
+      "returnDate": "Datum vrnitve",
+      "returnDateAfterPickup": "Datum vrnitve mora biti po datumu prevzema"
+    },
+    "form": {
+      "title": "Rezervacija izposoje",
+      "name": "Ime in priimek",
+      "namePlaceholder": "Vnesi svoje ime",
+      "email": "E-pošta",
+      "emailPlaceholder": "tvoj@email.com",
+      "phone": "Telefon",
+      "phonePlaceholder": "+386 40 123 456",
+      "pickupTime": "Želeni čas prevzema",
+      "pickupTimePlaceholder": "npr. 10:00",
+      "message": "Sporočilo",
+      "messagePlaceholder": "Dodatne informacije ali posebne želje...",
+      "rentalPrice": "Cena najema",
+      "days": "dni",
+      "total": "Skupaj",
+      "submit": "Pošlji rezervacijo",
+      "sending": "Pošiljam...",
+      "successMessage": "Hvala! Tvoja rezervacija je bila poslana. Kontaktirali vas bomo v najkrajšem možnem času.",
+      "errorMessage": "Napaka pri pošiljanju rezervacije. Poskusi znova."
     }
   }
 }

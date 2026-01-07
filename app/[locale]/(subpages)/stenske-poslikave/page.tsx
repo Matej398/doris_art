@@ -58,11 +58,61 @@ export default function StenskePoslikavePage() {
     },
   ];
 
+  // Hero background images - add your transparent PNG images to public/images/wall-paintings-hero/
+  const heroImages = [
+    { src: "/images/wall-paintings-hero/decorative-1.png", position: "top-left", size: "w-64 md:w-96 lg:w-[32rem] xl:w-[40rem]" },
+    { src: "/images/wall-paintings-hero/decorative-2.png", position: "top-right", size: "w-72 md:w-[28rem] lg:w-[36rem] xl:w-[44rem]" },
+  ];
+
+  const getPositionClasses = (position: string) => {
+    switch (position) {
+      case "top-left":
+        // decorative-1: anchored to bottom of beige section
+        return "-bottom-16 md:-bottom-24 lg:-bottom-40 left-0 md:left-4";
+      case "top-right":
+        return "-bottom-4 md:-bottom-8 lg:-bottom-12 right-0 md:right-4";
+      case "bottom-left":
+        return "bottom-0 left-0 md:left-4";
+      case "bottom-right":
+        return "bottom-0 right-0 md:right-4";
+      case "center-left":
+        return "bottom-0 left-0 md:left-4";
+      default:
+        return "";
+    }
+  };
+
   return (
     <div className="min-h-screen bg-cream">
       {/* Hero Section */}
-      <section className="px-6 md:px-10 py-8 md:py-12">
-        <div className="max-w-5xl mx-auto text-center">
+      <section className="px-6 md:px-10 py-12 md:py-16 lg:py-20 relative overflow-visible">
+        {/* Background decorative images - anchored to bottom of hero */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-visible">
+          {heroImages.map((img, index) => (
+            <div
+              key={index}
+              className={`absolute ${getPositionClasses(img.position)} ${img.size} opacity-100 transition-opacity duration-1000`}
+            >
+              <img
+                src={img.src}
+                alt=""
+                className="w-full h-full object-contain object-bottom"
+                style={{ border: 'none', outline: 'none', display: 'block' }}
+                onError={(e) => {
+                  // Hide container and image if it doesn't exist
+                  const container = (e.target as HTMLImageElement).parentElement;
+                  if (container) {
+                    container.style.display = 'none';
+                  }
+                  (e.target as HTMLImageElement).style.display = 'none';
+                }}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Content */}
+        <div className="max-w-5xl mx-auto text-center relative z-10">
           <h1 
             className="text-5xl md:text-6xl lg:text-7xl text-stone-900 mb-6"
             style={{ fontFamily: "var(--font-quentin)" }}
@@ -79,7 +129,7 @@ export default function StenskePoslikavePage() {
       </section>
 
       {/* What I Offer & Process Section */}
-      <section className="px-6 md:px-10 py-12 md:py-16 bg-white">
+      <section className="px-6 md:px-10 py-12 md:py-16 bg-white relative overflow-visible">
         <div className="max-w-5xl mx-auto text-center">
           {/* What I Offer */}
           <div className="mb-16 md:mb-20">

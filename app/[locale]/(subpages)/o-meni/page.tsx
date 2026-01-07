@@ -69,8 +69,26 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col items-center gap-12 md:gap-16">
             {/* Circular Author Image */}
-            <div className="flex-shrink-0">
-              <div className="relative w-96 h-96 md:w-[32rem] md:h-[32rem] rounded-full overflow-hidden bg-stone-200">
+            <div className="flex-shrink-0 relative">
+              {/* Decorative background image */}
+              <div className="absolute top-1/2 -left-32 md:-left-40 lg:-left-48 -translate-y-1/2 z-0">
+                <div className="relative w-[12rem] h-[12rem] md:w-[16rem] md:h-[16rem] lg:w-[20rem] lg:h-[20rem]">
+                  <img
+                    src="/images/wall-paintings-hero/flower-1.png"
+                    alt=""
+                    className="w-full h-full object-contain opacity-70"
+                    style={{ border: 'none', outline: 'none', display: 'block' }}
+                    onError={(e) => {
+                      const container = (e.target as HTMLImageElement).parentElement?.parentElement;
+                      if (container) {
+                        container.style.display = 'none';
+                      }
+                    }}
+                  />
+                </div>
+              </div>
+              {/* Circular author image on top */}
+              <div className="relative w-96 h-96 md:w-[32rem] md:h-[32rem] rounded-full overflow-hidden bg-stone-200 z-10">
                 <Image
                   src="/images/author/doris.jpeg"
                   alt={t("imageAlt")}

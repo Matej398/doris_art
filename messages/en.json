@@ -105,6 +105,7 @@
       "at": "at",
       "book": "Book now",
       "full": "Fully booked",
+      "soldOut": "Sold out",
       "onlyOneSpot": "Only 1 spot left!",
       "spotsLeft": "spots left",
       "spotsAvailable": "spots available",
@@ -203,6 +204,50 @@
       "sending": "Sending...",
       "successMessage": "Thank you! Your message has been sent.",
       "errorMessage": "Error sending message. Please try again."
+    }
+  },
+  "rentals": {
+    "title": "Rentals",
+    "subtitle": "Decorations and props for rent",
+    "description": "I offer rental of decorations and props for your events, photography, or special occasions.",
+    "reservation": "Reservation",
+    "noRentals": "No rentals available at the moment.",
+    "details": "Details",
+    "category": "Category",
+    "dimensions": "Dimensions",
+    "pricing": "Pricing",
+    "pricePerDay": "Price per day",
+    "deposit": "Deposit",
+    "depositInfo": "Deposit will be returned when the item is returned in good condition.",
+    "card": {
+      "pricePerDay": "Price per day",
+      "selectDate": "Select date",
+      "day": "day"
+    },
+    "datePicker": {
+      "pickupDate": "Pickup date",
+      "returnDate": "Return date",
+      "returnDateAfterPickup": "Return date must be after pickup date"
+    },
+    "form": {
+      "title": "Rental reservation",
+      "name": "Full name",
+      "namePlaceholder": "Enter your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+386 40 123 456",
+      "pickupTime": "Preferred pickup time",
+      "pickupTimePlaceholder": "e.g. 10:00",
+      "message": "Message",
+      "messagePlaceholder": "Additional information or special requests...",
+      "rentalPrice": "Rental price",
+      "days": "days",
+      "total": "Total",
+      "submit": "Send reservation",
+      "sending": "Sending...",
+      "successMessage": "Thank you! Your reservation has been sent. We will contact you as soon as possible.",
+      "errorMessage": "Error sending reservation. Please try again."
     }
   }
 }

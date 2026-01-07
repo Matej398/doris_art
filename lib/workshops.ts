@@ -31,6 +31,7 @@ export interface Workshop {
   maxParticipants: number;
   image: string;
   schedules: WorkshopSchedule[];
+  active?: boolean;
 }
 
 export interface EventType {
@@ -62,6 +63,27 @@ export function getNextSchedule(workshop: Workshop): WorkshopSchedule | null {
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
   
   return upcomingSchedules[0] || null;
+}
+
+// Helper function to check if workshop is active (has active flag and upcoming schedules)
+export function isWorkshopActive(workshop: Workshop): boolean {
+  // If active is explicitly false, workshop is not active
+  if (workshop.active === false) return false;
+  // If active is true or undefined, check if there are any upcoming schedules
+  const now = new Date();
+  return workshop.schedules.some(s => new Date(s.date) >= now);
+}
+
+// Helper function to check if workshop is sold out (all upcoming schedules are full)
+export function isWorkshopSoldOut(workshop: Workshop): boolean {
+  const now = new Date();
+  const upcomingSchedules = workshop.schedules.filter(s => new Date(s.date) >= now);
+  
+  // If no upcoming schedules, consider it sold out
+  if (upcomingSchedules.length === 0) return true;
+  
+  // If all upcoming schedules are full, workshop is sold out
+  return upcomingSchedules.every(s => isScheduleFull(s));
 }
 
 // Helper function to format date in Slovenian
