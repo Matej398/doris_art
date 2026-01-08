@@ -70,3 +70,4 @@ export async function getRentals(): Promise<RentalItem[]> {
   return data.rentals;
 }
 
+
