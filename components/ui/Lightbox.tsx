@@ -78,14 +78,14 @@ export function Lightbox({ images, currentIndex, onClose, onNavigate }: Lightbox
 
   return (
     <div 
-      className={`fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 transition-opacity duration-500 ${
+      className={`fixed inset-0 z-50 bg-white/90 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-500 ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
       onClick={onClose}
     >
       <button
         onClick={onClose}
-        className={`absolute top-4 right-4 text-white hover:text-stone-300 transition-all duration-500 z-10 ${
+        className={`absolute top-4 right-4 text-stone-900 hover:text-stone-600 transition-all duration-500 z-10 ${
           isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
         }`}
         aria-label="Close"
@@ -102,7 +102,7 @@ export function Lightbox({ images, currentIndex, onClose, onNavigate }: Lightbox
             e.stopPropagation();
             goToPrev();
           }}
-          className={`absolute left-4 md:left-6 z-10 p-3 text-white hover:text-stone-200 transition-all duration-500 bg-black/50 rounded-full backdrop-blur-sm ${
+          className={`absolute left-4 md:left-6 z-10 p-3 text-stone-900 hover:text-stone-700 transition-all duration-500 bg-white/80 rounded-full backdrop-blur-sm border border-stone-200 ${
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
           }`}
           aria-label="Previous image"
@@ -114,19 +114,22 @@ export function Lightbox({ images, currentIndex, onClose, onNavigate }: Lightbox
       )}
 
       {/* Main image */}
-      <div className={`relative max-w-5xl max-h-[90vh] w-full h-full transition-all duration-700 ${
+      <div className={`relative max-w-5xl max-h-[90vh] w-full h-full flex items-center justify-center transition-all duration-700 ${
         imageLoaded && isVisible 
           ? "opacity-100 scale-100" 
           : "opacity-0 scale-95"
       }`}>
-        <Image
-          src={currentImage.src}
-          alt={currentImage.alt}
-          fill
-          className="object-contain"
-          onClick={(e) => e.stopPropagation()}
-          onLoad={handleImageLoad}
-        />
+        <div className="relative inline-block max-w-full max-h-[90vh] shadow-lg">
+          <Image
+            src={currentImage.src}
+            alt={currentImage.alt}
+            width={1200}
+            height={1200}
+            className="object-contain max-w-full max-h-[90vh] w-auto h-auto block"
+            onClick={(e) => e.stopPropagation()}
+            onLoad={handleImageLoad}
+          />
+        </div>
       </div>
 
       {/* Next button */}
@@ -136,7 +139,7 @@ export function Lightbox({ images, currentIndex, onClose, onNavigate }: Lightbox
             e.stopPropagation();
             goToNext();
           }}
-          className={`absolute right-4 md:right-6 z-10 p-3 text-white hover:text-stone-200 transition-all duration-500 bg-black/50 rounded-full backdrop-blur-sm ${
+          className={`absolute right-4 md:right-6 z-10 p-3 text-stone-900 hover:text-stone-700 transition-all duration-500 bg-white/80 rounded-full backdrop-blur-sm border border-stone-200 ${
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
           }`}
           aria-label="Next image"
@@ -149,7 +152,7 @@ export function Lightbox({ images, currentIndex, onClose, onNavigate }: Lightbox
 
       {/* Image counter */}
       {hasMultipleImages && (
-        <div className={`absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-sm bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full transition-all duration-500 ${
+        <div className={`absolute bottom-6 left-1/2 -translate-x-1/2 text-stone-900 text-sm bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-stone-200 transition-all duration-500 ${
           isVisible ? "opacity-100" : "opacity-0"
         }`}>
           {localIndex + 1} / {images.length}
