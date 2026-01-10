@@ -261,6 +261,7 @@ export default function StenskePoslikavePage() {
                         alt={`${t("galleryImageAlt")} ${index + 1}`}
                         className="aspect-square"
                         onClick={() => setLightboxIndex(index)}
+                        intensity="strong"
                       />
                     ))}
             </div>
