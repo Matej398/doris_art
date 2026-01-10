@@ -40,7 +40,8 @@
     "galleryImageAlt": "Stenska poslikava",
     "ctaTitle": "Te zanima poslikava?",
     "ctaDescription": "Kontaktiraj me za brezplačno posvetovanje in ponudbo.",
-    "ctaButton": "Kontaktiraj me"
+    "ctaButton": "Kontaktiraj me",
+    "heroCtaButton": "Naroči poslikavo"
   },
   "about": {
     "title": "O meni",

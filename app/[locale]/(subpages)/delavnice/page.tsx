@@ -187,7 +187,7 @@ export default function DelavnicePage() {
         </section>
 
         {/* Direct Contact CTA */}
-        <section className="px-6 md:px-10 py-12 md:py-16 bg-accent/5">
+        <section className="px-6 md:px-10 py-12 md:py-16 bg-white">
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-semibold text-stone-900 mb-4">
               {t("cta.title")}

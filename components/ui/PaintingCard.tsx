@@ -23,10 +23,10 @@ export function PaintingCard({ painting, onClick }: PaintingCardProps) {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    const rotateX = (y - centerY) / 15;
-    const rotateY = (centerX - x) / 15;
+    const rotateX = (y - centerY) / 180;
+    const rotateY = (centerX - x) / 180;
     
-    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`);
+    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
   };
 
   const handleMouseLeave = () => {
@@ -50,14 +50,13 @@ export function PaintingCard({ painting, onClick }: PaintingCardProps) {
         transformStyle: "preserve-3d",
       }}
     >
-      {/* Image container - flexible aspect ratio */}
-      <div className="relative w-full aspect-[4/5] overflow-hidden">
-        <Image
+      {/* Image container - natural aspect ratio */}
+      <div className="relative w-full overflow-hidden">
+        <img
           src={thumbnailImage.src}
           alt={thumbnailImage.alt}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover"
+          className="w-full h-auto object-cover block"
+          loading="lazy"
         />
       </div>
     </div>

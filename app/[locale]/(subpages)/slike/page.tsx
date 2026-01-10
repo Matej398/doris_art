@@ -67,16 +67,20 @@ export default function SlikePage() {
       </section>
 
       {/* Gallery Section */}
-      <section className="px-4 md:px-6 pt-6 md:pt-10 pb-12 md:pb-20">
-        <div className="max-w-[95rem] mx-auto">
+      <section className="px-8 md:px-16 lg:px-20 pt-6 md:pt-10 pb-12 md:pb-20">
+        <div className="w-full mx-auto">
           {paintings.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <div 
+              className="columns-1 md:columns-2 gap-6 md:gap-8 lg:gap-10 xl:gap-12"
+              style={{ columnFill: 'balance' }}
+            >
               {paintings.map((painting) => (
-                <PaintingCard
-                  key={painting.id}
-                  painting={painting}
-                  onClick={() => setSelectedPainting(painting)}
-                />
+                <div key={painting.id} className="break-inside-avoid mb-6 md:mb-8 lg:mb-10 xl:mb-12">
+                  <PaintingCard
+                    painting={painting}
+                    onClick={() => setSelectedPainting(painting)}
+                  />
+                </div>
               ))}
             </div>
           ) : (
@@ -88,7 +92,7 @@ export default function SlikePage() {
       </section>
 
       {/* CTA - Custom Paintings */}
-      <section className="px-6 md:px-10 py-16 md:py-20 bg-accent/5">
+      <section className="px-6 md:px-10 py-16 md:py-20 bg-white">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-semibold text-stone-900 mb-4">
             {t("cta.title")}

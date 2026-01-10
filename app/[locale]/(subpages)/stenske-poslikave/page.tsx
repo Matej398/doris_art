@@ -65,17 +65,17 @@ export default function StenskePoslikavePage() {
 
   // Hero background images - add your transparent PNG images to public/images/wall-paintings-hero/
   const heroImages = [
-    { src: "/images/wall-paintings-hero/decorative-1.png", position: "top-left", size: "w-64 md:w-96 lg:w-[32rem] xl:w-[40rem]" },
-    { src: "/images/wall-paintings-hero/decorative-2.png", position: "top-right", size: "w-72 md:w-[28rem] lg:w-[36rem] xl:w-[44rem]" },
+    { src: "/images/wall-paintings-hero/decorative-1.png", position: "top-left", size: "w-64 md:w-[24rem] lg:w-[32rem] xl:w-[38rem] 2xl:w-[44rem]" },
+    { src: "/images/wall-paintings-hero/decorative-2.png", position: "top-right", size: "w-96 md:w-[36rem] lg:w-[44rem] xl:w-[52rem] 2xl:w-[60rem]" },
   ];
 
   const getPositionClasses = (position: string) => {
     switch (position) {
       case "top-left":
         // decorative-1: anchored to bottom of beige section
-        return "-bottom-16 md:-bottom-24 lg:-bottom-40 left-0 md:left-4";
+        return "-bottom-16 md:-bottom-24 lg:-bottom-40 left-4 md:left-8 lg:left-16 xl:left-20";
       case "top-right":
-        return "-bottom-4 md:-bottom-8 lg:-bottom-12 right-0 md:right-4";
+        return "-bottom-4 md:-bottom-8 lg:-bottom-12 -right-12 md:-right-24 lg:-right-36 xl:-right-48";
       case "bottom-left":
         return "bottom-0 left-0 md:left-4";
       case "bottom-right":
@@ -139,13 +139,33 @@ export default function StenskePoslikavePage() {
       <Breadcrumbs items={breadcrumbs} locale={locale as "sl" | "en"} />
       <div className="min-h-screen bg-cream">
       {/* Hero Section */}
-      <section className="px-6 md:px-10 py-12 md:py-16 lg:py-20 relative overflow-visible">
+      <section className="px-6 md:px-10 pt-8 md:pt-12 pb-12 md:pb-20 lg:pb-28 xl:pb-36 2xl:pb-40 relative overflow-visible">
         {/* Background decorative images - anchored to bottom of hero */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-visible">
+          <style jsx>{`
+            @keyframes blurFadeIn {
+              0% {
+                opacity: 0;
+                filter: blur(20px);
+              }
+              100% {
+                opacity: 1;
+                filter: blur(0px);
+              }
+            }
+            .liquid-reveal {
+              animation: blurFadeIn 2s ease-out forwards;
+              opacity: 0;
+            }
+            .liquid-reveal-delayed {
+              animation: blurFadeIn 2s ease-out 0.3s forwards;
+              opacity: 0;
+            }
+          `}</style>
           {heroImages.map((img, index) => (
             <div
               key={index}
-              className={`absolute ${getPositionClasses(img.position)} ${img.size} opacity-100 transition-opacity duration-1000`}
+              className={`absolute ${getPositionClasses(img.position)} ${img.size} liquid-reveal${index > 0 ? '-delayed' : ''}`}
             >
               <img
                 src={img.src}
@@ -179,6 +199,12 @@ export default function StenskePoslikavePage() {
           <p className="text-lg md:text-xl text-stone-600 max-w-4xl mx-auto mb-8">
             {t("description")}
           </p>
+          <a
+            href="mailto:info@doriseinfalt.art"
+            className="inline-block px-8 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 transition-colors mt-4"
+          >
+            <span style={{ marginTop: '2pt', display: 'block' }}>{t("heroCtaButton")}</span>
+          </a>
         </div>
       </section>
 
@@ -247,7 +273,7 @@ export default function StenskePoslikavePage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="px-6 md:px-10 py-12 md:py-16 bg-accent/5">
+      <section className="px-6 md:px-10 py-12 md:py-16 bg-white">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-semibold text-stone-900 mb-4">
             {t("ctaTitle")}

@@ -40,7 +40,8 @@
     "galleryImageAlt": "Wall painting",
     "ctaTitle": "Interested in a wall painting?",
     "ctaDescription": "Get in touch for a free chat and quote.",
-    "ctaButton": "Get in touch"
+    "ctaButton": "Get in touch",
+    "heroCtaButton": "Order a painting"
   },
   "about": {
     "title": "About me",

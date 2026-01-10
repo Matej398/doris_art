@@ -175,16 +175,38 @@ export default function Home() {
         <div className="flex justify-center">
           <Link
             href={`/${locale}`}
-            className={`transition-all duration-1000 inline-block ${
-              isLoaded ? "opacity-100" : "opacity-0"
-            }`}
+            className="inline-block"
           >
             <span 
-              className="text-[3.5rem] md:text-6xl lg:text-7xl text-stone-900"
+              className="text-[3.5rem] md:text-6xl lg:text-7xl text-stone-900 inline-flex"
               style={{ fontFamily: 'var(--font-quentin)' }}
             >
-              doris einfalt
+              {"doris einfalt".split("").map((char, index) => (
+                <span
+                  key={index}
+                  className="inline-block"
+                  style={{
+                    animation: `letterReveal 0.8s ease-out ${index * 0.1}s forwards`,
+                    opacity: 0,
+                    filter: 'blur(10px)',
+                  }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
             </span>
+            <style jsx>{`
+              @keyframes letterReveal {
+                0% {
+                  opacity: 0;
+                  filter: blur(10px);
+                }
+                100% {
+                  opacity: 1;
+                  filter: blur(0px);
+                }
+              }
+            `}</style>
           </Link>
         </div>
       </header>

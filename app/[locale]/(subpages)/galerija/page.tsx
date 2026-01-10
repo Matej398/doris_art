@@ -63,15 +63,17 @@ export default function GalerijaPage() {
           {images.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
               {images.map((image, index) => (
-                <Image3D
-                  key={image.id}
-                  src={image.src}
-                  alt={image.alt}
-                  width={400}
-                  height={400}
-                  className="aspect-square"
-                  onClick={() => setLightboxIndex(index)}
-                />
+                <div key={image.id} className="aspect-square w-full">
+                  <Image3D
+                    src={image.src}
+                    alt={image.alt}
+                    width={400}
+                    height={400}
+                    className="aspect-square w-full h-full"
+                    onClick={() => setLightboxIndex(index)}
+                    intensity="strong"
+                  />
+                </div>
               ))}
             </div>
           ) : (
