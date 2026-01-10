@@ -1,13 +1,52 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { GeneralContactForm } from "@/components/contact/GeneralContactForm";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { BASE_URL, getLocalizedUrl } from "@/lib/seo";
 
 export default function KontaktPage() {
   const t = useTranslations("contact");
+  const tSeo = useTranslations("seo");
+  const locale = useLocale();
+
+  // Generate structured data
+  const contactPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": t("title"),
+    "url": getLocalizedUrl("/kontakt", locale as "sl" | "en"),
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Doris Einfalt s.p.",
+    "image": `${BASE_URL}/images/cards/delavnice.png`,
+    "telephone": "+386-31-596-756",
+    "email": "info@doriseinfalt.art",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Gabrovlje 1A",
+      "addressLocality": "Slovenske Konjice",
+      "postalCode": "3210",
+      "addressCountry": "SI"
+    },
+    "url": `${BASE_URL}/${locale}/kontakt`,
+    "priceRange": "€€"
+  };
+
+  const breadcrumbs = [
+    { name: tSeo("breadcrumbs.home"), url: "/" },
+    { name: t("title"), url: "/kontakt" },
+  ];
 
   return (
-    <div className="min-h-screen bg-cream">
+    <>
+      <StructuredData data={[contactPageSchema, localBusinessSchema]} />
+      <Breadcrumbs items={breadcrumbs} locale={locale as "sl" | "en"} />
+      <div className="min-h-screen bg-cream">
       {/* Hero Section */}
       <section className="px-6 md:px-10 py-8 md:py-12">
         <div className="max-w-5xl mx-auto text-center">
@@ -92,7 +131,8 @@ export default function KontaktPage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
 

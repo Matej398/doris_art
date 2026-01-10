@@ -249,5 +249,42 @@
       "successMessage": "Hvala! Tvoja rezervacija je bila poslana. Kontaktirali vas bomo v najkrajšem možnem času.",
       "errorMessage": "Napaka pri pošiljanju rezervacije. Poskusi znova."
     }
+  },
+  "seo": {
+    "home": {
+      "title": "Doris Einfalt - Stenske poslikave, delavnice in umetnost",
+      "description": "Ustvarjam edinstvene stenske poslikave, umetniške delavnice za otroke in odrasle, slike po naročilu in izposojo dekoracij. Brežice, Slovenija."
+    },
+    "wallPaintings": {
+      "title": "Stenske poslikave - Unikatne poslikave za tvoj prostor | Doris Einfalt",
+      "description": "Ustvarjam edinstvene stenske poslikave za otroške sobe, vrtce, šole in poslovne prostore. Brezplačno posvetovanje in prilagojen dizajn."
+    },
+    "rentals": {
+      "title": "Izposoja dekoracij in rekvizitov | Doris Einfalt",
+      "description": "Ponujam izposojo dekoracij in rekvizitov za vaše dogodke, fotografiranje ali posebne priložnosti. Brežice, Slovenija."
+    },
+    "rentalDetail": {
+      "title": "{name} - Izposoja | Doris Einfalt",
+      "description": "Izposoja {name} za vaše dogodke. Cena na dan: {price} EUR. Varščina: {deposit} EUR."
+    },
+    "paintings": {
+      "title": "Slike po naročilu - Unikatna umetniška dela | Doris Einfalt",
+      "description": "Ustvarim unikatno sliko po tvojih željah - od portretov do pokrajin, v tehniki po tvoji izbiri. Vsaka slika je edinstvena zgodba."
+    },
+    "photography": {
+      "title": "Umetniška fotografija - Portreti in dogodki | Doris Einfalt",
+      "description": "Ponujam umetniško fotografijo za različne priložnosti - od portretov do dogodkov. Kontaktiraj me za več informacij."
+    },
+    "gallery": {
+      "title": "Galerija - Umetniška dela Doris Einfalt",
+      "description": "Galerija umetniških del - stenske poslikave, slike, ilustracije in fotografije."
+    },
+    "contact": {
+      "title": "Kontakt - Doris Einfalt Art",
+      "description": "Kontaktiraj me za brezplačno posvetovanje, ponudbo ali vprašanja. Doris Einfalt s.p., Gabrovlje 1A, 3210 Slovenske Konjice."
+    },
+    "breadcrumbs": {
+      "home": "Domov"
+    }
   }
 }

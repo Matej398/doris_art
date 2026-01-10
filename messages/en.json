@@ -249,5 +249,42 @@
       "successMessage": "Thank you! Your reservation has been sent. We will contact you as soon as possible.",
       "errorMessage": "Error sending reservation. Please try again."
     }
+  },
+  "seo": {
+    "home": {
+      "title": "Doris Einfalt - Wall Paintings, Workshops & Art",
+      "description": "I create unique wall paintings, art workshops for kids and adults, custom paintings, and rental decorations. Brežice, Slovenia."
+    },
+    "wallPaintings": {
+      "title": "Wall Paintings - Unique Paintings for Your Space | Doris Einfalt",
+      "description": "I create unique wall paintings for kids' rooms, kindergartens, schools, and business spaces. Free consultation and custom design."
+    },
+    "rentals": {
+      "title": "Rental Decorations and Props | Doris Einfalt",
+      "description": "I offer rental of decorations and props for your events, photography, or special occasions. Brežice, Slovenia."
+    },
+    "rentalDetail": {
+      "title": "{name} - Rental | Doris Einfalt",
+      "description": "Rental {name} for your events. Price per day: {price} EUR. Deposit: {deposit} EUR."
+    },
+    "paintings": {
+      "title": "Custom Paintings - Unique Artworks | Doris Einfalt",
+      "description": "I'll create a unique painting just for you - from portraits to landscapes, in the technique of your choice. Each piece is a one-of-a-kind story."
+    },
+    "photography": {
+      "title": "Artistic Photography - Portraits & Events | Doris Einfalt",
+      "description": "I offer artistic photography for various occasions - from portraits to events. Get in touch for more information."
+    },
+    "gallery": {
+      "title": "Gallery - Artworks by Doris Einfalt",
+      "description": "Gallery of artworks - wall paintings, paintings, illustrations, and photography."
+    },
+    "contact": {
+      "title": "Contact - Doris Einfalt Art",
+      "description": "Get in touch for a free consultation, quote, or questions. Doris Einfalt s.p., Gabrovlje 1A, 3210 Slovenske Konjice."
+    },
+    "breadcrumbs": {
+      "home": "Home"
+    }
   }
 }

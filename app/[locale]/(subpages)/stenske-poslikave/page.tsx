@@ -1,9 +1,12 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useState } from "react";
 import { Image3D } from "@/components/ui/Image3D";
 import { Lightbox } from "@/components/ui/Lightbox";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { BASE_URL, getImageUrl } from "@/lib/seo";
 
 // Placeholder gallery images - replace with actual images
 const galleryImages = [
@@ -13,6 +16,8 @@ const galleryImages = [
 
 export default function StenskePoslikavePage() {
   const t = useTranslations("wallPaintings");
+  const tSeo = useTranslations("seo");
+  const locale = useLocale();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const processSteps = [
@@ -82,8 +87,57 @@ export default function StenskePoslikavePage() {
     }
   };
 
+  // Generate structured data
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": locale === "sl" ? "Stenske poslikave" : "Wall Paintings",
+    "name": t("title"),
+    "description": t("description"),
+    "provider": {
+      "@type": "Person",
+      "name": "Doris Einfalt",
+      "url": `${BASE_URL}/${locale}`,
+      "image": getImageUrl("/images/author/doris.jpeg"),
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Slovenia"
+    },
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": `${BASE_URL}/${locale}/stenske-poslikave`,
+      "servicePhone": "+386-31-596-756",
+      "serviceEmail": "info@doriseinfalt.art"
+    }
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Doris Einfalt Art",
+    "image": getImageUrl("/images/cards/poslikave.png"),
+    "telephone": "+386-31-596-756",
+    "email": "info@doriseinfalt.art",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Brežice",
+      "addressCountry": "SI"
+    },
+    "url": `${BASE_URL}/${locale}/stenske-poslikave`,
+    "priceRange": "€€"
+  };
+
+  const breadcrumbs = [
+    { name: tSeo("breadcrumbs.home"), url: "/" },
+    { name: t("title"), url: "/stenske-poslikave" },
+  ];
+
   return (
-    <div className="min-h-screen bg-cream">
+    <>
+      <StructuredData data={[serviceSchema, localBusinessSchema]} />
+      <Breadcrumbs items={breadcrumbs} locale={locale as "sl" | "en"} />
+      <div className="min-h-screen bg-cream">
       {/* Hero Section */}
       <section className="px-6 md:px-10 py-12 md:py-16 lg:py-20 relative overflow-visible">
         {/* Background decorative images - anchored to bottom of hero */}
@@ -219,7 +273,8 @@ export default function StenskePoslikavePage() {
           onNavigate={(index) => setLightboxIndex(index)}
         />
       )}
-    </div>
+      </div>
+    </>
   );
 }
 

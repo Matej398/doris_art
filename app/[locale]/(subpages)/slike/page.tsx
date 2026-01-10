@@ -1,22 +1,56 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useState } from "react";
 import { PaintingCard } from "@/components/ui/PaintingCard";
 import { PaintingDetailModal } from "@/components/ui/PaintingDetailModal";
 import type { Painting } from "@/lib/paintings";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { BASE_URL, getImageUrl, getLocalizedUrl } from "@/lib/seo";
 
 // Import paintings data directly for client component
 import paintingsData from "@/data/paintings.json";
 
 export default function SlikePage() {
   const t = useTranslations("paintings");
+  const tSeo = useTranslations("seo");
+  const locale = useLocale();
   const [selectedPainting, setSelectedPainting] = useState<Painting | null>(null);
 
   const paintings = paintingsData.paintings as Painting[];
 
+  // Generate structured data
+  const collectionPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": t("title"),
+    "description": t("cta.description"),
+    "url": getLocalizedUrl("/slike", locale as "sl" | "en"),
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": paintings.map((painting, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "CreativeWork",
+          "name": painting.title,
+          "image": painting.images?.[0] ? getImageUrl(painting.images[0].src) : undefined,
+        }
+      }))
+    }
+  };
+
+  const breadcrumbs = [
+    { name: tSeo("breadcrumbs.home"), url: "/" },
+    { name: t("title"), url: "/slike" },
+  ];
+
   return (
-    <div className="min-h-screen bg-cream">
+    <>
+      <StructuredData data={collectionPageSchema} />
+      <Breadcrumbs items={breadcrumbs} locale={locale as "sl" | "en"} />
+      <div className="min-h-screen bg-cream">
       {/* Hero Section */}
       <section className="px-6 md:px-10 py-8 md:py-12">
         <div className="max-w-5xl mx-auto text-center">
@@ -78,6 +112,7 @@ export default function SlikePage() {
           onClose={() => setSelectedPainting(null)}
         />
       )}
-    </div>
+      </div>
+    </>
   );
 }

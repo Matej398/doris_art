@@ -102,14 +102,16 @@ export function formatDateEn(dateString: string): string {
 
 // Function to load workshops data
 export async function getWorkshops(): Promise<Workshop[]> {
-  const data: WorkshopsData = await import('@/data/workshops.json');
-  return data.workshops;
+  const data = await import('@/data/workshops.json');
+  const workshopsData = (data.default || data) as WorkshopsData;
+  return workshopsData.workshops;
 }
 
 // Function to load event types
 export async function getEventTypes(): Promise<EventType[]> {
-  const data: WorkshopsData = await import('@/data/workshops.json');
-  return data.eventTypes;
+  const data = await import('@/data/workshops.json');
+  const workshopsData = (data.default || data) as WorkshopsData;
+  return workshopsData.eventTypes;
 }
 
 // Filter workshops by audience

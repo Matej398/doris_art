@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { locales, type Locale } from "@/i18n/config";
+import { BASE_URL } from "@/lib/seo";
 import "../globals.css";
 
 const epilogue = localFont({
@@ -70,17 +71,48 @@ const quentin = localFont({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "doriseinfalt.art",
-  description: "Stenske poslikave, umetniške delavnice, slike po naročilu in izposoja dekoracij.",
-  keywords: "stenske poslikave, delavnice za otroke, slike po naročilu, izposoja dekoracij, Brežice",
-  openGraph: {
-    title: "doriseinfalt.art",
-    description: "Umetnost za posebne trenutke",
-    locale: "sl_SI",
-    type: "website",
-  },
-};
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "seo.home" });
+  
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: "stenske poslikave, delavnice za otroke, slike po naročilu, izposoja dekoracij, Brežice, wall paintings, art workshops",
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      locale: locale === "sl" ? "sl_SI" : "en_US",
+      type: "website",
+      url: `${BASE_URL}/${locale}`,
+      siteName: "Doris Einfalt Art",
+      images: [
+        {
+          url: `${BASE_URL}/images/cards/delavnice.png`,
+          width: 1200,
+          height: 630,
+          alt: "Doris Einfalt Art",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: [`${BASE_URL}/images/cards/delavnice.png`],
+    },
+    alternates: {
+      canonical: `${BASE_URL}/${locale}`,
+      languages: {
+        "sl-SI": `${BASE_URL}/sl`,
+        "en-US": `${BASE_URL}/en`,
+      },
+    },
+  };
+}
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

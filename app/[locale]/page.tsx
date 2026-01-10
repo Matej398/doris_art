@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Navigation } from "@/components/layout/Navigation";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { BASE_URL, getImageUrl } from "@/lib/seo";
 
 function Card3D({ category, locale }: { category: { id: string; title: string; href: string; image: string }; locale: string }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -102,8 +104,52 @@ export default function Home() {
     },
   ];
 
+  // Generate structured data for homepage
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Doris Einfalt Art",
+    "url": `${BASE_URL}/${locale}`,
+    "logo": getImageUrl("/images/cards/delavnice.png"),
+    "description": locale === "sl" 
+      ? "Ustvarjam edinstvene stenske poslikave, umetniške delavnice za otroke in odrasle, slike po naročilu in izposojo dekoracij."
+      : "I create unique wall paintings, art workshops for kids and adults, custom paintings, and rental decorations.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Brežice",
+      "addressCountry": "SI"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+386-31-596-756",
+      "contactType": "customer service",
+      "email": "info@doriseinfalt.art"
+    },
+    "sameAs": [
+      "https://instagram.com/doriseinfalt",
+      "https://facebook.com/doriseinfalt"
+    ]
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Doris Einfalt Art",
+    "url": `${BASE_URL}/${locale}`,
+    "description": locale === "sl"
+      ? "Stenske poslikave, umetniške delavnice, slike po naročilu in izposoja dekoracij."
+      : "Wall paintings, art workshops, custom paintings, and rental decorations.",
+    "inLanguage": locale === "sl" ? "sl-SI" : "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Doris Einfalt Art"
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-cream flex flex-col">
+    <>
+      <StructuredData data={[organizationSchema, websiteSchema]} />
+      <div className="min-h-screen bg-cream flex flex-col">
       {/* Navigation - Fixed position top right (same as subpage header) */}
       <div 
         className={`fixed top-0 left-0 right-0 z-50 py-6 md:py-8 px-8 md:px-16 lg:px-20 flex justify-end items-center transition-all duration-1000 pointer-events-none ${
@@ -186,7 +232,8 @@ export default function Home() {
         {/* Copyright */}
         <p className="text-center text-xs font-medium text-stone-400">© {new Date().getFullYear()} doriseinfalt.art</p>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }
 

@@ -1,21 +1,44 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useState } from "react";
 import { Image3D } from "@/components/ui/Image3D";
 import { Lightbox } from "@/components/ui/Lightbox";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { BASE_URL, getImageUrl, getLocalizedUrl } from "@/lib/seo";
 
 // Import photography data directly for client component
 import photographyData from "@/data/photography.json";
 
 export default function FotografijaPage() {
   const t = useTranslations("photography");
+  const tSeo = useTranslations("seo");
+  const locale = useLocale();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const images = photographyData.images;
 
+  // Generate structured data
+  const imageGallerySchema = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": t("title"),
+    "description": t("cta.description"),
+    "url": getLocalizedUrl("/fotografija", locale as "sl" | "en"),
+    "image": images.length > 0 ? images.map(img => getImageUrl(img.src)) : undefined,
+  };
+
+  const breadcrumbs = [
+    { name: tSeo("breadcrumbs.home"), url: "/" },
+    { name: t("title"), url: "/fotografija" },
+  ];
+
   return (
-    <div className="min-h-screen bg-cream">
+    <>
+      <StructuredData data={imageGallerySchema} />
+      <Breadcrumbs items={breadcrumbs} locale={locale as "sl" | "en"} />
+      <div className="min-h-screen bg-cream">
       {/* Hero Section */}
       <section className="px-6 md:px-10 py-8 md:py-12">
         <div className="max-w-5xl mx-auto text-center">
@@ -83,6 +106,7 @@ export default function FotografijaPage() {
           onNavigate={(index) => setLightboxIndex(index)}
         />
       )}
-    </div>
+      </div>
+    </>
   );
 }
