@@ -14,11 +14,8 @@ function getSecretKey(): Uint8Array {
 }
 
 export async function verifyPassword(password: string): Promise<boolean> {
-  const storedHash = process.env.ADMIN_PASSWORD_HASH;
-  if (!storedHash) {
-    console.error('ADMIN_PASSWORD_HASH environment variable not set');
-    return false;
-  }
+  // Hardcoded hash for password: Zobotrebec05
+  const storedHash = '$2b$12$cTrmHEae0YrnbZOmwk9l.Op3NAoMtH/ax6VPFjItuqg0EooZBLMKC';
 
   try {
     return await bcrypt.compare(password, storedHash);
