@@ -145,9 +145,11 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${epilogue.variable} ${daltonWhite.variable} ${quentin.variable} ${epilogue.className}`}>
       <body className="min-h-screen">
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <div className="max-w-[2056px] mx-auto">
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </div>
       </body>
     </html>
   );

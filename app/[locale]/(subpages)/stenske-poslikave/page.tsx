@@ -88,10 +88,10 @@ export default function StenskePoslikavePage() {
   const getPositionClasses = (position: string) => {
     switch (position) {
       case "top-left":
-        // decorative-1: anchored to bottom of beige section
-        return "-bottom-16 md:-bottom-24 lg:-bottom-40 left-4 md:left-8 lg:left-16 xl:left-20";
+        // decorative-1: anchored to bottom of beige section (lowered by ~60px)
+        return "-bottom-32 md:-bottom-40 lg:-bottom-56 left-4 md:left-8 lg:left-16 xl:left-20";
       case "top-right":
-        return "-bottom-4 md:-bottom-8 lg:-bottom-12 -right-12 md:-right-24 lg:-right-36 xl:-right-48";
+        return "-bottom-20 md:-bottom-24 lg:-bottom-28 -right-12 md:-right-24 lg:-right-36 xl:-right-48";
       case "bottom-left":
         return "bottom-0 left-0 md:left-4";
       case "bottom-right":

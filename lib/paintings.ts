@@ -10,9 +10,12 @@ export interface PaintingImage {
 export interface Painting {
   id: number;
   title: string;
+  titleEn?: string;
   size: string;
   technique: string;
-  location?: string; // Optional - some paintings may not have a location
+  techniqueEn?: string;
+  location?: string;
+  locationEn?: string;
   images: PaintingImage[];
 }
 

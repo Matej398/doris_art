@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { Navigation } from "./Navigation";
@@ -26,7 +26,7 @@ export function Header() {
       <div className="w-full h-20 md:h-24 px-8 md:px-16 lg:px-20 flex items-center justify-between">
         {/* Logo - smaller and left-aligned when scrolled */}
         <Link
-          href={`/${locale}`}
+          href="/"
           className="transition-all duration-300"
         >
           <span

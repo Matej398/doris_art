@@ -44,7 +44,7 @@ export default function GalerijaPage() {
     <>
       <StructuredData data={imageGallerySchema} />
       <Breadcrumbs items={breadcrumbs} locale={locale as "sl" | "en"} />
-      <div className="min-h-screen bg-cream">
+      <div className="bg-cream">
       {/* Hero Section */}
       <section className="px-6 md:px-10 py-8 md:py-12">
         <div className="max-w-5xl mx-auto text-center">

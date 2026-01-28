@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import { useTranslations, useLocale } from "next-intl";
@@ -8,7 +8,7 @@ import { Navigation } from "@/components/layout/Navigation";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { BASE_URL, getImageUrl } from "@/lib/seo";
 
-function Card3D({ category, locale }: { category: { id: string; title: string; href: string; image: string }; locale: string }) {
+function Card3D({ category, locale, priority = false }: { category: { id: string; title: string; href: string; image: string }; locale: string; priority?: boolean }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState("");
 
@@ -33,7 +33,7 @@ function Card3D({ category, locale }: { category: { id: string; title: string; h
   };
 
   return (
-    <Link href={`/${locale}${category.href}`} className="group flex flex-col items-start flex-shrink-0">
+    <Link href={category.href as any} className="group flex flex-col items-start flex-shrink-0">
       <div 
         ref={cardRef}
         onMouseMove={handleMouseMove}
@@ -50,6 +50,7 @@ function Card3D({ category, locale }: { category: { id: string; title: string; h
           width={288}
           height={288}
           className="w-full h-full object-cover"
+          priority={priority}
         />
       </div>
 
@@ -231,7 +232,7 @@ export default function Home() {
         {/* Logo - Centered */}
         <div className="flex justify-center">
           <Link
-            href={`/${locale}`}
+            href="/"
             className="inline-block"
           >
             <span 
@@ -269,7 +270,7 @@ export default function Home() {
       </header>
 
       {/* Main - Category Grid */}
-      <main className="flex-grow flex flex-col items-center justify-center px-6 md:px-12 pt-0 pb-6">
+      <main className="flex-grow flex flex-col items-center justify-start px-6 md:px-12 pt-0 pb-6">
         <div className="w-full max-w-fit">
           <h2 
             className={`text-center text-lg md:text-xl lg:text-2xl font-normal italic text-stone-400 mt-0 mb-28 transition-all duration-1000 delay-100 ${
@@ -283,8 +284,8 @@ export default function Home() {
               isLoaded ? "opacity-100" : "opacity-0"
             }`}
           >
-            {categories.map((category) => (
-              <Card3D key={category.id} category={category} locale={locale} />
+            {categories.map((category, index) => (
+              <Card3D key={category.id} category={category} locale={locale} priority={index < 3} />
             ))}
           </div>
         </div>

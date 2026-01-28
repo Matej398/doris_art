@@ -46,7 +46,7 @@ export default function KontaktPage() {
     <>
       <StructuredData data={[contactPageSchema, localBusinessSchema]} />
       <Breadcrumbs items={breadcrumbs} locale={locale as "sl" | "en"} />
-      <div className="min-h-screen bg-cream">
+      <div className="bg-cream">
       {/* Hero Section */}
       <section className="px-6 md:px-10 py-8 md:py-12">
         <div className="max-w-5xl mx-auto text-center">
@@ -113,7 +113,7 @@ export default function KontaktPage() {
           </div>
           
           {/* Decorative flower image - positioned in bottom-left quadrant */}
-          <div className="absolute bottom-24 md:bottom-32 lg:bottom-40 left-24 md:left-32 lg:left-40 z-0 pointer-events-none">
+          <div className="absolute bottom-8 md:bottom-16 lg:bottom-24 left-24 md:left-32 lg:left-40 z-0 pointer-events-none">
             <div className="relative w-[20rem] h-[20rem] md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem]">
               <img
                 src="/images/wall-paintings-hero/flower-2.png"

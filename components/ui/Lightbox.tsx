@@ -128,6 +128,7 @@ export function Lightbox({ images, currentIndex, onClose, onNavigate }: Lightbox
             className="object-contain max-w-full max-h-[90vh] w-auto h-auto block"
             onClick={(e) => e.stopPropagation()}
             onLoad={handleImageLoad}
+            priority
           />
         </div>
       </div>

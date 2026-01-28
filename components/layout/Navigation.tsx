@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
+import { Link, usePathname } from "@/i18n/navigation";
+import NextLink from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { usePathname } from "next/navigation";
 
 interface NavigationProps {
   isScrolled?: boolean;
@@ -67,11 +67,11 @@ export function Navigation({ isScrolled }: NavigationProps) {
   }, []);
 
   const allServices = [
-    { id: "wall-paintings", label: t("navigation.wallPaintings"), href: `/${locale}/stenske-poslikave` },
-    { id: "workshops", label: t("navigation.workshops"), href: `/${locale}/delavnice` },
-    { id: "paintings", label: t("navigation.paintings"), href: `/${locale}/slike` },
-    { id: "rentals", label: t("navigation.rentals"), href: `/${locale}/izposoja` },
-    { id: "photography", label: t("navigation.photography"), href: `/${locale}/fotografija` },
+    { id: "wall-paintings", label: t("navigation.wallPaintings"), href: "/stenske-poslikave" as const },
+    { id: "workshops", label: t("navigation.workshops"), href: "/delavnice" as const },
+    { id: "paintings", label: t("navigation.paintings"), href: "/slike" as const },
+    { id: "rentals", label: t("navigation.rentals"), href: "/izposoja" as const },
+    { id: "photography", label: t("navigation.photography"), href: "/fotografija" as const },
     { id: "other", label: t("navigation.other"), href: `/${locale}/ostalo` },
   ];
 
@@ -84,13 +84,8 @@ export function Navigation({ isScrolled }: NavigationProps) {
     return visibility[visibilityKey] !== false;
   });
 
-  // Get the path for the other language
-  const getOtherLocalePath = () => {
-    const otherLocale = locale === "sl" ? "en" : "sl";
-    // Replace the current locale with the other locale in the pathname
-    const newPath = pathname.replace(`/${locale}`, `/${otherLocale}`);
-    return newPath || `/${otherLocale}`;
-  };
+  // Get the other locale
+  const otherLocale = locale === "sl" ? "en" : "sl";
 
   return (
     <nav className="flex items-center gap-6 md:gap-8">
@@ -122,14 +117,25 @@ export function Navigation({ isScrolled }: NavigationProps) {
           <div className="absolute top-full right-0 pt-2 z-50">
             <div className="w-48 py-2 bg-white rounded-lg shadow-lg">
               {services.map((service) => (
-                <Link
-                  key={service.id}
-                  href={service.href}
-                  onClick={() => setIsDropdownOpen(false)}
-                  className="block px-4 py-2 text-sm md:text-base font-medium text-stone-700 hover:bg-stone-50 hover:text-accent transition-colors"
-                >
-                  {service.label}
-                </Link>
+                service.id === "other" ? (
+                  <NextLink
+                    key={service.id}
+                    href={service.href}
+                    onClick={() => setIsDropdownOpen(false)}
+                    className="block px-4 py-2 text-sm md:text-base font-medium text-stone-700 hover:bg-stone-50 hover:text-accent transition-colors"
+                  >
+                    {service.label}
+                  </NextLink>
+                ) : (
+                  <Link
+                    key={service.id}
+                    href={service.href as any}
+                    onClick={() => setIsDropdownOpen(false)}
+                    className="block px-4 py-2 text-sm md:text-base font-medium text-stone-700 hover:bg-stone-50 hover:text-accent transition-colors"
+                  >
+                    {service.label}
+                  </Link>
+                )
               ))}
             </div>
           </div>
@@ -139,7 +145,7 @@ export function Navigation({ isScrolled }: NavigationProps) {
       {/* Gallery link */}
       {visibility.gallery !== false && (
         <Link
-          href={`/${locale}/galerija`}
+          href="/galerija"
           className={`text-sm md:text-base font-medium transition-colors ${
             isScrolled ? "text-stone-700 hover:text-stone-900" : "text-stone-700 hover:text-stone-900"
           }`}
@@ -151,7 +157,7 @@ export function Navigation({ isScrolled }: NavigationProps) {
       {/* About me link */}
       {visibility.about !== false && (
         <Link
-          href={`/${locale}/o-meni`}
+          href="/o-meni"
           className={`text-sm md:text-base font-medium transition-colors ${
             isScrolled ? "text-stone-700 hover:text-stone-900" : "text-stone-700 hover:text-stone-900"
           }`}
@@ -162,7 +168,7 @@ export function Navigation({ isScrolled }: NavigationProps) {
 
       {/* Contact link */}
       <Link
-        href={`/${locale}/kontakt`}
+        href="/kontakt"
         className={`text-sm md:text-base font-medium transition-colors ${
           isScrolled ? "text-stone-700 hover:text-stone-900" : "text-stone-700 hover:text-stone-900"
         }`}
@@ -172,7 +178,8 @@ export function Navigation({ isScrolled }: NavigationProps) {
 
       {/* Language switcher */}
       <Link
-        href={getOtherLocalePath()}
+        href={pathname || "/"}
+        locale={otherLocale}
         className={`text-sm md:text-base font-medium uppercase transition-colors ${
           isScrolled ? "text-stone-400 hover:text-stone-700" : "text-stone-400 hover:text-stone-700"
         }`}

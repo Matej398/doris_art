@@ -79,7 +79,7 @@ export default function AboutPage() {
       {/* SEO JSON-LD Structured Data */}
       <PersonJsonLd locale={locale} />
       
-      <div className="min-h-screen bg-cream">
+      <div className="bg-cream">
       {/* Hero Section */}
       <section className="px-6 md:px-10 py-8 md:py-12">
         <div className="max-w-5xl mx-auto text-center">
@@ -99,7 +99,7 @@ export default function AboutPage() {
             {/* Circular Author Image */}
             <div className="flex-shrink-0 relative">
               {/* Decorative background image */}
-              <div className="absolute top-1/2 -left-32 md:-left-40 lg:-left-48 -translate-y-1/2 z-0">
+              <div className="absolute top-1/2 -left-32 md:-left-40 lg:-left-48 -translate-y-1/3 z-0">
                 <div className="relative w-[12rem] h-[12rem] md:w-[16rem] md:h-[16rem] lg:w-[20rem] lg:h-[20rem]">
                   <img
                     src="/images/wall-paintings-hero/flower-1.png"

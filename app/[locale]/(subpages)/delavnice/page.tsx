@@ -195,18 +195,12 @@ export default function DelavnicePage() {
             <p className="text-lg md:text-xl text-stone-600 mb-8">
               {t("cta.description")}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <a
                 href="mailto:info@doriseinfalt.art"
                 className="inline-block px-8 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 transition-colors"
               >
                 <span style={{ marginTop: '2pt', display: 'block' }}>{t("cta.emailButton")}</span>
-              </a>
-              <a
-                href="tel:+38640123456"
-                className="inline-block px-8 py-3 border border-accent text-accent font-medium rounded-lg hover:bg-accent/5 transition-colors"
-              >
-                <span style={{ marginTop: '2pt', display: 'block' }}>{t("cta.callButton")}</span>
               </a>
             </div>
           </div>

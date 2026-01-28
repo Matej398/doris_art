@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState, useCallback } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import type { Painting } from "@/lib/paintings";
 
 interface PaintingDetailModalProps {
@@ -12,6 +12,12 @@ interface PaintingDetailModalProps {
 
 export function PaintingDetailModal({ painting, onClose }: PaintingDetailModalProps) {
   const t = useTranslations("paintings.detail");
+  const locale = useLocale();
+
+  // Get localized fields
+  const title = locale === "en" && painting.titleEn ? painting.titleEn : painting.title;
+  const technique = locale === "en" && painting.techniqueEn ? painting.techniqueEn : painting.technique;
+  const location = locale === "en" && painting.locationEn ? painting.locationEn : painting.location;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -149,9 +155,9 @@ export function PaintingDetailModal({ painting, onClose }: PaintingDetailModalPr
           <h2
             className="text-2xl md:text-3xl font-semibold text-stone-900 mb-6 hyphens-auto break-words pr-12"
             style={{ wordBreak: 'break-word' }}
-            lang="sl"
+            lang={locale}
           >
-            {painting.title}
+            {title}
           </h2>
 
           {/* Details list */}
@@ -169,16 +175,16 @@ export function PaintingDetailModal({ painting, onClose }: PaintingDetailModalPr
               <span className="text-sm font-medium text-stone-500 uppercase tracking-wide">
                 {t("technique")}
               </span>
-              <p className="text-stone-900 mt-1">{painting.technique}</p>
+              <p className="text-stone-900 mt-1">{technique}</p>
             </div>
 
             {/* Location (if available) */}
-            {painting.location && (
+            {location && (
               <div>
                 <span className="text-sm font-medium text-stone-500 uppercase tracking-wide">
                   {t("location")}
                 </span>
-                <p className="text-stone-900 mt-1">{painting.location}</p>
+                <p className="text-stone-900 mt-1">{location}</p>
               </div>
             )}
           </div>
