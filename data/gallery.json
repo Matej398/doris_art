@@ -16,15 +16,14 @@
       "alt": "Galerija slika 3"
     },
     {
-      "id": 4,
-      "src": "/images/cards/slike.png",
-      "alt": "Galerija slika 4"
-    },
-    {
       "id": 5,
       "src": "/images/cards/izposoja.jpg",
       "alt": "Galerija slika 5"
+    },
+    {
+      "src": "/images/uploads/a4e93bab33cbd731a862eb43fa5c4729-1769555061860.jpg",
+      "alt": "Gallery image",
+      "id": 6
     }
   ]
 }
-

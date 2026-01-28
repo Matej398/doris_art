@@ -82,6 +82,15 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     keywords: "stenske poslikave, delavnice za otroke, slike po naročilu, izposoja dekoracij, Brežice, wall paintings, art workshops",
+    icons: {
+      icon: [
+        { url: '/favicon.ico' },
+        { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+        { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      ],
+      apple: '/apple-touch-icon.png',
+    },
+    manifest: '/site.webmanifest',
     openGraph: {
       title: t("title"),
       description: t("description"),

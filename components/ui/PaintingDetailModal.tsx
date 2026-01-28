@@ -146,7 +146,11 @@ export function PaintingDetailModal({ painting, onClose }: PaintingDetailModalPr
         {/* Details panel */}
         <div className="w-full lg:w-96 xl:w-[420px] p-6 md:p-8 lg:p-10 overflow-y-auto border-t lg:border-t-0 lg:border-l border-stone-200 bg-white">
           {/* Title */}
-          <h2 className="text-2xl md:text-3xl font-semibold text-stone-900 mb-6">
+          <h2
+            className="text-2xl md:text-3xl font-semibold text-stone-900 mb-6 hyphens-auto break-words pr-12"
+            style={{ wordBreak: 'break-word' }}
+            lang="sl"
+          >
             {painting.title}
           </h2>
 

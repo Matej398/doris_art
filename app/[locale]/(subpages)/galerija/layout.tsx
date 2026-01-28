@@ -26,6 +26,10 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: `${BASE_URL}/${locale}/galerija`,
+      languages: {
+        "sl-SI": `${BASE_URL}/sl/galerija`,
+        "en-US": `${BASE_URL}/en/galerija`,
+      },
     },
   };
 }

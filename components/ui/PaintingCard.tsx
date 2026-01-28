@@ -52,11 +52,14 @@ export function PaintingCard({ painting, onClick }: PaintingCardProps) {
     >
       {/* Image container - natural aspect ratio */}
       <div className="relative w-full overflow-hidden">
-        <img
+        <Image
           src={thumbnailImage.src}
           alt={thumbnailImage.alt}
+          width={0}
+          height={0}
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="w-full h-auto object-cover block"
-          loading="lazy"
+          style={{ width: '100%', height: 'auto' }}
         />
       </div>
     </div>

@@ -7,7 +7,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   body {
     @apply font-sans text-stone-800 bg-cream;
   }
@@ -16,4 +16,31 @@
     background-color: rgba(74, 124, 89, 0.2);
     @apply text-stone-900;
   }
+}
+
+/* Admin panel vertical alignment fixes */
+@layer components {
+  .admin-btn {
+    @apply inline-flex items-center justify-center leading-none;
+    padding-top: 0.625rem;
+    padding-bottom: 0.575rem;
+  }
+}
+
+/* Fix Epilogue font vertical alignment in buttons and inputs */
+button,
+[type="button"],
+[type="submit"],
+a.inline-flex,
+input,
+select,
+textarea {
+  line-height: 1;
+}
+
+/* Adjust text baseline for better vertical centering with Epilogue */
+button span,
+a span {
+  display: inline-flex;
+  align-items: center;
 }

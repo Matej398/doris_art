@@ -1,0 +1,24 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "src": "/images/cards/fotografija.JPG",
+      "alt": "Galerija slika 1"
+    },
+    {
+      "id": 2,
+      "src": "/images/cards/poslikave.png",
+      "alt": "Galerija slika 2"
+    },
+    {
+      "id": 3,
+      "src": "/images/cards/delavnice.png",
+      "alt": "Galerija slika 3"
+    },
+    {
+      "id": 5,
+      "src": "/images/cards/izposoja.jpg",
+      "alt": "Galerija slika 5"
+    }
+  ]
+}

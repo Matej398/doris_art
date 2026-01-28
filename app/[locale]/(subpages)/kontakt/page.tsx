@@ -118,6 +118,7 @@ export default function KontaktPage() {
               <img
                 src="/images/wall-paintings-hero/flower-2.png"
                 alt=""
+                loading="lazy"
                 className="w-full h-full object-contain object-bottom opacity-70"
                 style={{ border: 'none', outline: 'none', display: 'block' }}
                 onError={(e) => {

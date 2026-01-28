@@ -14,8 +14,16 @@
       "durationEn": "2 hours",
       "price": 35,
       "currency": "EUR",
-      "includes": ["material", "platno", "prigrizki"],
-      "includesEn": ["materials", "canvas", "snacks"],
+      "includes": [
+        "material",
+        "platno",
+        "prigrizki"
+      ],
+      "includesEn": [
+        "materials",
+        "canvas",
+        "snacks"
+      ],
       "ageRange": "6-12 let",
       "ageRangeEn": "6-12 years",
       "maxParticipants": 8,
@@ -51,8 +59,16 @@
       "durationEn": "1.5 hours",
       "price": 28,
       "currency": "EUR",
-      "includes": ["material", "papir", "prigrizki"],
-      "includesEn": ["materials", "paper", "snacks"],
+      "includes": [
+        "material",
+        "papir",
+        "prigrizki"
+      ],
+      "includesEn": [
+        "materials",
+        "paper",
+        "snacks"
+      ],
       "ageRange": "5-10 let",
       "ageRangeEn": "5-10 years",
       "maxParticipants": 10,
@@ -81,8 +97,18 @@
       "durationEn": "3 hours",
       "price": 55,
       "currency": "EUR",
-      "includes": ["material", "platno", "vino", "prigrizki"],
-      "includesEn": ["materials", "canvas", "wine", "snacks"],
+      "includes": [
+        "material",
+        "platno",
+        "vino",
+        "prigrizki"
+      ],
+      "includesEn": [
+        "materials",
+        "canvas",
+        "wine",
+        "snacks"
+      ],
       "maxParticipants": 12,
       "image": "/images/cards/poslikave.png",
       "schedules": [
@@ -107,7 +133,7 @@
       "title": "Akvarel za začetnike",
       "titleEn": "Watercolor for Beginners",
       "audience": "adults",
-      "active": false,
+      "active": true,
       "technique": "Akvarel",
       "techniqueEn": "Watercolor",
       "description": "Naučite se osnov akvarelnega slikanja v sproščenem vzdušju.",
@@ -116,8 +142,16 @@
       "durationEn": "2.5 hours",
       "price": 45,
       "currency": "EUR",
-      "includes": ["material", "akvarel set", "papir"],
-      "includesEn": ["materials", "watercolor set", "paper"],
+      "includes": [
+        "material",
+        "akvarel set",
+        "papir"
+      ],
+      "includesEn": [
+        "materials",
+        "watercolor set",
+        "paper"
+      ],
       "maxParticipants": 8,
       "image": "/images/cards/fotografija.JPG",
       "schedules": [
@@ -128,24 +162,115 @@
           "spotsTotal": 8,
           "spotsTaken": 3
         }
-      ]
+      ],
+      "ageRange": "",
+      "ageRangeEn": ""
+    },
+    {
+      "title": "Testni worshop",
+      "titleEn": "",
+      "audience": "children",
+      "active": true,
+      "technique": "Akvarel na šajbo in oglje v gajbo",
+      "techniqueEn": "",
+      "description": "Tole je testni opis za gajbice in šajbice hihi hoho. ",
+      "descriptionEn": "",
+      "duration": "4 ure",
+      "durationEn": "",
+      "price": 250,
+      "currency": "EUR",
+      "includes": [
+        "material",
+        "prigrizki",
+        "platno"
+      ],
+      "includesEn": [],
+      "ageRange": "8-13 let",
+      "ageRangeEn": "",
+      "maxParticipants": 8,
+      "image": "/images/uploads/a4e93bab33cbd731a862eb43fa5c4729-1769540737319.jpg",
+      "schedules": [
+        {
+          "id": 1769540807890,
+          "date": "2026-01-28",
+          "time": "16:00",
+          "spotsTotal": 8,
+          "spotsTaken": 0
+        }
+      ],
+      "id": 6
     }
   ],
   "eventTypes": [
-    { "id": "personal", "sl": "Individualna delavnica", "en": "Personal workshop" },
-    { "id": "birthday", "sl": "Rojstni dan", "en": "Birthday party" },
-    { "id": "kids-birthday", "sl": "Otroški rojstni dan", "en": "Kids birthday party" },
-    { "id": "bachelorette", "sl": "Dekliščina", "en": "Bachelorette party" },
-    { "id": "bachelor", "sl": "Fantovščina", "en": "Bachelor party" },
-    { "id": "baby-shower", "sl": "Baby shower", "en": "Baby shower" },
-    { "id": "teambuilding", "sl": "Teambuilding", "en": "Team building" },
-    { "id": "corporate", "sl": "Korporativni dogodek", "en": "Corporate event" },
-    { "id": "family", "sl": "Družinski dan", "en": "Family day" },
-    { "id": "parent-child", "sl": "Starš in otrok", "en": "Parent & child" },
-    { "id": "school", "sl": "Šolska skupina / Vrtec", "en": "School group / Kindergarten" },
-    { "id": "friends", "sl": "Zabava s prijatelji", "en": "Friends gathering" },
-    { "id": "wedding", "sl": "Poročno praznovanje", "en": "Wedding celebration" },
-    { "id": "other", "sl": "Drugo", "en": "Other" }
+    {
+      "id": "personal",
+      "sl": "Individualna delavnica",
+      "en": "Personal workshop"
+    },
+    {
+      "id": "birthday",
+      "sl": "Rojstni dan",
+      "en": "Birthday party"
+    },
+    {
+      "id": "kids-birthday",
+      "sl": "Otroški rojstni dan",
+      "en": "Kids birthday party"
+    },
+    {
+      "id": "bachelorette",
+      "sl": "Dekliščina",
+      "en": "Bachelorette party"
+    },
+    {
+      "id": "bachelor",
+      "sl": "Fantovščina",
+      "en": "Bachelor party"
+    },
+    {
+      "id": "baby-shower",
+      "sl": "Baby shower",
+      "en": "Baby shower"
+    },
+    {
+      "id": "teambuilding",
+      "sl": "Teambuilding",
+      "en": "Team building"
+    },
+    {
+      "id": "corporate",
+      "sl": "Korporativni dogodek",
+      "en": "Corporate event"
+    },
+    {
+      "id": "family",
+      "sl": "Družinski dan",
+      "en": "Family day"
+    },
+    {
+      "id": "parent-child",
+      "sl": "Starš in otrok",
+      "en": "Parent & child"
+    },
+    {
+      "id": "school",
+      "sl": "Šolska skupina / Vrtec",
+      "en": "School group / Kindergarten"
+    },
+    {
+      "id": "friends",
+      "sl": "Zabava s prijatelji",
+      "en": "Friends gathering"
+    },
+    {
+      "id": "wedding",
+      "sl": "Poročno praznovanje",
+      "en": "Wedding celebration"
+    },
+    {
+      "id": "other",
+      "sl": "Drugo",
+      "en": "Other"
+    }
   ]
 }
-

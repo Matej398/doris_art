@@ -9,12 +9,50 @@ interface NavigationProps {
   isScrolled?: boolean;
 }
 
+interface PageVisibility {
+  workshops?: boolean;
+  paintings?: boolean;
+  rentals?: boolean;
+  gallery?: boolean;
+  photography?: boolean;
+  wallPaintings?: boolean;
+  about?: boolean;
+  other?: boolean;
+}
+
+// Map service IDs to visibility keys
+const visibilityKeyMap: Record<string, keyof PageVisibility> = {
+  "wall-paintings": "wallPaintings",
+  "workshops": "workshops",
+  "paintings": "paintings",
+  "rentals": "rentals",
+  "photography": "photography",
+  "other": "other",
+};
+
 export function Navigation({ isScrolled }: NavigationProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [visibility, setVisibility] = useState<PageVisibility>({});
   const dropdownRef = useRef<HTMLDivElement>(null);
   const t = useTranslations();
   const locale = useLocale();
   const pathname = usePathname();
+
+  // Fetch visibility settings
+  useEffect(() => {
+    async function fetchSettings() {
+      try {
+        const response = await fetch('/api/settings');
+        if (response.ok) {
+          const data = await response.json();
+          setVisibility(data.pageVisibility || {});
+        }
+      } catch (error) {
+        console.error('Error fetching settings:', error);
+      }
+    }
+    fetchSettings();
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -28,7 +66,7 @@ export function Navigation({ isScrolled }: NavigationProps) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const services = [
+  const allServices = [
     { id: "wall-paintings", label: t("navigation.wallPaintings"), href: `/${locale}/stenske-poslikave` },
     { id: "workshops", label: t("navigation.workshops"), href: `/${locale}/delavnice` },
     { id: "paintings", label: t("navigation.paintings"), href: `/${locale}/slike` },
@@ -36,6 +74,15 @@ export function Navigation({ isScrolled }: NavigationProps) {
     { id: "photography", label: t("navigation.photography"), href: `/${locale}/fotografija` },
     { id: "other", label: t("navigation.other"), href: `/${locale}/ostalo` },
   ];
+
+  // Filter services based on visibility settings
+  const services = allServices.filter((service) => {
+    const visibilityKey = visibilityKeyMap[service.id];
+    // If no visibility key exists for this service, always show it (e.g., "other")
+    if (!visibilityKey) return true;
+    // If visibility is explicitly set to false, hide it; otherwise show it
+    return visibility[visibilityKey] !== false;
+  });
 
   // Get the path for the other language
   const getOtherLocalePath = () => {
@@ -90,24 +137,28 @@ export function Navigation({ isScrolled }: NavigationProps) {
       </div>
 
       {/* Gallery link */}
-      <Link
-        href={`/${locale}/galerija`}
-        className={`text-sm md:text-base font-medium transition-colors ${
-          isScrolled ? "text-stone-700 hover:text-stone-900" : "text-stone-700 hover:text-stone-900"
-        }`}
-      >
-        {t("common.gallery")}
-      </Link>
+      {visibility.gallery !== false && (
+        <Link
+          href={`/${locale}/galerija`}
+          className={`text-sm md:text-base font-medium transition-colors ${
+            isScrolled ? "text-stone-700 hover:text-stone-900" : "text-stone-700 hover:text-stone-900"
+          }`}
+        >
+          {t("common.gallery")}
+        </Link>
+      )}
 
       {/* About me link */}
-      <Link
-        href={`/${locale}/o-meni`}
-        className={`text-sm md:text-base font-medium transition-colors ${
-          isScrolled ? "text-stone-700 hover:text-stone-900" : "text-stone-700 hover:text-stone-900"
-        }`}
-      >
-        {t("common.about")}
-      </Link>
+      {visibility.about !== false && (
+        <Link
+          href={`/${locale}/o-meni`}
+          className={`text-sm md:text-base font-medium transition-colors ${
+            isScrolled ? "text-stone-700 hover:text-stone-900" : "text-stone-700 hover:text-stone-900"
+          }`}
+        >
+          {t("common.about")}
+        </Link>
+      )}
 
       {/* Contact link */}
       <Link

@@ -1,0 +1,18 @@
+{
+  "rentalCategories": [
+    "Dekoracija",
+    "Pohištvo",
+    "Razsvetljava",
+    "Tekstil",
+    "Drugo"
+  ],
+  "pageVisibility": {
+    "workshops": false,
+    "paintings": true,
+    "rentals": true,
+    "gallery": false,
+    "photography": true,
+    "wallPaintings": true,
+    "about": true
+  }
+}

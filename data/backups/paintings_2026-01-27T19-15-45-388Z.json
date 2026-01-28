@@ -1,0 +1,76 @@
+{
+  "paintings": [
+    {
+      "id": 1,
+      "title": "Sončni zahod",
+      "size": "60x80 cm",
+      "technique": "Olje na platnu",
+      "location": "Zasebna zbirka, Ljubljana",
+      "images": [
+        {
+          "id": 1,
+          "src": "/images/cards/poslikave.png",
+          "alt": "Sončni zahod - glavna slika"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Jesenska pokrajina",
+      "size": "50x70 cm",
+      "technique": "Akril na platnu",
+      "location": "Galerija Brežice",
+      "images": [
+        {
+          "id": 1,
+          "src": "/images/cards/delavnice.png",
+          "alt": "Jesenska pokrajina - glavna slika"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Morski val",
+      "size": "40x60 cm",
+      "technique": "Olje na platnu",
+      "images": [
+        {
+          "id": 1,
+          "src": "/images/cards/slike.png",
+          "alt": "Morski val - glavna slika"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Gozdna pot",
+      "size": "50x70 cm",
+      "technique": "Akvarel",
+      "location": "Na voljo",
+      "images": [
+        {
+          "id": 1,
+          "src": "/images/cards/fotografija.JPG",
+          "alt": "Gozdna pot - glavna slika"
+        }
+      ]
+    },
+    {
+      "title": "Prelepa livada",
+      "titleEn": "Beautiful livade",
+      "size": "120x100cm ",
+      "technique": "Olje na platnu",
+      "techniqueEn": "Oil on canvas",
+      "location": "Zasebna zbirka v Slovenskih Konjicah",
+      "locationEn": "",
+      "images": [
+        {
+          "id": 1769539412527,
+          "src": "/images/uploads/a4e93bab33cbd731a862eb43fa5c4729-1769539412525.jpg",
+          "alt": "Prelepa livada"
+        }
+      ],
+      "id": 5
+    }
+  ]
+}

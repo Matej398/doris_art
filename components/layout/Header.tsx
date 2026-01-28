@@ -18,12 +18,12 @@ export function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       } ${
-        isScrolled 
-          ? "bg-white/95 backdrop-blur-sm shadow-sm py-3 md:py-4" 
-          : "bg-transparent py-6 md:py-8"
+        isScrolled
+          ? "bg-white/95 backdrop-blur-sm shadow-sm"
+          : "bg-transparent"
       }`}
     >
-      <div className="w-full px-8 md:px-16 lg:px-20 flex items-center justify-between">
+      <div className="w-full h-20 md:h-24 px-8 md:px-16 lg:px-20 flex items-center justify-between">
         {/* Logo - smaller and left-aligned when scrolled */}
         <Link
           href={`/${locale}`}

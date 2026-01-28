@@ -9,8 +9,8 @@ export default function SubpagesLayout({
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      {/* Add padding top to account for fixed header */}
-      <main className="pt-24 md:pt-28 flex-grow">
+      {/* Add padding top to account for fixed header (h-20 = 80px, md:h-24 = 96px) */}
+      <main className="pt-20 md:pt-24 flex-grow">
         {children}
       </main>
       <Footer />

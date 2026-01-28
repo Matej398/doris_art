@@ -2,6 +2,15 @@
 
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
+import { useState, useEffect } from "react";
+
+interface AboutData {
+  biography: {
+    sl: string[];
+    en: string[];
+  };
+  image: string;
+}
 
 // JSON-LD structured data for Person schema
 function PersonJsonLd({ locale }: { locale: string }) {
@@ -45,6 +54,25 @@ function PersonJsonLd({ locale }: { locale: string }) {
 export default function AboutPage() {
   const t = useTranslations("about");
   const locale = useLocale();
+  const [aboutData, setAboutData] = useState<AboutData | null>(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch('/api/about');
+        if (response.ok) {
+          const data = await response.json();
+          setAboutData(data);
+        }
+      } catch (error) {
+        console.error('Error fetching about data:', error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  const biographyParagraphs = aboutData?.biography?.[locale as 'sl' | 'en'] || [];
+  const profileImage = aboutData?.image || '/images/author/doris.jpeg';
 
   return (
     <>
@@ -76,6 +104,7 @@ export default function AboutPage() {
                   <img
                     src="/images/wall-paintings-hero/flower-1.png"
                     alt=""
+                    loading="lazy"
                     className="w-full h-full object-contain opacity-70"
                     style={{ border: 'none', outline: 'none', display: 'block' }}
                     onError={(e) => {
@@ -90,7 +119,7 @@ export default function AboutPage() {
               {/* Circular author image on top */}
               <div className="relative w-96 h-96 md:w-[32rem] md:h-[32rem] rounded-full overflow-hidden bg-stone-200 z-10">
                 <Image
-                  src="/images/author/doris.jpeg"
+                  src={profileImage}
                   alt={t("imageAlt")}
                   fill
                   className="object-cover"
@@ -102,15 +131,30 @@ export default function AboutPage() {
             {/* Biography Text */}
             <div className="flex-1 text-center">
               <div className="prose prose-stone max-w-none">
-                <p className="text-lg md:text-xl text-stone-700 leading-relaxed mb-6">
-                  {t("biography.p1")}
-                </p>
-                <p className="text-lg md:text-xl text-stone-700 leading-relaxed mb-6">
-                  {t("biography.p2")}
-                </p>
-                <p className="text-lg md:text-xl text-stone-700 leading-relaxed">
-                  {t("biography.p3")}
-                </p>
+                {biographyParagraphs.length > 0 ? (
+                  biographyParagraphs.map((paragraph, index) => (
+                    <p
+                      key={index}
+                      className={`text-lg md:text-xl text-stone-700 leading-relaxed ${
+                        index < biographyParagraphs.length - 1 ? 'mb-6' : ''
+                      }`}
+                    >
+                      {paragraph}
+                    </p>
+                  ))
+                ) : (
+                  <>
+                    <p className="text-lg md:text-xl text-stone-700 leading-relaxed mb-6">
+                      {t("biography.p1")}
+                    </p>
+                    <p className="text-lg md:text-xl text-stone-700 leading-relaxed mb-6">
+                      {t("biography.p2")}
+                    </p>
+                    <p className="text-lg md:text-xl text-stone-700 leading-relaxed">
+                      {t("biography.p3")}
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           </div>

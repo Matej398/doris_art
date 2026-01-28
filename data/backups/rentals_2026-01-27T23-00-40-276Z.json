@@ -1,0 +1,89 @@
+{
+  "rentals": [
+    {
+      "id": 1,
+      "title": "Dekorativni okvir zrcala",
+      "titleEn": "Decorative mirror frame",
+      "description": "Velik okrasni okvir zrcala, primeren za fotografiranje ali dekoracijo prostora.",
+      "descriptionEn": "Large decorative mirror frame, suitable for photography or room decoration.",
+      "image": "/images/cards/izposoja.jpg",
+      "pricePerDay": 15,
+      "deposit": 50,
+      "currency": "EUR",
+      "category": "Dekoracija",
+      "dimensions": "120x80 cm",
+      "active": true
+    },
+    {
+      "id": 2,
+      "title": "Rdeči divan",
+      "titleEn": "Red sofa",
+      "description": "Klasičen rdeči divan za fotografiranje ali dogodke.",
+      "descriptionEn": "Classic red sofa for photography or events.",
+      "image": "/images/cards/izposoja.jpg",
+      "pricePerDay": 25,
+      "deposit": 100,
+      "currency": "EUR",
+      "category": "Pohištvo",
+      "dimensions": "200x90 cm",
+      "active": true
+    },
+    {
+      "id": 3,
+      "title": "Rastlinski okras",
+      "titleEn": "Plant decoration",
+      "description": "Nabor umetnih rastlin za dekoracijo prostora.",
+      "descriptionEn": "Set of artificial plants for room decoration.",
+      "image": "/images/cards/izposoja.jpg",
+      "pricePerDay": 10,
+      "deposit": 30,
+      "currency": "EUR",
+      "category": "Dekoracija",
+      "dimensions": "Različne velikosti",
+      "active": true
+    },
+    {
+      "id": 4,
+      "title": "Antikni stol",
+      "titleEn": "Antique chair",
+      "description": "Eleganten antikni stol, primeren za fotografiranje ali dekoracijo.",
+      "descriptionEn": "Elegant antique chair, suitable for photography or decoration.",
+      "image": "/images/cards/izposoja.jpg",
+      "pricePerDay": 12,
+      "deposit": 40,
+      "currency": "EUR",
+      "category": "Pohištvo",
+      "dimensions": "50x50x100 cm",
+      "active": true
+    },
+    {
+      "id": 5,
+      "title": "Svetilke in sveče",
+      "titleEn": "Lamps and candles",
+      "description": "Nabor dekorativnih svetilk in sveč za ustvarjanje toplega vzdušja.",
+      "descriptionEn": "Set of decorative lamps and candles to create a warm atmosphere.",
+      "image": "/images/cards/izposoja.jpg",
+      "pricePerDay": 8,
+      "deposit": 25,
+      "currency": "EUR",
+      "category": "Dekoracija",
+      "dimensions": "Različne velikosti",
+      "active": true
+    },
+    {
+      "id": 6,
+      "title": "Tekstilni predmeti",
+      "titleEn": "Textile items",
+      "description": "Različni tekstilni predmeti: preproge, blazine, odeje za dekoracijo.",
+      "descriptionEn": "Various textile items: rugs, cushions, blankets for decoration.",
+      "image": "/images/cards/izposoja.jpg",
+      "pricePerDay": 10,
+      "deposit": 30,
+      "currency": "EUR",
+      "category": "Dekoracija",
+      "dimensions": "Različne velikosti",
+      "active": true
+    }
+  ]
+}
+

@@ -1,0 +1,274 @@
+{
+  "workshops": [
+    {
+      "id": 1,
+      "title": "Slikanje na platno",
+      "titleEn": "Canvas Painting",
+      "audience": "children",
+      "active": true,
+      "technique": "Akril",
+      "techniqueEn": "Acrylic",
+      "description": "Ustvarjalna delavnica za otroke, kjer se naučijo osnov slikanja z akrilnimi barvami na platno.",
+      "descriptionEn": "Creative workshop for kids where they learn the basics of acrylic painting on canvas.",
+      "duration": "2 uri",
+      "durationEn": "2 hours",
+      "price": 35,
+      "currency": "EUR",
+      "includes": [
+        "material",
+        "platno",
+        "prigrizki"
+      ],
+      "includesEn": [
+        "materials",
+        "canvas",
+        "snacks"
+      ],
+      "ageRange": "6-12 let",
+      "ageRangeEn": "6-12 years",
+      "maxParticipants": 8,
+      "image": "/images/cards/delavnice.png",
+      "schedules": [
+        {
+          "id": 1,
+          "date": "2026-01-25",
+          "time": "10:00",
+          "spotsTotal": 8,
+          "spotsTaken": 8
+        },
+        {
+          "id": 2,
+          "date": "2026-02-08",
+          "time": "10:00",
+          "spotsTotal": 8,
+          "spotsTaken": 8
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Risanje s pasteli",
+      "titleEn": "Pastel Drawing",
+      "audience": "children",
+      "active": true,
+      "technique": "Pasteli",
+      "techniqueEn": "Pastels",
+      "description": "Zabavna delavnica risanja s suhimi pasteli. Primerno za začetnike.",
+      "descriptionEn": "Fun drawing workshop with soft pastels. Suitable for beginners.",
+      "duration": "1.5 ure",
+      "durationEn": "1.5 hours",
+      "price": 28,
+      "currency": "EUR",
+      "includes": [
+        "material",
+        "papir",
+        "prigrizki"
+      ],
+      "includesEn": [
+        "materials",
+        "paper",
+        "snacks"
+      ],
+      "ageRange": "5-10 let",
+      "ageRangeEn": "5-10 years",
+      "maxParticipants": 10,
+      "image": "/images/cards/slike.png",
+      "schedules": [
+        {
+          "id": 3,
+          "date": "2026-01-18",
+          "time": "14:00",
+          "spotsTotal": 10,
+          "spotsTaken": 7
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Večerno slikanje z vinom",
+      "titleEn": "Evening Painting with Wine",
+      "audience": "adults",
+      "active": true,
+      "technique": "Akril",
+      "techniqueEn": "Acrylic",
+      "description": "Sproščena večerna delavnica slikanja ob kozarcu vina. Idealno za prijateljice ali dekliščino.",
+      "descriptionEn": "Relaxed evening painting workshop with a glass of wine. Perfect for friends or bachelorette parties.",
+      "duration": "3 ure",
+      "durationEn": "3 hours",
+      "price": 55,
+      "currency": "EUR",
+      "includes": [
+        "material",
+        "platno",
+        "vino",
+        "prigrizki"
+      ],
+      "includesEn": [
+        "materials",
+        "canvas",
+        "wine",
+        "snacks"
+      ],
+      "maxParticipants": 12,
+      "image": "/images/cards/poslikave.png",
+      "schedules": [
+        {
+          "id": 4,
+          "date": "2026-01-31",
+          "time": "18:00",
+          "spotsTotal": 12,
+          "spotsTaken": 4
+        },
+        {
+          "id": 5,
+          "date": "2026-02-14",
+          "time": "18:00",
+          "spotsTotal": 12,
+          "spotsTaken": 10
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Akvarel za začetnike",
+      "titleEn": "Watercolor for Beginners",
+      "audience": "adults",
+      "active": false,
+      "technique": "Akvarel",
+      "techniqueEn": "Watercolor",
+      "description": "Naučite se osnov akvarelnega slikanja v sproščenem vzdušju.",
+      "descriptionEn": "Learn the basics of watercolor painting in a relaxed atmosphere.",
+      "duration": "2.5 ure",
+      "durationEn": "2.5 hours",
+      "price": 45,
+      "currency": "EUR",
+      "includes": [
+        "material",
+        "akvarel set",
+        "papir"
+      ],
+      "includesEn": [
+        "materials",
+        "watercolor set",
+        "paper"
+      ],
+      "maxParticipants": 8,
+      "image": "/images/cards/fotografija.JPG",
+      "schedules": [
+        {
+          "id": 6,
+          "date": "2026-02-01",
+          "time": "10:00",
+          "spotsTotal": 8,
+          "spotsTaken": 3
+        }
+      ]
+    },
+    {
+      "title": "Test",
+      "titleEn": "Test angleski",
+      "audience": "children",
+      "active": true,
+      "technique": "Akvareli",
+      "techniqueEn": "Aquarel",
+      "description": "To je testna objavica",
+      "descriptionEn": "",
+      "duration": "3 ure",
+      "durationEn": "3 hours",
+      "price": 121,
+      "currency": "EUR",
+      "includes": [
+        "material",
+        "platno",
+        "prigrizki"
+      ],
+      "includesEn": [],
+      "ageRange": "6-12 let",
+      "ageRangeEn": "",
+      "maxParticipants": 15,
+      "image": "/images/uploads/Screenshot-2026-01-23-at-19-17-06-1769538652709.png",
+      "schedules": [
+        {
+          "id": 1769538661977,
+          "date": "2026-01-29",
+          "time": "10:00",
+          "spotsTotal": 15,
+          "spotsTaken": 14
+        }
+      ],
+      "id": 5
+    }
+  ],
+  "eventTypes": [
+    {
+      "id": "personal",
+      "sl": "Individualna delavnica",
+      "en": "Personal workshop"
+    },
+    {
+      "id": "birthday",
+      "sl": "Rojstni dan",
+      "en": "Birthday party"
+    },
+    {
+      "id": "kids-birthday",
+      "sl": "Otroški rojstni dan",
+      "en": "Kids birthday party"
+    },
+    {
+      "id": "bachelorette",
+      "sl": "Dekliščina",
+      "en": "Bachelorette party"
+    },
+    {
+      "id": "bachelor",
+      "sl": "Fantovščina",
+      "en": "Bachelor party"
+    },
+    {
+      "id": "baby-shower",
+      "sl": "Baby shower",
+      "en": "Baby shower"
+    },
+    {
+      "id": "teambuilding",
+      "sl": "Teambuilding",
+      "en": "Team building"
+    },
+    {
+      "id": "corporate",
+      "sl": "Korporativni dogodek",
+      "en": "Corporate event"
+    },
+    {
+      "id": "family",
+      "sl": "Družinski dan",
+      "en": "Family day"
+    },
+    {
+      "id": "parent-child",
+      "sl": "Starš in otrok",
+      "en": "Parent & child"
+    },
+    {
+      "id": "school",
+      "sl": "Šolska skupina / Vrtec",
+      "en": "School group / Kindergarten"
+    },
+    {
+      "id": "friends",
+      "sl": "Zabava s prijatelji",
+      "en": "Friends gathering"
+    },
+    {
+      "id": "wedding",
+      "sl": "Poročno praznovanje",
+      "en": "Wedding celebration"
+    },
+    {
+      "id": "other",
+      "sl": "Drugo",
+      "en": "Other"
+    }
+  ]
+}

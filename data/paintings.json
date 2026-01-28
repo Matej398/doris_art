@@ -1,16 +1,15 @@
 {
   "paintings": [
     {
-      "id": 1,
-      "title": "Sončni zahod",
-      "size": "60x80 cm",
+      "id": 3,
+      "title": "Morski val",
+      "size": "40x60 cm",
       "technique": "Olje na platnu",
-      "location": "Zasebna zbirka, Ljubljana",
       "images": [
         {
           "id": 1,
-          "src": "/images/cards/poslikave.png",
-          "alt": "Sončni zahod - glavna slika"
+          "src": "/images/cards/slike.png",
+          "alt": "Morski val - glavna slika"
         }
       ]
     },
@@ -29,15 +28,16 @@
       ]
     },
     {
-      "id": 3,
-      "title": "Morski val",
-      "size": "40x60 cm",
+      "id": 1,
+      "title": "Sončni zahod",
+      "size": "60x80 cm",
       "technique": "Olje na platnu",
+      "location": "Zasebna zbirka, Ljubljana",
       "images": [
         {
           "id": 1,
-          "src": "/images/cards/slike.png",
-          "alt": "Morski val - glavna slika"
+          "src": "/images/cards/poslikave.png",
+          "alt": "Sončni zahod - glavna slika"
         }
       ]
     },
@@ -54,7 +54,74 @@
           "alt": "Gozdna pot - glavna slika"
         }
       ]
+    },
+    {
+      "title": "Prelepa livada",
+      "titleEn": "Beautiful livade",
+      "size": "120x100cm ",
+      "technique": "Olje na platnu",
+      "techniqueEn": "Oil on canvas",
+      "location": "Zasebna zbirka v Slovenskih Konjicah",
+      "locationEn": "",
+      "images": [
+        {
+          "id": 1769539412527,
+          "src": "/images/uploads/a4e93bab33cbd731a862eb43fa5c4729-1769539412525.jpg",
+          "alt": "Prelepa livada"
+        }
+      ],
+      "id": 5
+    },
+    {
+      "title": "špecialna slika ",
+      "titleEn": "",
+      "size": "20x30cm",
+      "technique": "olje na platno",
+      "techniqueEn": "",
+      "location": "",
+      "locationEn": "",
+      "images": [
+        {
+          "id": 1769541330337,
+          "src": "/images/uploads/a4e93bab33cbd731a862eb43fa5c4729-1769541330334.jpg",
+          "alt": "Painting image"
+        }
+      ],
+      "id": 6
+    },
+    {
+      "title": "Prepelič je najboli igrač ",
+      "titleEn": "Prepelic is the best player",
+      "size": "200x300cm",
+      "technique": "Olje na platno",
+      "techniqueEn": "oil on canwas",
+      "location": "Zasebna zbirka, ljubljana",
+      "locationEn": "Private home Ljubljana",
+      "images": [
+        {
+          "id": 1769593154393,
+          "src": "/images/uploads/The_Birth_of_Venus_by_Sandro_Botticelli_800x-1769593154390.jpg",
+          "alt": "Prepelič je najboli igrač "
+        }
+      ],
+      "id": 7
+    },
+    {
+      "title": "Berači z manoj",
+      "titleEn": "Bear with me",
+      "size": "60x80cm",
+      "technique": "Akvareli na platno",
+      "techniqueEn": "",
+      "location": "Zasebna zbirka zbiratelja Mateja Resmana",
+      "locationEn": "",
+      "images": [
+        {
+          "id": 1769593482381,
+          "src": "/images/uploads/Screenshot-2026-01-28-at-10-43-48-1769593482375.png",
+          "alt": "Berači z manoj"
+        }
+      ],
+      "id": 8
     }
   ]
 }
-

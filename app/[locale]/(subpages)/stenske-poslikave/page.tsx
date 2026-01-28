@@ -1,24 +1,40 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Image3D } from "@/components/ui/Image3D";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { BASE_URL, getImageUrl } from "@/lib/seo";
 
-// Placeholder gallery images - replace with actual images
-const galleryImages = [
-  { id: 1, src: "/images/cards/poslikave.png" },
-  // Add more images as they become available
-];
+interface GalleryImage {
+  id: number;
+  src: string;
+  alt: string;
+}
 
 export default function StenskePoslikavePage() {
   const t = useTranslations("wallPaintings");
   const tSeo = useTranslations("seo");
   const locale = useLocale();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
+
+  useEffect(() => {
+    async function fetchImages() {
+      try {
+        const response = await fetch('/api/wall-paintings');
+        if (response.ok) {
+          const data = await response.json();
+          setGalleryImages(data.images || []);
+        }
+      } catch (error) {
+        console.error('Error fetching gallery images:', error);
+      }
+    }
+    fetchImages();
+  }, []);
 
   const processSteps = [
     {
@@ -170,6 +186,7 @@ export default function StenskePoslikavePage() {
               <img
                 src={img.src}
                 alt=""
+                loading="lazy"
                 className="w-full h-full object-contain object-bottom"
                 style={{ border: 'none', outline: 'none', display: 'block' }}
                 onError={(e) => {

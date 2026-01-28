@@ -34,6 +34,10 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: `${BASE_URL}/${locale}/slike`,
+      languages: {
+        "sl-SI": `${BASE_URL}/sl/slike`,
+        "en-US": `${BASE_URL}/en/slike`,
+      },
     },
   };
 }
