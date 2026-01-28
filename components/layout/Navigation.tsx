@@ -178,7 +178,7 @@ export function Navigation({ isScrolled }: NavigationProps) {
 
       {/* Language switcher */}
       <Link
-        href={pathname || "/"}
+        href={(pathname as any) || "/"}
         locale={otherLocale}
         className={`text-sm md:text-base font-medium uppercase transition-colors ${
           isScrolled ? "text-stone-400 hover:text-stone-700" : "text-stone-400 hover:text-stone-700"
