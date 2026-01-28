@@ -218,12 +218,14 @@ export default function Home() {
       <div className="min-h-screen bg-cream flex flex-col">
       {/* Navigation - Fixed position top right (same as subpage header) */}
       <div
-        className={`fixed top-0 left-0 right-0 z-50 h-20 md:h-24 px-8 md:px-16 lg:px-20 flex justify-end items-center transition-all duration-1000 pointer-events-none ${
+        className={`fixed top-0 left-0 right-0 z-50 h-20 md:h-24 flex justify-center transition-all duration-1000 pointer-events-none ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
-        <div className="pointer-events-auto">
-          <Navigation />
+        <div className="w-full max-w-[2056px] h-full px-8 md:px-16 lg:px-20 flex justify-end items-center">
+          <div className="pointer-events-auto">
+            <Navigation />
+          </div>
         </div>
       </div>
 
@@ -272,8 +274,8 @@ export default function Home() {
       {/* Main - Category Grid */}
       <main className="flex-grow flex flex-col items-center justify-start px-6 md:px-12 pt-0 pb-6">
         <div className="w-full max-w-fit">
-          <h2 
-            className={`text-center text-lg md:text-xl lg:text-2xl font-normal italic text-stone-400 mt-0 mb-28 transition-all duration-1000 delay-100 ${
+          <h2
+            className={`text-center text-lg md:text-xl lg:text-2xl font-normal italic text-stone-400 mt-20 md:mt-28 mb-20 md:mb-28 transition-all duration-1000 delay-100 ${
               isLoaded ? "opacity-100" : "opacity-0"
             }`}
           >

@@ -23,7 +23,7 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="w-full h-20 md:h-24 px-8 md:px-16 lg:px-20 flex items-center justify-between">
+      <div className="w-full max-w-[2056px] mx-auto h-20 md:h-24 px-8 md:px-16 lg:px-20 flex items-center justify-between">
         {/* Logo - smaller and left-aligned when scrolled */}
         <Link
           href="/"
