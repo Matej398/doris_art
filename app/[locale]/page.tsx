@@ -275,7 +275,7 @@ export default function Home() {
       <main className="flex-grow flex flex-col items-center justify-start px-6 md:px-12 pt-0 pb-6">
         <div className="w-full max-w-fit">
           <h2
-            className={`text-center text-lg md:text-xl lg:text-2xl font-normal italic text-stone-400 mt-20 md:mt-28 mb-20 md:mb-28 transition-all duration-1000 delay-100 ${
+            className={`text-center text-lg md:text-xl lg:text-2xl font-normal italic text-stone-400 mt-6 md:mt-10 mb-20 md:mb-28 transition-all duration-1000 delay-100 ${
               isLoaded ? "opacity-100" : "opacity-0"
             }`}
           >

@@ -68,7 +68,7 @@ export default function SlikePage() {
 
       {/* Gallery Section */}
       <section className="px-8 md:px-16 lg:px-20 pt-6 md:pt-10 pb-12 md:pb-20">
-        <div className="w-full mx-auto">
+        <div className="w-full max-w-[2056px] mx-auto">
           {paintings.length > 0 ? (
             <div 
               className="columns-1 md:columns-2 gap-6 md:gap-8 lg:gap-10 xl:gap-12"

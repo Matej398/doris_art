@@ -155,9 +155,10 @@ export default function StenskePoslikavePage() {
       <Breadcrumbs items={breadcrumbs} locale={locale as "sl" | "en"} />
       <div className="min-h-screen bg-cream">
       {/* Hero Section */}
-      <section className="px-6 md:px-10 pt-8 md:pt-12 pb-12 md:pb-20 lg:pb-28 xl:pb-36 2xl:pb-40 relative overflow-visible">
+      <section className="pt-8 md:pt-12 pb-12 md:pb-20 lg:pb-28 xl:pb-36 2xl:pb-40 relative overflow-visible">
         {/* Background decorative images - anchored to bottom of hero */}
-        <div className="absolute inset-0 pointer-events-none z-0 overflow-visible">
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-visible flex justify-center">
+          <div className="relative w-full max-w-[2056px]">
           <style jsx>{`
             @keyframes blurFadeIn {
               0% {
@@ -200,6 +201,7 @@ export default function StenskePoslikavePage() {
               />
             </div>
           ))}
+          </div>
         </div>
 
         {/* Content */}
