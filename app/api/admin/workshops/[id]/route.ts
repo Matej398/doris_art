@@ -1,7 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { isAuthenticated } from '@/lib/admin/auth';
 import { readDataFile, writeDataFile } from '@/lib/admin/data';
 import { workshopUpdateSchema, type WorkshopsData } from '@/lib/admin/validation';
+
+// Helper to revalidate workshop-related pages
+function revalidateWorkshopPages() {
+  revalidatePath('/delavnice');
+  revalidatePath('/en/workshops');
+  revalidatePath('/');
+  revalidatePath('/en');
+}
 
 export async function GET(
   request: NextRequest,
@@ -61,6 +70,8 @@ export async function PUT(
     data.workshops[index] = { ...data.workshops[index], ...parsed.data };
     await writeDataFile('workshops', data);
 
+    revalidateWorkshopPages();
+
     return NextResponse.json(data.workshops[index]);
   } catch (error) {
     console.error('Error updating workshop:', error);
@@ -89,6 +100,8 @@ export async function DELETE(
 
     data.workshops.splice(index, 1);
     await writeDataFile('workshops', data);
+
+    revalidateWorkshopPages();
 
     return NextResponse.json({ success: true });
   } catch (error) {

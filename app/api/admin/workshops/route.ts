@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { isAuthenticated } from '@/lib/admin/auth';
 import { readDataFile, writeDataFile, getNextId } from '@/lib/admin/data';
 import { workshopCreateSchema, type WorkshopsData, type Workshop } from '@/lib/admin/validation';
@@ -43,6 +44,12 @@ export async function POST(request: NextRequest) {
 
     data.workshops.push(newWorkshop);
     await writeDataFile('workshops', data);
+
+    // Revalidate public pages that display workshops
+    revalidatePath('/delavnice');
+    revalidatePath('/en/workshops');
+    revalidatePath('/');
+    revalidatePath('/en');
 
     return NextResponse.json(newWorkshop, { status: 201 });
   } catch (error) {
