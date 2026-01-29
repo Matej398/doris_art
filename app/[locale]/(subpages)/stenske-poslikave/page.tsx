@@ -82,7 +82,7 @@ export default function StenskePoslikavePage() {
   // Hero background images - add your transparent PNG images to public/images/wall-paintings-hero/
   const heroImages = [
     { src: "/images/wall-paintings-hero/decorative-1.png", position: "top-left", size: "hidden md:block md:w-[24rem] lg:w-[32rem] xl:w-[38rem] 2xl:w-[44rem]" },
-    { src: "/images/wall-paintings-hero/decorative-2.png", position: "top-right", size: "w-[22rem] md:w-[36rem] lg:w-[44rem] xl:w-[52rem] 2xl:w-[60rem]" },
+    { src: "/images/wall-paintings-hero/decorative-2.png", position: "top-right", size: "w-[28rem] md:w-[36rem] lg:w-[44rem] xl:w-[52rem] 2xl:w-[60rem]" },
   ];
 
   const getPositionClasses = (position: string) => {
@@ -205,9 +205,9 @@ export default function StenskePoslikavePage() {
         </div>
 
         {/* Content */}
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <h1 
-            className="text-5xl md:text-6xl lg:text-7xl text-stone-900 mb-6"
+        <div className="max-w-5xl mx-auto text-center relative z-10 px-6 md:px-10">
+          <h1
+            className="text-4xl md:text-6xl lg:text-7xl text-stone-900 mb-6"
             style={{ fontFamily: "var(--font-quentin)" }}
           >
             {t("title")}
@@ -215,7 +215,10 @@ export default function StenskePoslikavePage() {
           <p className="text-lg md:text-xl text-stone-500 italic mb-8">
             {t("subtitle")}
           </p>
-          <p className="text-lg md:text-xl text-stone-600 max-w-4xl mx-auto mb-8">
+          <p
+            className="text-lg md:text-xl text-stone-600 max-w-4xl mx-auto mb-8"
+            style={{ hyphens: 'auto', wordBreak: 'break-word' }}
+          >
             {t("description")}
           </p>
           <a
