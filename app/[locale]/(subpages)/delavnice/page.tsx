@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { useTranslations, useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { WorkshopTabs } from "@/components/workshops/WorkshopTabs";
 import { WorkshopCard } from "@/components/workshops/WorkshopCard";
 import { ContactForm } from "@/components/workshops/ContactForm";
@@ -196,12 +197,12 @@ export default function DelavnicePage() {
               {t("cta.description")}
             </p>
             <div className="flex justify-center">
-              <a
-                href="mailto:info@doriseinfalt.art"
+              <Link
+                href="/kontakt"
                 className="inline-block px-8 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 transition-colors"
               >
                 <span style={{ marginTop: '2pt', display: 'block' }}>{t("cta.emailButton")}</span>
-              </a>
+              </Link>
             </div>
           </div>
         </section>

@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { useState, useEffect } from "react";
+import { Link } from "@/i18n/navigation";
 import { Image3D } from "@/components/ui/Image3D";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { StructuredData } from "@/components/seo/StructuredData";
@@ -221,12 +222,12 @@ export default function StenskePoslikavePage() {
           >
             {t("description")}
           </p>
-          <a
-            href="mailto:info@doriseinfalt.art"
+          <Link
+            href="/kontakt"
             className="inline-block px-8 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 transition-colors mt-4"
           >
             <span style={{ marginTop: '2pt', display: 'block' }}>{t("heroCtaButton")}</span>
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -304,12 +305,12 @@ export default function StenskePoslikavePage() {
           <p className="text-lg md:text-xl text-stone-600 mb-8">
             {t("ctaDescription")}
           </p>
-          <a
-            href="mailto:info@doriseinfalt.art"
+          <Link
+            href="/kontakt"
             className="inline-block px-8 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 transition-colors"
           >
             <span style={{ marginTop: '2pt', display: 'block' }}>{t("ctaButton")}</span>
-          </a>
+          </Link>
         </div>
       </section>
 

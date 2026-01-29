@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { useState } from "react";
+import { Link } from "@/i18n/navigation";
 import { PaintingCard } from "@/components/ui/PaintingCard";
 import { PaintingDetailModal } from "@/components/ui/PaintingDetailModal";
 import type { Painting } from "@/lib/paintings";
@@ -100,12 +101,12 @@ export default function SlikePage() {
           <p className="text-lg md:text-xl text-stone-600 mb-8 max-w-3xl mx-auto">
             {t("cta.description")}
           </p>
-          <a
-            href="mailto:info@doriseinfalt.art"
+          <Link
+            href="/kontakt"
             className="inline-block px-8 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 transition-colors"
           >
             <span style={{ marginTop: '2pt', display: 'block' }}>{t("cta.button")}</span>
-          </a>
+          </Link>
         </div>
       </section>
 
