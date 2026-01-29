@@ -46,6 +46,11 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Skip i18n for sitemap and robots
+  if (pathname === '/sitemap.xml' || pathname === '/robots.txt') {
+    return NextResponse.next();
+  }
+
   // Apply i18n middleware for all other routes
   return intlMiddleware(request);
 }

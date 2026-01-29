@@ -38,7 +38,7 @@ function Card3D({ category, locale, priority = false }: { category: { id: string
         ref={cardRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 overflow-hidden transition-transform duration-200 ease-out"
+        className="w-56 h-56 md:w-60 md:h-60 lg:w-72 lg:h-72 overflow-hidden transition-transform duration-200 ease-out"
         style={{ 
           transform,
           transformStyle: "preserve-3d",
@@ -218,7 +218,7 @@ export default function Home() {
       <div className="min-h-screen bg-cream flex flex-col">
       {/* Navigation - Fixed position top right (same as subpage header) */}
       <div
-        className={`fixed top-0 left-0 right-0 z-50 h-20 md:h-24 flex justify-center transition-all duration-1000 pointer-events-none ${
+        className={`fixed top-0 left-0 right-0 z-50 h-16 md:h-24 flex justify-center transition-all duration-1000 pointer-events-none ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -230,25 +230,26 @@ export default function Home() {
       </div>
 
       {/* Header with logo */}
-      <header className="pt-20 md:pt-24 pb-0 md:pb-1">
+      <header className="pt-16 md:pt-24 pb-0 md:pb-1">
         {/* Logo - Centered */}
         <div className="flex justify-center">
           <Link
             href="/"
             className="inline-block"
           >
-            <span 
-              className="text-[3.5rem] md:text-6xl lg:text-7xl text-stone-900 inline-flex"
+            <span
+              className={`text-[3.5rem] md:text-6xl lg:text-7xl text-stone-900 inline-flex logo-animation transition-opacity duration-300 ${
+                isLoaded ? "opacity-100" : "opacity-0"
+              }`}
               style={{ fontFamily: 'var(--font-quentin)' }}
             >
               {"doris einfalt".split("").map((char, index) => (
                 <span
                   key={index}
-                  className="inline-block"
+                  className="inline-block letter-char"
                   style={{
-                    animation: `letterReveal 0.8s ease-out ${index * 0.1}s forwards`,
                     opacity: 0,
-                    filter: 'blur(10px)',
+                    animationDelay: `${index * 0.1}s`,
                   }}
                 >
                   {char === " " ? "\u00A0" : char}
@@ -256,6 +257,12 @@ export default function Home() {
               ))}
             </span>
             <style jsx>{`
+              .letter-char {
+                animation: letterReveal 0.8s ease-out forwards;
+                opacity: 0;
+                filter: blur(10px);
+                will-change: opacity, filter;
+              }
               @keyframes letterReveal {
                 0% {
                   opacity: 0;
@@ -264,6 +271,21 @@ export default function Home() {
                 100% {
                   opacity: 1;
                   filter: blur(0px);
+                }
+              }
+              @media (max-width: 768px) {
+                .letter-char {
+                  filter: blur(5px);
+                }
+                @keyframes letterReveal {
+                  0% {
+                    opacity: 0;
+                    filter: blur(5px);
+                  }
+                  100% {
+                    opacity: 1;
+                    filter: blur(0px);
+                  }
                 }
               }
             `}</style>
@@ -275,7 +297,7 @@ export default function Home() {
       <main className="flex-grow flex flex-col items-center justify-start px-6 md:px-12 pt-0 pb-6">
         <div className="w-full max-w-fit">
           <h2
-            className={`text-center text-[20px] font-normal italic text-stone-500 mt-14 md:mt-20 mb-20 md:mb-28 transition-all duration-1000 delay-100 ${
+            className={`text-center text-[16px] md:text-[20px] font-normal italic text-stone-500 mt-14 md:mt-20 mb-20 md:mb-28 transition-all duration-1000 delay-100 ${
               isLoaded ? "opacity-100" : "opacity-0"
             }`}
           >
