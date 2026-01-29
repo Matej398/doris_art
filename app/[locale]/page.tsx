@@ -256,7 +256,7 @@ export default function Home() {
             </span>
             {/* Mobile: whole logo blur reveal */}
             <span
-              className="md:hidden text-[3.5rem] text-stone-900 logo-mobile"
+              className="md:hidden text-[2.75rem] text-stone-900 logo-mobile"
               style={{ fontFamily: 'var(--font-quentin)', opacity: 0 }}
             >
               doris einfalt
