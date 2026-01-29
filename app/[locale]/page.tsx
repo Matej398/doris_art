@@ -161,7 +161,7 @@ export default function Home() {
       : "I create unique wall paintings, art workshops for kids and adults, custom paintings, and rental decorations.",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Brežice",
+      "addressLocality": "Slovenske Konjice",
       "addressCountry": "SI"
     },
     "contactPoint": {

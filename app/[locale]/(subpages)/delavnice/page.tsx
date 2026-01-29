@@ -47,7 +47,7 @@ function WorkshopJsonLd({ workshops, locale }: { workshops: Workshop[]; locale: 
           "startDate": nextSchedule.date,
           "location": {
             "@type": "Place",
-            "name": "Brežice, Slovenia"
+            "name": "Slovenske Konjice, Slovenia"
           }
         }
       })
@@ -61,8 +61,8 @@ function WorkshopJsonLd({ workshops, locale }: { workshops: Workshop[]; locale: 
         "@type": "WebPage",
         "name": locale === "sl" ? "Umetniške delavnice za otroke in odrasle" : "Art workshops for kids and adults",
         "description": locale === "sl" 
-          ? "Kreativne umetniške delavnice za otroke in odrasle v Brežicah. Slikanje na platno, akvarel, pastel in več."
-          : "Creative art workshops for kids and adults in Brežice, Slovenia. Canvas painting, watercolor, pastels and more.",
+          ? "Kreativne umetniške delavnice za otroke in odrasle v Slovenskih Konjicah. Slikanje na platno, akvarel, pastel in več."
+          : "Creative art workshops for kids and adults in Slovenske Konjice, Slovenia. Canvas painting, watercolor, pastels and more.",
         "url": `${baseUrl}/${locale}/delavnice`,
         "inLanguage": locale === "sl" ? "sl-SI" : "en"
       },
@@ -75,7 +75,7 @@ function WorkshopJsonLd({ workshops, locale }: { workshops: Workshop[]; locale: 
         "email": "info@doriseinfalt.art",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Brežice",
+          "addressLocality": "Slovenske Konjice",
           "addressCountry": "SI"
         },
         "priceRange": "€€"

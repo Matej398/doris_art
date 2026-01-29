@@ -81,7 +81,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
-    keywords: "stenske poslikave, delavnice za otroke, slike po naročilu, izposoja dekoracij, Brežice, wall paintings, art workshops",
+    keywords: "stenske poslikave, delavnice za otroke, slike po naročilu, izposoja dekoracij, Slovenske Konjice, wall paintings, art workshops",
     icons: {
       icon: [
         { url: '/favicon.ico' },

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "teambuilding delavnice",
     "rojstni dan delavnica",
     "dekliščina aktivnosti",
-    "Brežice",
+    "Slovenske Konjice",
     "art workshops Slovenia"
   ],
   openGraph: {

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "stenske poslikave",
     "ilustracije knjig",
     "umetniške delavnice",
-    "Brežice",
+    "Slovenske Konjice",
     "slovenska ilustratorka",
     "art for children"
   ],

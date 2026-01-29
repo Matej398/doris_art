@@ -138,7 +138,7 @@ export default function StenskePoslikavePage() {
     "email": "info@doriseinfalt.art",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Brežice",
+      "addressLocality": "Slovenske Konjice",
       "addressCountry": "SI"
     },
     "url": `${BASE_URL}/${locale}/stenske-poslikave`,

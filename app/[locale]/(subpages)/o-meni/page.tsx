@@ -38,7 +38,7 @@ function PersonJsonLd({ locale }: { locale: string }) {
     ],
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Brežice",
+      "addressLocality": "Slovenske Konjice",
       "addressCountry": "SI"
     }
   };
