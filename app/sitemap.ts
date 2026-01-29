@@ -1,19 +1,27 @@
 import { MetadataRoute } from 'next';
-import { locales } from '@/i18n/config';
+import { locales, defaultLocale } from '@/i18n/config';
 import { BASE_URL } from '@/lib/seo';
 import rentalsData from '@/data/rentals.json';
 import type { RentalItem } from '@/lib/rentals';
 import { getActiveRentals } from '@/lib/rentals';
 
+// Helper to generate locale-aware URLs (no prefix for default locale)
+const getLocaleUrl = (locale: string, path: string = '') => {
+  if (locale === defaultLocale) {
+    return `${BASE_URL}${path}`;
+  }
+  return `${BASE_URL}/${locale}${path}`;
+};
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrls = locales.map((locale) => ({
-    url: `${BASE_URL}/${locale}`,
+    url: getLocaleUrl(locale),
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 1,
     alternates: {
       languages: Object.fromEntries(
-        locales.map((loc) => [loc, `${BASE_URL}/${loc}`])
+        locales.map((loc) => [loc, getLocaleUrl(loc)])
       ),
     },
   }));
@@ -31,13 +39,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPageUrls = locales.flatMap((locale) =>
     staticPages.map((page) => ({
-      url: `${BASE_URL}/${locale}${page.path}`,
+      url: getLocaleUrl(locale, page.path),
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: page.priority,
       alternates: {
         languages: Object.fromEntries(
-          locales.map((loc) => [loc, `${BASE_URL}/${loc}${page.path}`])
+          locales.map((loc) => [loc, getLocaleUrl(loc, page.path)])
         ),
       },
     }))
@@ -49,13 +57,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   const rentalUrls = locales.flatMap((locale) =>
     activeRentals.map((rental) => ({
-      url: `${BASE_URL}/${locale}/izposoja/${rental.id}`,
+      url: getLocaleUrl(locale, `/izposoja/${rental.id}`),
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
       alternates: {
         languages: Object.fromEntries(
-          locales.map((loc) => [loc, `${BASE_URL}/${loc}/izposoja/${rental.id}`])
+          locales.map((loc) => [loc, getLocaleUrl(loc, `/izposoja/${rental.id}`)])
         ),
       },
     }))

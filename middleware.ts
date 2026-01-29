@@ -6,7 +6,7 @@ const intlMiddleware = createIntlMiddleware({
   locales,
   defaultLocale,
   pathnames,
-  localePrefix: 'always',
+  localePrefix: 'as-needed',
   localeDetection: false
 });
 

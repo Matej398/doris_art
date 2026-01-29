@@ -5,5 +5,5 @@ export const { Link, redirect, usePathname, useRouter, getPathname } =
   createNavigation({
     locales,
     pathnames,
-    localePrefix: 'always'
+    localePrefix: 'as-needed'
   });

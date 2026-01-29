@@ -96,7 +96,7 @@ export async function generateMetadata({
       description: t("description"),
       locale: locale === "sl" ? "sl_SI" : "en_US",
       type: "website",
-      url: `${BASE_URL}/${locale}`,
+      url: locale === "sl" ? BASE_URL : `${BASE_URL}/en`,
       siteName: "Doris Einfalt Art",
       images: [
         {
@@ -114,9 +114,9 @@ export async function generateMetadata({
       images: [`${BASE_URL}/images/cards/delavnice.png`],
     },
     alternates: {
-      canonical: `${BASE_URL}/${locale}`,
+      canonical: locale === "sl" ? BASE_URL : `${BASE_URL}/en`,
       languages: {
-        "sl-SI": `${BASE_URL}/sl`,
+        "sl-SI": BASE_URL,
         "en-US": `${BASE_URL}/en`,
       },
     },
