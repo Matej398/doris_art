@@ -238,18 +238,20 @@ export default function Home() {
             className="inline-block"
           >
             <span
-              className={`text-[3.5rem] md:text-6xl lg:text-7xl text-stone-900 inline-flex logo-animation transition-opacity duration-300 leading-relaxed ${
+              className={`text-[3.5rem] md:text-6xl lg:text-7xl text-stone-900 flex flex-wrap justify-center logo-animation transition-opacity duration-300 ${
                 isLoaded ? "opacity-100" : "opacity-0"
               }`}
-              style={{ fontFamily: 'var(--font-quentin)', lineHeight: '1.2' }}
+              style={{ fontFamily: 'var(--font-quentin)', lineHeight: '1.4', overflow: 'visible' }}
             >
               {"doris einfalt".split("").map((char, index) => (
                 <span
                   key={index}
-                  className="inline-block letter-char"
+                  className="letter-char"
                   style={{
                     opacity: 0,
                     animationDelay: `${index * 0.1}s`,
+                    display: 'inline-block',
+                    padding: '0.1em 0',
                   }}
                 >
                   {char === " " ? "\u00A0" : char}
