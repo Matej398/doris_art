@@ -248,6 +248,7 @@ export default function Home() {
                   className="letter-char-desktop"
                   style={{
                     animationDelay: `${index * 0.1}s`,
+                    opacity: 0,
                   }}
                 >
                   {char === " " ? "\u00A0" : char}
@@ -256,7 +257,7 @@ export default function Home() {
             </span>
             {/* Mobile: whole logo blur reveal */}
             <span
-              className="md:hidden text-[2.75rem] text-stone-900 logo-mobile"
+              className="md:hidden text-[2.5rem] text-stone-900 logo-mobile px-4"
               style={{ fontFamily: 'var(--font-quentin)', opacity: 0 }}
             >
               doris einfalt
