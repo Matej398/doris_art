@@ -274,7 +274,7 @@ export function Navigation({ isScrolled, variant = "default" }: NavigationProps)
         className={`md:hidden fixed top-0 left-0 w-full h-full z-[100] bg-black transition-transform duration-300 ease-out ${
           isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
         }`}
-        style={{ minHeight: '100vh', minHeight: '100dvh' }}
+        style={{ minHeight: '100dvh' }}
       >
         {/* Spacer for header height */}
         <div className="h-16" />
