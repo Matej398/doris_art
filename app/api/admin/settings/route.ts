@@ -49,3 +49,8 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
+
+// Also support POST for environments where PUT is blocked
+export async function POST(request: Request) {
+  return PUT(request);
+}
