@@ -230,18 +230,18 @@ export default function Home() {
       </div>
 
       {/* Header with logo */}
-      <header className="pt-16 md:pt-24 pb-0 md:pb-1 overflow-visible">
+      <header className="pt-16 md:pt-24 pb-0 md:pb-1">
         {/* Logo - Centered */}
-        <div className="flex justify-center overflow-visible py-4">
+        <div className="flex justify-center">
           <Link
             href="/"
-            className="inline-block overflow-visible"
+            className="inline-block"
           >
             <span
-              className={`text-[3.5rem] md:text-6xl lg:text-7xl text-stone-900 transition-opacity duration-300 ${
+              className={`text-[3.5rem] md:text-6xl lg:text-7xl text-stone-900 flex flex-wrap justify-center logo-animation transition-opacity duration-300 ${
                 isLoaded ? "opacity-100" : "opacity-0"
               }`}
-              style={{ fontFamily: 'var(--font-quentin)', display: 'block', overflow: 'visible' }}
+              style={{ fontFamily: 'var(--font-quentin)', lineHeight: '1.4', overflow: 'visible' }}
             >
               {"doris einfalt".split("").map((char, index) => (
                 <span
@@ -250,6 +250,8 @@ export default function Home() {
                   style={{
                     opacity: 0,
                     animationDelay: `${index * 0.1}s`,
+                    display: 'inline-block',
+                    padding: '0.1em 0',
                   }}
                 >
                   {char === " " ? "\u00A0" : char}
@@ -258,19 +260,34 @@ export default function Home() {
             </span>
             <style jsx>{`
               .letter-char {
-                display: inline-block;
                 animation: letterReveal 0.8s ease-out forwards;
                 opacity: 0;
-                will-change: opacity, transform;
+                filter: blur(10px);
+                will-change: opacity, filter;
               }
               @keyframes letterReveal {
                 0% {
                   opacity: 0;
-                  transform: translateY(10px);
+                  filter: blur(10px);
                 }
                 100% {
                   opacity: 1;
-                  transform: translateY(0);
+                  filter: blur(0px);
+                }
+              }
+              @media (max-width: 768px) {
+                .letter-char {
+                  filter: blur(5px);
+                }
+                @keyframes letterReveal {
+                  0% {
+                    opacity: 0;
+                    filter: blur(5px);
+                  }
+                  100% {
+                    opacity: 1;
+                    filter: blur(0px);
+                  }
                 }
               }
             `}</style>
