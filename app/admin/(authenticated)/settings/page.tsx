@@ -67,7 +67,8 @@ export default function SettingsPage() {
         setMessage('Nastavitve shranjene!');
         setTimeout(() => setMessage(''), 3000);
       } else {
-        setMessage('Napaka pri shranjevanju nastavitev');
+        const errorData = await response.json().catch(() => ({}));
+        setMessage(`Napaka: ${errorData.error || 'pri shranjevanju nastavitev'}`);
       }
     } catch (error) {
       console.error('Error saving settings:', error);

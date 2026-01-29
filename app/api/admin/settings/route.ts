@@ -44,7 +44,8 @@ export async function PUT(request: Request) {
     await writeDataFile('settings', data);
     return NextResponse.json(data);
   } catch (error) {
-    console.error('Error saving settings:', error);
-    return NextResponse.json({ error: 'Failed to save settings' }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error saving settings:', errorMessage, error);
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
