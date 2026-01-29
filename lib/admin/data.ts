@@ -101,6 +101,7 @@ export async function writeDataFile<T>(file: DataFile, data: T): Promise<void> {
     await put(fileName, content, {
       access: 'public',
       addRandomSuffix: false,
+      allowOverwrite: true,
     });
   } catch (error) {
     console.error(`Error writing ${file}:`, error);
