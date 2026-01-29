@@ -61,8 +61,13 @@ export async function writeDataFile<T>(file: DataFile, data: T): Promise<void> {
   const fileName = fileNames[file];
   const filePath = path.join(DATA_DIR, fileName);
 
-  // Create backup before writing
-  await createBackup(file);
+  // Try to create backup before writing (non-blocking - don't fail if backup fails)
+  try {
+    await createBackup(file);
+  } catch (backupError) {
+    console.warn(`Warning: Could not create backup for ${file}:`, backupError);
+    // Continue with write even if backup fails
+  }
 
   try {
     const content = JSON.stringify(data, null, 2);

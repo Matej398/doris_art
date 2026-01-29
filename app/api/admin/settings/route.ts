@@ -11,6 +11,7 @@ export interface SettingsData {
     photography: boolean;
     wallPaintings: boolean;
     about: boolean;
+    other: boolean;
   };
 }
 
@@ -30,6 +31,7 @@ export async function GET() {
         photography: true,
         wallPaintings: true,
         about: true,
+        other: true,
       },
     };
     return NextResponse.json(defaultSettings);
