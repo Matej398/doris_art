@@ -237,18 +237,16 @@ export default function Home() {
             href="/"
             className="inline-block overflow-visible"
           >
+            {/* Desktop: per-letter animation */}
             <span
-              className={`text-[3.5rem] md:text-6xl lg:text-7xl text-stone-900 logo-animation transition-opacity duration-300 ${
-                isLoaded ? "opacity-100" : "opacity-0"
-              }`}
-              style={{ fontFamily: 'var(--font-quentin)', overflow: 'visible', display: 'block', padding: '0.5rem 0' }}
+              className="hidden md:block text-6xl lg:text-7xl text-stone-900"
+              style={{ fontFamily: 'var(--font-quentin)', overflow: 'visible', padding: '0.5rem 0' }}
             >
               {"doris einfalt".split("").map((char, index) => (
                 <span
                   key={index}
-                  className="letter-char"
+                  className="letter-char-desktop"
                   style={{
-                    opacity: 0,
                     animationDelay: `${index * 0.1}s`,
                   }}
                 >
@@ -256,8 +254,15 @@ export default function Home() {
                 </span>
               ))}
             </span>
+            {/* Mobile: whole logo blur reveal */}
+            <span
+              className="md:hidden text-[3.5rem] text-stone-900 logo-mobile"
+              style={{ fontFamily: 'var(--font-quentin)' }}
+            >
+              doris einfalt
+            </span>
             <style jsx>{`
-              .letter-char {
+              .letter-char-desktop {
                 display: inline-block;
                 animation: letterReveal 0.8s ease-out forwards;
                 opacity: 0;
@@ -276,20 +281,19 @@ export default function Home() {
                   filter: blur(0px);
                 }
               }
-              @media (max-width: 768px) {
-                .letter-char {
-                  filter: blur(4px);
-                  padding: 0.15em 0;
+              .logo-mobile {
+                animation: logoReveal 1s ease-out forwards;
+                opacity: 0;
+                filter: blur(8px);
+              }
+              @keyframes logoReveal {
+                0% {
+                  opacity: 0;
+                  filter: blur(8px);
                 }
-                @keyframes letterReveal {
-                  0% {
-                    opacity: 0;
-                    filter: blur(4px);
-                  }
-                  100% {
-                    opacity: 1;
-                    filter: blur(0px);
-                  }
+                100% {
+                  opacity: 1;
+                  filter: blur(0px);
                 }
               }
             `}</style>
