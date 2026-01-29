@@ -1,6 +1,6 @@
 import type { Locale } from "@/i18n/config";
 
-export const BASE_URL = "https://doriseinfalt.art";
+export const BASE_URL = "https://www.doriseinfalt.art";
 
 export interface BreadcrumbItem {
   name: string;
