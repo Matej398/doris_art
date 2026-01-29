@@ -343,7 +343,7 @@ export default function Home() {
         </div>
         
         {/* Copyright */}
-        <p className="text-center text-xs font-medium text-stone-400">
+        <p className="text-center text-sm font-medium text-stone-500">
           © {new Date().getFullYear()} Doris Einfalt art. {locale === "sl" ? "Vse pravice so pridržane." : "All rights reserved."}
         </p>
       </footer>
