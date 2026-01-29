@@ -222,7 +222,7 @@ export default function Home() {
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
-        <div className="w-full max-w-[2056px] h-full px-8 md:px-16 lg:px-20 flex justify-end items-center">
+        <div className="w-full max-w-[2056px] h-full px-6 md:px-16 lg:px-20 flex justify-end items-center">
           <div className="pointer-events-auto">
             <Navigation />
           </div>
@@ -238,10 +238,10 @@ export default function Home() {
             className="inline-block"
           >
             <span
-              className={`text-[3.5rem] md:text-6xl lg:text-7xl text-stone-900 inline-flex logo-animation transition-opacity duration-300 ${
+              className={`text-[3.5rem] md:text-6xl lg:text-7xl text-stone-900 inline-flex logo-animation transition-opacity duration-300 leading-relaxed ${
                 isLoaded ? "opacity-100" : "opacity-0"
               }`}
-              style={{ fontFamily: 'var(--font-quentin)' }}
+              style={{ fontFamily: 'var(--font-quentin)', lineHeight: '1.2' }}
             >
               {"doris einfalt".split("").map((char, index) => (
                 <span

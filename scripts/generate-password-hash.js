@@ -25,13 +25,10 @@ bcrypt.hash(password, 12, (err, hash) => {
     process.exit(1);
   }
 
-  // Escape $ characters for .env files
-  const escapedHash = hash.replace(/\$/g, '\\$');
-
   console.log('\nGenerated password hash:\n');
   console.log(hash);
-  console.log('\nAdd this to your .env.local file ($ escaped for dotenv):');
-  console.log(`ADMIN_PASSWORD_HASH=${escapedHash}`);
+  console.log('\nAdd this to your .env.local file (use quotes to preserve $ characters):');
+  console.log(`ADMIN_PASSWORD_HASH="${hash}"`);
   console.log('\nAlso add a session secret (32+ random characters):');
   console.log(`ADMIN_SESSION_SECRET=${require('crypto').randomBytes(32).toString('hex')}`);
 });

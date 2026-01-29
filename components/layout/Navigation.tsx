@@ -280,7 +280,7 @@ export function Navigation({ isScrolled, variant = "default" }: NavigationProps)
         <div className="h-16" />
 
         {/* Navigation links - left aligned with staggered fade in/out */}
-        <nav className="flex flex-col items-start px-8 pb-8 space-y-4">
+        <nav className="flex flex-col items-start px-6 pb-8 space-y-4">
           {/* Ponudba/Offers dropdown */}
           <div
             className={`w-full transition-all duration-200 ease-out ${

@@ -81,8 +81,8 @@ export default function StenskePoslikavePage() {
 
   // Hero background images - add your transparent PNG images to public/images/wall-paintings-hero/
   const heroImages = [
-    { src: "/images/wall-paintings-hero/decorative-1.png", position: "top-left", size: "w-64 md:w-[24rem] lg:w-[32rem] xl:w-[38rem] 2xl:w-[44rem]" },
-    { src: "/images/wall-paintings-hero/decorative-2.png", position: "top-right", size: "w-96 md:w-[36rem] lg:w-[44rem] xl:w-[52rem] 2xl:w-[60rem]" },
+    { src: "/images/wall-paintings-hero/decorative-1.png", position: "top-left", size: "hidden md:block md:w-[24rem] lg:w-[32rem] xl:w-[38rem] 2xl:w-[44rem]" },
+    { src: "/images/wall-paintings-hero/decorative-2.png", position: "top-right", size: "w-[22rem] md:w-[36rem] lg:w-[44rem] xl:w-[52rem] 2xl:w-[60rem]" },
   ];
 
   const getPositionClasses = (position: string) => {
@@ -153,9 +153,9 @@ export default function StenskePoslikavePage() {
     <>
       <StructuredData data={[serviceSchema, localBusinessSchema]} />
       <Breadcrumbs items={breadcrumbs} locale={locale as "sl" | "en"} />
-      <div className="min-h-screen bg-cream">
+      <div className="min-h-screen bg-cream overflow-x-hidden">
       {/* Hero Section */}
-      <section className="pt-8 md:pt-12 pb-12 md:pb-20 lg:pb-28 xl:pb-36 2xl:pb-40 relative overflow-visible">
+      <section className="pt-8 md:pt-12 pb-32 md:pb-20 lg:pb-28 xl:pb-36 2xl:pb-40 relative overflow-visible">
         {/* Background decorative images - anchored to bottom of hero */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-visible flex justify-center">
           <div className="relative w-full max-w-[2056px]">
