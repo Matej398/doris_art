@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 
+// Disable caching - always read fresh data
+export const dynamic = 'force-dynamic';
+
 interface Settings {
   pageVisibility?: {
     workshops?: boolean;
@@ -24,10 +27,6 @@ export async function GET() {
     // Only return pageVisibility (not admin-only settings)
     return NextResponse.json({
       pageVisibility: data.pageVisibility || {}
-    }, {
-      headers: {
-        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
-      },
     });
   } catch {
     // Return default visibility (all pages visible)
@@ -42,10 +41,6 @@ export async function GET() {
         about: true,
         other: true,
       }
-    }, {
-      headers: {
-        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
-      },
     });
   }
 }
