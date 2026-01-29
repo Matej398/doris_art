@@ -169,9 +169,7 @@ export default function DelavnicePage() {
         <section className="px-6 md:px-10 pb-16 md:pb-20">
           <div className="max-w-6xl mx-auto">
             {isLoading ? (
-              <div className="text-center py-12 text-stone-400">
-                <p>{t("loading") || "Nalagam..."}</p>
-              </div>
+              <div className="min-h-[200px]" />
             ) : filteredWorkshops.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 {filteredWorkshops.map((workshop) => (
