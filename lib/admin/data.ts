@@ -1,4 +1,4 @@
-import { put, list, del, head } from '@vercel/blob';
+import { put, list, del } from '@vercel/blob';
 
 export type DataFile = 'workshops' | 'paintings' | 'rentals' | 'gallery' | 'photography' | 'settings' | 'about' | 'wall-paintings';
 
@@ -47,38 +47,36 @@ export async function createBackup(file: DataFile): Promise<string> {
   }
 }
 
+// Blob store base URL
+const BLOB_BASE_URL = 'https://djjywkecl3mz3lhj.public.blob.vercel-storage.com';
+
 export async function readDataFile<T>(file: DataFile): Promise<T> {
   const fileName = fileNames[file];
+  const blobUrl = `${BLOB_BASE_URL}/${fileName}`;
 
   try {
-    // Check if blob exists
-    const blobInfo = await head(fileName);
-
-    if (!blobInfo) {
-      // Return default data if blob doesn't exist
-      return defaultData[file] as T;
-    }
-
-    // Fetch the blob content with cache busting
-    const response = await fetch(`${blobInfo.url}?t=${Date.now()}`, {
+    // Fetch directly with cache busting
+    const response = await fetch(`${blobUrl}?t=${Date.now()}`, {
       cache: 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+      },
     });
+
     if (!response.ok) {
+      if (response.status === 404) {
+        console.log(`Blob ${fileName} not found, returning default data`);
+        return defaultData[file] as T;
+      }
       throw new Error(`Failed to fetch blob: ${response.statusText}`);
     }
 
     const content = await response.text();
     return JSON.parse(content) as T;
   } catch (error) {
-    // If blob doesn't exist (404 or similar), return default data
-    if (error instanceof Error && error.message.includes('not found')) {
-      console.log(`Blob ${fileName} not found, returning default data`);
-      return defaultData[file] as T;
-    }
-
-    // For head() throwing when blob doesn't exist
     const errorMessage = String(error);
-    if (errorMessage.includes('not_found') || errorMessage.includes('404')) {
+    if (errorMessage.includes('404') || errorMessage.includes('not found')) {
       console.log(`Blob ${fileName} not found, returning default data`);
       return defaultData[file] as T;
     }
