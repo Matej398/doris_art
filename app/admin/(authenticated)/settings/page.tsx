@@ -67,12 +67,19 @@ export default function SettingsPage() {
         setMessage('Nastavitve shranjene!');
         setTimeout(() => setMessage(''), 3000);
       } else {
-        const errorData = await response.json().catch(() => ({}));
-        setMessage(`Napaka: ${errorData.error || 'pri shranjevanju nastavitev'}`);
+        const text = await response.text();
+        console.error('API error response:', response.status, text);
+        try {
+          const errorData = JSON.parse(text);
+          setMessage(`Napaka (${response.status}): ${errorData.error || text}`);
+        } catch {
+          setMessage(`Napaka (${response.status}): ${text || 'Unknown error'}`);
+        }
       }
     } catch (error) {
-      console.error('Error saving settings:', error);
-      setMessage('Napaka pri shranjevanju nastavitev');
+      const errMsg = error instanceof Error ? error.message : String(error);
+      console.error('Error saving settings:', errMsg);
+      setMessage(`Napaka: ${errMsg}`);
     } finally {
       setSaving(false);
     }
