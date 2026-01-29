@@ -167,6 +167,7 @@
       "sending": "Pošiljam...",
       "directEmail": "Piši mi direktno",
       "successMessage": "Hvala! Tvoja prijava je bila poslana.",
+      "errorMessage": "Napaka pri pošiljanju. Poskusi znova.",
       "emailSubjectBooking": "Prijava na delavnico",
       "emailSubjectCustom": "Povpraševanje za dogodek",
       "selectedWorkshop": "Delavnica",

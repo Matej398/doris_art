@@ -167,6 +167,7 @@
       "sending": "Sending...",
       "directEmail": "Email me directly",
       "successMessage": "Thanks! Your request has been sent.",
+      "errorMessage": "Error sending request. Please try again.",
       "emailSubjectBooking": "Workshop booking",
       "emailSubjectCustom": "Custom event inquiry",
       "selectedWorkshop": "Workshop",

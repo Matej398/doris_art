@@ -49,50 +49,54 @@ export function ContactForm({ workshops, eventTypes, preselectedWorkshop }: Cont
     return next && getAvailableSpots(next) > 0;
   });
 
-  // Build mailto link
-  const buildMailtoLink = () => {
-    const subject = mode === "scheduled" 
-      ? `${t("emailSubjectBooking")}: ${workshops.find(w => w.id === selectedWorkshopId)?.title || ""}`
-      : `${t("emailSubjectCustom")}: ${eventTypes.find(e => e.id === selectedEventType)?.[locale === "en" ? "en" : "sl"] || ""}`;
-    
-    let body = `${t("name")}: ${name}\n`;
-    body += `${t("email")}: ${email}\n`;
-    body += `${t("phone")}: ${phone}\n\n`;
-
-    if (mode === "scheduled") {
-      const workshop = workshops.find(w => w.id === selectedWorkshopId);
-      const next = workshop ? getNextSchedule(workshop) : null;
-      body += `${t("selectedWorkshop")}: ${workshop?.title || ""}\n`;
-      if (next) {
-        const dateStr = locale === "en" ? formatDateEn(next.date) : formatDateSl(next.date);
-        body += `${t("date")}: ${dateStr} ${t("at")} ${next.time}\n`;
-      }
-    } else {
-      const eventType = eventTypes.find(e => e.id === selectedEventType);
-      body += `${t("eventType")}: ${eventType?.[locale === "en" ? "en" : "sl"] || ""}\n`;
-      body += `${t("numberOfPeople")}: ${numberOfPeople}\n`;
-      body += `${t("preferredDate")}: ${preferredDate}\n`;
-    }
-
-    if (message) {
-      body += `\n${t("message")}:\n${message}`;
-    }
-
-    return `mailto:einfalt.doris@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus("idle");
 
-    // Open mailto link
-    window.location.href = buildMailtoLink();
-    
-    // Show success after a short delay
-    setTimeout(() => {
+    try {
+      const workshop = workshops.find(w => w.id === selectedWorkshopId);
+      const next = workshop ? getNextSchedule(workshop) : null;
+      const eventType = eventTypes.find(et => et.id === selectedEventType);
+
+      const response = await fetch("/api/workshop-booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          mode,
+          name,
+          email,
+          phone,
+          workshopTitle: workshop?.title,
+          workshopDate: next
+            ? `${locale === "en" ? formatDateEn(next.date) : formatDateSl(next.date)} ${next.time}`
+            : undefined,
+          eventType: eventType?.[locale === "en" ? "en" : "sl"],
+          numberOfPeople: numberOfPeople || undefined,
+          preferredDate: preferredDate || undefined,
+          message: message || undefined,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send");
+      }
+
       setSubmitStatus("success");
+      // Clear form on success
+      setName("");
+      setEmail("");
+      setPhone("");
+      setSelectedWorkshopId("");
+      setSelectedEventType("");
+      setNumberOfPeople("");
+      setPreferredDate("");
+      setMessage("");
+    } catch {
+      setSubmitStatus("error");
+    } finally {
       setIsSubmitting(false);
-    }, 500);
+    }
   };
 
   const isFormValid = () => {
@@ -315,6 +319,12 @@ export function ContactForm({ workshops, eventTypes, preselectedWorkshop }: Cont
         {submitStatus === "success" && (
           <p className="text-accent text-sm text-center mt-4 py-2 px-4 rounded-lg bg-accent/5">
             {t("successMessage")}
+          </p>
+        )}
+
+        {submitStatus === "error" && (
+          <p className="text-red-600 text-sm text-center mt-4 py-2 px-4 rounded-lg bg-red-50">
+            {t("errorMessage")}
           </p>
         )}
       </form>
