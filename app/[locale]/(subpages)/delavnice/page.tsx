@@ -1,17 +1,14 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { WorkshopTabs } from "@/components/workshops/WorkshopTabs";
 import { WorkshopCard } from "@/components/workshops/WorkshopCard";
 import { ContactForm } from "@/components/workshops/ContactForm";
 import { WhatYouGet } from "@/components/workshops/WhatYouGet";
-import type { Workshop, Audience } from "@/lib/workshops";
+import type { Workshop, Audience, EventType } from "@/lib/workshops";
 import { filterByAudience, getNextSchedule, isWorkshopActive } from "@/lib/workshops";
-
-// Import data directly for client component
-import workshopsData from "@/data/workshops.json";
 
 // JSON-LD structured data component
 function WorkshopJsonLd({ workshops, locale }: { workshops: Workshop[]; locale: string }) {
@@ -97,14 +94,31 @@ export default function DelavnicePage() {
   const locale = useLocale();
   const [activeTab, setActiveTab] = useState<Audience>("children");
   const [selectedWorkshop, setSelectedWorkshop] = useState<Workshop | null>(null);
+  const [workshops, setWorkshops] = useState<Workshop[]>([]);
+  const [eventTypes, setEventTypes] = useState<EventType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const formRef = useRef<HTMLDivElement>(null);
 
-  const workshops = workshopsData.workshops as Workshop[];
-  const eventTypes = workshopsData.eventTypes;
+  // Fetch workshops data from API
+  useEffect(() => {
+    async function fetchWorkshops() {
+      try {
+        const response = await fetch('/api/workshops');
+        const data = await response.json();
+        setWorkshops(data.workshops || []);
+        setEventTypes(data.eventTypes || []);
+      } catch (error) {
+        console.error('Failed to fetch workshops:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchWorkshops();
+  }, []);
 
   // Filter to only show active workshops (active !== false)
   const activeWorkshops = workshops.filter(w => w.active !== false);
-  
+
   // Then filter by audience
   const filteredWorkshops = filterByAudience(activeWorkshops, activeTab);
 
@@ -154,7 +168,11 @@ export default function DelavnicePage() {
         {/* Workshops Grid */}
         <section className="px-6 md:px-10 pb-16 md:pb-20">
           <div className="max-w-6xl mx-auto">
-            {filteredWorkshops.length > 0 ? (
+            {isLoading ? (
+              <div className="text-center py-12 text-stone-400">
+                <p>{t("loading") || "Nalagam..."}</p>
+              </div>
+            ) : filteredWorkshops.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 {filteredWorkshops.map((workshop) => (
                   <div key={workshop.id} className="w-full max-w-sm md:max-w-none">
