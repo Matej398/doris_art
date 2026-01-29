@@ -1,17 +1,11 @@
 "use client";
 
-import { Link, usePathname } from "@/i18n/navigation";
-import { useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { Navigation } from "./Navigation";
 
 export function Header() {
-  const locale = useLocale();
-  const pathname = usePathname();
   const { direction, isScrolled } = useScrollDirection();
-
-  // Check if we're on the homepage
-  const isHomepage = pathname === "/" || pathname === "";
 
   // Determine if header should be visible
   // Show when: not scrolled OR scrolling up
@@ -35,11 +29,7 @@ export function Header() {
         >
           <span
             className={`text-stone-900 transition-all duration-300 ${
-              isScrolled
-                ? "text-2xl md:text-3xl"
-                : isHomepage
-                  ? "text-2xl md:text-3xl lg:text-4xl"
-                  : "text-3xl md:text-4xl"
+              isScrolled ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"
             }`}
             style={{ fontFamily: "var(--font-quentin)" }}
           >
