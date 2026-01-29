@@ -1,8 +1,4 @@
-import fs from 'fs/promises';
-import path from 'path';
-
-const DATA_DIR = path.join(process.cwd(), 'data');
-const BACKUP_DIR = path.join(process.cwd(), 'data', 'backups');
+import { put, list, del, head } from '@vercel/blob';
 
 export type DataFile = 'workshops' | 'paintings' | 'rentals' | 'gallery' | 'photography' | 'settings' | 'about' | 'wall-paintings';
 
@@ -17,27 +13,34 @@ const fileNames: Record<DataFile, string> = {
   'wall-paintings': 'wall-paintings.json',
 };
 
-async function ensureBackupDir(): Promise<void> {
-  try {
-    await fs.access(BACKUP_DIR);
-  } catch {
-    await fs.mkdir(BACKUP_DIR, { recursive: true });
-  }
-}
+// Default data for each file type (used when blob doesn't exist yet)
+const defaultData: Record<DataFile, unknown> = {
+  workshops: { workshops: [], eventTypes: [] },
+  paintings: { paintings: [] },
+  rentals: { rentals: [] },
+  gallery: { images: [] },
+  photography: { images: [] },
+  settings: { rentalCategories: [], pageVisibility: {} },
+  about: { biography: { sl: [], en: [] }, image: '' },
+  'wall-paintings': { images: [] },
+};
 
 export async function createBackup(file: DataFile): Promise<string> {
-  await ensureBackupDir();
-
   const fileName = fileNames[file];
-  const sourcePath = path.join(DATA_DIR, fileName);
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-  const backupFileName = `${file}_${timestamp}.json`;
-  const backupPath = path.join(BACKUP_DIR, backupFileName);
+  const backupFileName = `backups/${file}_${timestamp}.json`;
 
   try {
-    const content = await fs.readFile(sourcePath, 'utf-8');
-    await fs.writeFile(backupPath, content, 'utf-8');
-    return backupPath;
+    // Read current data
+    const data = await readDataFile(file);
+
+    // Write backup to blob
+    const blob = await put(backupFileName, JSON.stringify(data, null, 2), {
+      access: 'public',
+      addRandomSuffix: false,
+    });
+
+    return blob.url;
   } catch (error) {
     console.error(`Error creating backup for ${file}:`, error);
     throw new Error(`Failed to create backup for ${file}`);
@@ -46,12 +49,38 @@ export async function createBackup(file: DataFile): Promise<string> {
 
 export async function readDataFile<T>(file: DataFile): Promise<T> {
   const fileName = fileNames[file];
-  const filePath = path.join(DATA_DIR, fileName);
 
   try {
-    const content = await fs.readFile(filePath, 'utf-8');
+    // Check if blob exists
+    const blobInfo = await head(fileName);
+
+    if (!blobInfo) {
+      // Return default data if blob doesn't exist
+      return defaultData[file] as T;
+    }
+
+    // Fetch the blob content
+    const response = await fetch(blobInfo.url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch blob: ${response.statusText}`);
+    }
+
+    const content = await response.text();
     return JSON.parse(content) as T;
   } catch (error) {
+    // If blob doesn't exist (404 or similar), return default data
+    if (error instanceof Error && error.message.includes('not found')) {
+      console.log(`Blob ${fileName} not found, returning default data`);
+      return defaultData[file] as T;
+    }
+
+    // For head() throwing when blob doesn't exist
+    const errorMessage = String(error);
+    if (errorMessage.includes('not_found') || errorMessage.includes('404')) {
+      console.log(`Blob ${fileName} not found, returning default data`);
+      return defaultData[file] as T;
+    }
+
     console.error(`Error reading ${file}:`, error);
     throw new Error(`Failed to read ${file} data`);
   }
@@ -59,19 +88,20 @@ export async function readDataFile<T>(file: DataFile): Promise<T> {
 
 export async function writeDataFile<T>(file: DataFile, data: T): Promise<void> {
   const fileName = fileNames[file];
-  const filePath = path.join(DATA_DIR, fileName);
 
-  // Try to create backup before writing (non-blocking - don't fail if backup fails)
+  // Try to create backup before writing (non-blocking)
   try {
     await createBackup(file);
   } catch (backupError) {
     console.warn(`Warning: Could not create backup for ${file}:`, backupError);
-    // Continue with write even if backup fails
   }
 
   try {
     const content = JSON.stringify(data, null, 2);
-    await fs.writeFile(filePath, content + '\n', 'utf-8');
+    await put(fileName, content, {
+      access: 'public',
+      addRandomSuffix: false,
+    });
   } catch (error) {
     console.error(`Error writing ${file}:`, error);
     throw new Error(`Failed to write ${file} data`);
@@ -86,28 +116,28 @@ export function getNextId<T extends { id: number }>(items: T[]): number {
 
 // Clean up old backups (keep last 10 per file type)
 export async function cleanupOldBackups(): Promise<void> {
-  await ensureBackupDir();
-
   try {
-    const files = await fs.readdir(BACKUP_DIR);
-    const filesByType: Record<string, string[]> = {};
+    const { blobs } = await list({ prefix: 'backups/' });
+    const filesByType: Record<string, typeof blobs> = {};
 
-    for (const file of files) {
-      const match = file.match(/^(\w+)_\d{4}-\d{2}-\d{2}T/);
+    for (const blob of blobs) {
+      const match = blob.pathname.match(/backups\/(\w+)_\d{4}-\d{2}-\d{2}T/);
       if (match) {
         const type = match[1];
         if (!filesByType[type]) filesByType[type] = [];
-        filesByType[type].push(file);
+        filesByType[type].push(blob);
       }
     }
 
-    for (const [, typeFiles] of Object.entries(filesByType)) {
-      // Sort by name (which includes timestamp) descending
-      typeFiles.sort().reverse();
+    for (const [, typeBlobs] of Object.entries(filesByType)) {
+      // Sort by uploadedAt descending (newest first)
+      typeBlobs.sort((a, b) =>
+        new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime()
+      );
 
-      // Delete files beyond the first 10
-      for (let i = 10; i < typeFiles.length; i++) {
-        await fs.unlink(path.join(BACKUP_DIR, typeFiles[i]));
+      // Delete blobs beyond the first 10
+      for (let i = 10; i < typeBlobs.length; i++) {
+        await del(typeBlobs[i].url);
       }
     }
   } catch (error) {

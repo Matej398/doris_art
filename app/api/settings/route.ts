@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
+import { readDataFile } from '@/lib/admin/data';
 
-// Disable caching - always read fresh data
 export const dynamic = 'force-dynamic';
 
 interface Settings {
@@ -20,16 +18,12 @@ interface Settings {
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), 'data', 'settings.json');
-    const content = await fs.readFile(filePath, 'utf-8');
-    const data: Settings = JSON.parse(content);
+    const data = await readDataFile<Settings>('settings');
 
-    // Only return pageVisibility (not admin-only settings)
     return NextResponse.json({
       pageVisibility: data.pageVisibility || {}
     });
   } catch {
-    // Return default visibility (all pages visible)
     return NextResponse.json({
       pageVisibility: {
         wallPaintings: true,

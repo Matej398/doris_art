@@ -1,19 +1,20 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
+import { readDataFile } from '@/lib/admin/data';
+
+interface AboutData {
+  biography: { sl: string[]; en: string[] };
+  image: string;
+}
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), 'data', 'about.json');
-    const content = await fs.readFile(filePath, 'utf-8');
-    const data = JSON.parse(content);
+    const data = await readDataFile<AboutData>('about');
     return NextResponse.json(data, {
       headers: {
         'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
       },
     });
   } catch {
-    // Return default data if file doesn't exist
     return NextResponse.json({
       biography: { sl: [], en: [] },
       image: '/images/author/doris.jpeg',
