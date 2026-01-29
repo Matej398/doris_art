@@ -93,7 +93,6 @@ export function Navigation({ isScrolled, variant = "default" }: NavigationProps)
     setTimeout(() => {
       setIsMobileMenuOpen(false);
       setIsClosing(false);
-      setIsMobileDropdownOpen(false);
     }, 250);
   }, []);
 
