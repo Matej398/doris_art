@@ -49,6 +49,7 @@ export default function FotografijaPage() {
                     className="w-full"
                     onClick={() => setLightboxIndex(index)}
                     intensity="subtle"
+                    priority={index < 4}
                   />
                 </div>
               ))}

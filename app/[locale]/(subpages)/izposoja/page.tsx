@@ -90,9 +90,9 @@ export default function IzposojaPage() {
         <div className="max-w-7xl mx-auto">
           {activeRentals.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 md:gap-x-8 gap-y-8 md:gap-y-12">
-              {activeRentals.map((rental) => (
+              {activeRentals.map((rental, index) => (
                 <div key={rental.id}>
-                  <RentalCard rental={rental} />
+                  <RentalCard rental={rental} priority={index < 6} />
                 </div>
               ))}
             </div>

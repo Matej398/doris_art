@@ -7,9 +7,10 @@ import type { RentalItem } from "@/lib/rentals";
 
 interface RentalCardProps {
   rental: RentalItem;
+  priority?: boolean;
 }
 
-export function RentalCard({ rental }: RentalCardProps) {
+export function RentalCard({ rental, priority = false }: RentalCardProps) {
   const t = useTranslations("rentals.card");
   const locale = useLocale();
   
@@ -26,6 +27,7 @@ export function RentalCard({ rental }: RentalCardProps) {
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-300 group-hover:scale-105"
+            priority={priority}
           />
         </div>
 

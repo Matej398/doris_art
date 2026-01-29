@@ -11,16 +11,18 @@ interface Image3DProps {
   className?: string;
   onClick?: () => void;
   intensity?: "strong" | "subtle";
+  priority?: boolean;
 }
 
-export function Image3D({ 
-  src, 
-  alt, 
-  width = 400, 
-  height = 400, 
+export function Image3D({
+  src,
+  alt,
+  width = 400,
+  height = 400,
   className = "",
   onClick,
-  intensity = "subtle"
+  intensity = "subtle",
+  priority = false
 }: Image3DProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState("");
@@ -67,7 +69,9 @@ export function Image3D({
           src={src}
           alt={alt}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover"
+          priority={priority}
         />
       ) : (
         <Image
@@ -75,7 +79,9 @@ export function Image3D({
           alt={alt}
           width={width}
           height={height}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="w-full h-auto object-cover"
+          priority={priority}
         />
       )}
     </div>
