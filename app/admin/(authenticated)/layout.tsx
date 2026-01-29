@@ -17,7 +17,7 @@ export default async function AuthenticatedLayout({
     <div className="min-h-screen bg-cream">
       <AdminSidebar />
       <main className="lg:ml-64 min-h-screen">
-        <div className="p-6 lg:p-8">
+        <div className="p-6 pt-16 lg:p-8 lg:pt-8">
           {children}
         </div>
       </main>

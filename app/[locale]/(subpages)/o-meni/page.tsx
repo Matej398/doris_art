@@ -171,7 +171,7 @@ export default function AboutPage() {
             <a
               href="https://www.bibaleze.si/novice/doris-einfalt-umetnica-ki-slika-za-otroke.html"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               className="inline-block px-6 py-3 border border-stone-300 text-stone-700 font-medium rounded-lg hover:bg-stone-100 transition-colors text-center"
             >
               <span style={{ marginTop: '2pt', display: 'block' }}>
@@ -181,7 +181,7 @@ export default function AboutPage() {
             <a
               href="https://www.mcdd.si/objave/patriot/pogled-v-pravljicni-svet/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               className="inline-block px-6 py-3 border border-stone-300 text-stone-700 font-medium rounded-lg hover:bg-stone-100 transition-colors text-center"
             >
               <span style={{ marginTop: '2pt', display: 'block' }}>
