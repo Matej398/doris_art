@@ -19,29 +19,32 @@ export function GeneralContactForm() {
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
-    // In a real application, you would send this data to an API endpoint
-    const formData = {
-      name,
-      email,
-      phone,
-      subject,
-      message,
-    };
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          subject,
+          message,
+        }),
+      });
 
-    console.log("Form submitted:", formData);
-
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    if (Math.random() > 0.1) { // Simulate 90% success rate
-      setSubmitStatus("success");
-      // Clear form
-      setName("");
-      setEmail("");
-      setPhone("");
-      setSubject("");
-      setMessage("");
-    } else {
+      if (response.ok) {
+        setSubmitStatus("success");
+        setName("");
+        setEmail("");
+        setPhone("");
+        setSubject("");
+        setMessage("");
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch {
       setSubmitStatus("error");
     }
     setIsSubmitting(false);

@@ -86,7 +86,7 @@ Doris Einfalt
     
     // TODO: Implement actual email sending service
     // Example with mailto (client-side will handle):
-    const adminMailto = `mailto:info@doriseinfalt.art?subject=${encodeURIComponent(adminSubject)}&body=${encodeURIComponent(adminBody)}`;
+    const adminMailto = `mailto:einfalt.doris@gmail.com?subject=${encodeURIComponent(adminSubject)}&body=${encodeURIComponent(adminBody)}`;
     const userMailto = `mailto:${reservation.email}?subject=${encodeURIComponent(userSubject)}&body=${encodeURIComponent(userBody)}`;
 
     // In a production setup, you would:

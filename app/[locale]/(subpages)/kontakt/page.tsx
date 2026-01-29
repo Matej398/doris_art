@@ -88,7 +88,7 @@ export default function KontaktPage() {
                 {/* Email */}
                 <div>
                   <p className="text-base text-stone-900">
-                    info@doriseinfalt.art
+                    einfalt.doris@gmail.com
                   </p>
                 </div>
 

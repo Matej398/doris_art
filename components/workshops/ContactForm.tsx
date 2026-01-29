@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import type { Workshop, EventType } from "@/lib/workshops";
 import { getNextSchedule, getAvailableSpots, formatDateSl, formatDateEn } from "@/lib/workshops";
 
@@ -77,7 +78,7 @@ export function ContactForm({ workshops, eventTypes, preselectedWorkshop }: Cont
       body += `\n${t("message")}:\n${message}`;
     }
 
-    return `mailto:info@doriseinfalt.art?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    return `mailto:einfalt.doris@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -303,12 +304,12 @@ export function ContactForm({ workshops, eventTypes, preselectedWorkshop }: Cont
             <span style={{ marginTop: '2pt', display: 'block' }}>{isSubmitting ? t("sending") : t("submit")}</span>
           </button>
           
-          <a
-            href="mailto:info@doriseinfalt.art"
+          <Link
+            href="/kontakt"
             className="flex-1 py-3 px-6 rounded-lg font-medium text-center border border-stone-200 text-stone-700 hover:bg-stone-50 transition-colors"
           >
             <span style={{ marginTop: '2pt', display: 'block' }}>{t("directEmail")}</span>
-          </a>
+          </Link>
         </div>
 
         {submitStatus === "success" && (
