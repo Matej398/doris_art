@@ -91,13 +91,7 @@ export async function readDataFile<T>(file: DataFile): Promise<T> {
 export async function writeDataFile<T>(file: DataFile, data: T): Promise<void> {
   const fileName = fileNames[file];
 
-  // Try to create backup before writing (non-blocking)
-  try {
-    await createBackup(file);
-  } catch (backupError) {
-    console.warn(`Warning: Could not create backup for ${file}:`, backupError);
-  }
-
+  // Skip backup for now - just write directly
   try {
     const content = JSON.stringify(data, null, 2);
     await put(fileName, content, {
@@ -105,6 +99,7 @@ export async function writeDataFile<T>(file: DataFile, data: T): Promise<void> {
       addRandomSuffix: false,
       allowOverwrite: true,
     });
+    console.log(`Successfully wrote ${file} to blob`);
   } catch (error) {
     console.error(`Error writing ${file}:`, error);
     throw new Error(`Failed to write ${file} data`);
