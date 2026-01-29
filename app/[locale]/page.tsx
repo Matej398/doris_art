@@ -55,7 +55,7 @@ function Card3D({ category, locale, priority = false }: { category: { id: string
       </div>
 
       {/* Title */}
-      <span className="mt-4 text-base md:text-lg lg:text-xl font-semibold text-stone-900 group-hover:text-black transition-colors lowercase relative inline-block">
+      <span className="mt-4 text-[18px] font-semibold text-stone-900 group-hover:text-black transition-colors lowercase relative inline-block">
         {category.title}
         <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
       </span>
@@ -275,7 +275,7 @@ export default function Home() {
       <main className="flex-grow flex flex-col items-center justify-start px-6 md:px-12 pt-0 pb-6">
         <div className="w-full max-w-fit">
           <h2
-            className={`text-center text-lg md:text-xl lg:text-2xl font-normal italic text-stone-400 mt-14 md:mt-20 mb-20 md:mb-28 transition-all duration-1000 delay-100 ${
+            className={`text-center text-[20px] font-normal italic text-stone-400 mt-14 md:mt-20 mb-20 md:mb-28 transition-all duration-1000 delay-100 ${
               isLoaded ? "opacity-100" : "opacity-0"
             }`}
           >
