@@ -218,7 +218,6 @@ export default function StenskePoslikavePage() {
           </p>
           <p
             className="text-lg md:text-xl text-stone-600 max-w-4xl mx-auto mb-8"
-            style={{ hyphens: 'auto', wordBreak: 'break-word' }}
           >
             {t("description")}
           </p>
