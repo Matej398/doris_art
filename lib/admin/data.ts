@@ -34,10 +34,10 @@ export async function createBackup(file: DataFile): Promise<string> {
     // Read current data
     const data = await readDataFile(file);
 
-    // Write backup to blob
+    // Write backup to blob (always unique filename, no overwrite needed)
     const blob = await put(backupFileName, JSON.stringify(data, null, 2), {
       access: 'public',
-      addRandomSuffix: false,
+      addRandomSuffix: true,
     });
 
     return blob.url;
@@ -59,8 +59,10 @@ export async function readDataFile<T>(file: DataFile): Promise<T> {
       return defaultData[file] as T;
     }
 
-    // Fetch the blob content
-    const response = await fetch(blobInfo.url);
+    // Fetch the blob content with cache busting
+    const response = await fetch(`${blobInfo.url}?t=${Date.now()}`, {
+      cache: 'no-store',
+    });
     if (!response.ok) {
       throw new Error(`Failed to fetch blob: ${response.statusText}`);
     }
