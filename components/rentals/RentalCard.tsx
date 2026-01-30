@@ -21,14 +21,23 @@ export function RentalCard({ rental, priority = false }: RentalCardProps) {
       <div className="space-y-3">
         {/* Large Image */}
         <div className="relative aspect-[4/3] overflow-hidden">
-          <Image
-            src={rental.image}
-            alt={title}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-            priority={priority}
-          />
+          {rental.image.startsWith('/images/uploads/') ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={rental.image}
+              alt={title}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          ) : (
+            <Image
+              src={rental.image}
+              alt={title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              priority={priority}
+            />
+          )}
         </div>
 
         {/* Content below image */}

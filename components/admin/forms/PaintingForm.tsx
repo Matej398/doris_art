@@ -200,13 +200,22 @@ export default function PaintingForm({ painting, isNew = false }: PaintingFormPr
               {form.images.map((img, index) => (
                 <div key={img.id} className="relative bg-gray-50 rounded-lg p-3">
                   <div className="relative h-40 rounded overflow-hidden">
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
+                    {img.src.startsWith('/images/uploads/') ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="absolute inset-0 w-full h-full object-contain"
+                      />
+                    ) : (
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    )}
                     {index === 0 && (
                       <span className="absolute top-2 left-2 px-2 py-1 bg-accent text-white text-xs rounded">
                         Glavna

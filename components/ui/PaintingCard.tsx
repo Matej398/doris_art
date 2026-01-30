@@ -52,15 +52,24 @@ export function PaintingCard({ painting, onClick }: PaintingCardProps) {
     >
       {/* Image container - natural aspect ratio */}
       <div className="relative w-full overflow-hidden">
-        <Image
-          src={thumbnailImage.src}
-          alt={thumbnailImage.alt}
-          width={0}
-          height={0}
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="w-full h-auto object-cover block"
-          style={{ width: '100%', height: 'auto' }}
-        />
+        {thumbnailImage.src.startsWith('/images/uploads/') ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={thumbnailImage.src}
+            alt={thumbnailImage.alt}
+            className="w-full h-auto object-cover block"
+          />
+        ) : (
+          <Image
+            src={thumbnailImage.src}
+            alt={thumbnailImage.alt}
+            width={0}
+            height={0}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="w-full h-auto object-cover block"
+            style={{ width: '100%', height: 'auto' }}
+          />
+        )}
       </div>
     </div>
   );

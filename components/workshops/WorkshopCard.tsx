@@ -57,13 +57,22 @@ export function WorkshopCard({ workshop, onBookClick }: WorkshopCardProps) {
     <div className="bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
       {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden">
-        <Image
-          src={workshop.image}
-          alt={title}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover"
-        />
+        {workshop.image.startsWith('/images/uploads/') ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={workshop.image}
+            alt={title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <Image
+            src={workshop.image}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover"
+          />
+        )}
         {/* Technique badge */}
         <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-stone-700">
           <span style={{ marginTop: '2pt', display: 'block' }}>{technique}</span>
