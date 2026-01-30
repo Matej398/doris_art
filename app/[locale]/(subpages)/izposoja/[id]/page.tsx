@@ -13,6 +13,7 @@ import { BASE_URL, getImageUrl, getLocalizedUrl } from "@/lib/seo";
 
 export default function RentalDetailPage() {
   const t = useTranslations("rentals");
+  const tSeo = useTranslations("seo");
   const locale = useLocale();
   const params = useParams();
   const rentalId = parseInt(params.id as string);
@@ -60,7 +61,6 @@ export default function RentalDetailPage() {
 
   const title = locale === "en" && rental.titleEn ? rental.titleEn : rental.title;
   const description = locale === "en" && rental.descriptionEn ? rental.descriptionEn : rental.description;
-  const tSeo = useTranslations("seo");
 
   // Generate structured data
   const productSchema = {
