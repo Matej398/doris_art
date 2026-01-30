@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "@/i18n/navigation";
 import { PaintingCard } from "@/components/ui/PaintingCard";
 import { PaintingDetailModal } from "@/components/ui/PaintingDetailModal";
@@ -10,16 +10,27 @@ import { StructuredData } from "@/components/seo/StructuredData";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { BASE_URL, getImageUrl, getLocalizedUrl } from "@/lib/seo";
 
-// Import paintings data directly for client component
-import paintingsData from "@/data/paintings.json";
-
 export default function SlikePage() {
   const t = useTranslations("paintings");
   const tSeo = useTranslations("seo");
   const locale = useLocale();
   const [selectedPainting, setSelectedPainting] = useState<Painting | null>(null);
+  const [paintings, setPaintings] = useState<Painting[]>([]);
 
-  const paintings = paintingsData.paintings as Painting[];
+  useEffect(() => {
+    async function fetchPaintings() {
+      try {
+        const response = await fetch('/api/paintings');
+        if (response.ok) {
+          const data = await response.json();
+          setPaintings(data.paintings || []);
+        }
+      } catch (error) {
+        console.error('Error fetching paintings:', error);
+      }
+    }
+    fetchPaintings();
+  }, []);
 
   // Generate structured data
   const collectionPageSchema = {

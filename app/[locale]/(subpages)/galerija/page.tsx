@@ -1,15 +1,12 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Image3D } from "@/components/ui/Image3D";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { BASE_URL, getImageUrl, getLocalizedUrl } from "@/lib/seo";
-
-// Import gallery data directly for client component
-import galleryData from "@/data/gallery.json";
 
 interface GalleryImage {
   id: number;
@@ -22,8 +19,22 @@ export default function GalerijaPage() {
   const tSeo = useTranslations("seo");
   const locale = useLocale();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [images, setImages] = useState<GalleryImage[]>([]);
 
-  const images = galleryData.images as GalleryImage[];
+  useEffect(() => {
+    async function fetchGallery() {
+      try {
+        const response = await fetch('/api/gallery');
+        if (response.ok) {
+          const data = await response.json();
+          setImages(data.images || []);
+        }
+      } catch (error) {
+        console.error('Error fetching gallery:', error);
+      }
+    }
+    fetchGallery();
+  }, []);
 
   // Generate structured data
   const imageGallerySchema = {

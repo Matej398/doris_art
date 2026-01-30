@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { useParams, notFound } from "next/navigation";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { RentalReservationForm } from "@/components/rentals/RentalReservationForm";
 import type { RentalItem } from "@/lib/rentals";
@@ -10,20 +11,51 @@ import { StructuredData } from "@/components/seo/StructuredData";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { BASE_URL, getImageUrl, getLocalizedUrl } from "@/lib/seo";
 
-// Import data directly for client component
-import rentalsData from "@/data/rentals.json";
-
 export default function RentalDetailPage() {
   const t = useTranslations("rentals");
   const locale = useLocale();
   const params = useParams();
   const rentalId = parseInt(params.id as string);
+  const [rental, setRental] = useState<RentalItem | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [notFoundState, setNotFoundState] = useState(false);
 
-  const rentals = rentalsData.rentals as RentalItem[];
-  const rental = getRentalById(rentals, rentalId);
+  useEffect(() => {
+    async function fetchRental() {
+      try {
+        const response = await fetch('/api/rentals');
+        if (response.ok) {
+          const data = await response.json();
+          const rentals = data.rentals || [];
+          const found = getRentalById(rentals, rentalId);
+          if (!found || found.active === false) {
+            setNotFoundState(true);
+          } else {
+            setRental(found);
+          }
+        } else {
+          setNotFoundState(true);
+        }
+      } catch (error) {
+        console.error('Error fetching rental:', error);
+        setNotFoundState(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchRental();
+  }, [rentalId]);
 
-  if (!rental || rental.active === false) {
+  if (notFoundState) {
     notFound();
+  }
+
+  if (loading || !rental) {
+    return (
+      <div className="min-h-screen bg-cream flex items-center justify-center">
+        <div className="animate-pulse text-stone-400">...</div>
+      </div>
+    );
   }
 
   const title = locale === "en" && rental.titleEn ? rental.titleEn : rental.title;

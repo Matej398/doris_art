@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
+import { useState, useEffect } from "react";
 import { RentalCard } from "@/components/rentals/RentalCard";
 import type { RentalItem } from "@/lib/rentals";
 import { getActiveRentals } from "@/lib/rentals";
@@ -8,16 +9,29 @@ import { StructuredData } from "@/components/seo/StructuredData";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { BASE_URL, getImageUrl, getLocalizedUrl } from "@/lib/seo";
 
-// Import data directly for client component
-import rentalsData from "@/data/rentals.json";
-
 export default function IzposojaPage() {
   const t = useTranslations("rentals");
   const tSeo = useTranslations("seo");
   const locale = useLocale();
-  
-  const rentals = rentalsData.rentals as RentalItem[];
-  const activeRentals = getActiveRentals(rentals);
+  const [rentals, setRentals] = useState<RentalItem[]>([]);
+  const [activeRentals, setActiveRentals] = useState<RentalItem[]>([]);
+
+  useEffect(() => {
+    async function fetchRentals() {
+      try {
+        const response = await fetch('/api/rentals');
+        if (response.ok) {
+          const data = await response.json();
+          const allRentals = data.rentals || [];
+          setRentals(allRentals);
+          setActiveRentals(getActiveRentals(allRentals));
+        }
+      } catch (error) {
+        console.error('Error fetching rentals:', error);
+      }
+    }
+    fetchRentals();
+  }, []);
 
   // Generate structured data
   const itemListSchema = {

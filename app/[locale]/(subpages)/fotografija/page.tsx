@@ -1,19 +1,36 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "@/i18n/navigation";
 import { Image3D } from "@/components/ui/Image3D";
 import { Lightbox } from "@/components/ui/Lightbox";
 
-// Import photography data directly for client component
-import photographyData from "@/data/photography.json";
+interface PhotographyImage {
+  id: number;
+  src: string;
+  alt: string;
+}
 
 export default function FotografijaPage() {
   const t = useTranslations("photography");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [images, setImages] = useState<PhotographyImage[]>([]);
 
-  const images = photographyData.images;
+  useEffect(() => {
+    async function fetchPhotography() {
+      try {
+        const response = await fetch('/api/photography');
+        if (response.ok) {
+          const data = await response.json();
+          setImages(data.images || []);
+        }
+      } catch (error) {
+        console.error('Error fetching photography:', error);
+      }
+    }
+    fetchPhotography();
+  }, []);
 
   return (
     <div className="min-h-screen bg-cream">

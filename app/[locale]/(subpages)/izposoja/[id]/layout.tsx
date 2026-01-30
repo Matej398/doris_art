@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { BASE_URL, getImageUrl } from "@/lib/seo";
-import rentalsData from "@/data/rentals.json";
+import { readDataFile } from "@/lib/admin/data";
 import type { RentalItem } from "@/lib/rentals";
 import { getRentalById } from "@/lib/rentals";
+
+interface RentalsData {
+  rentals: RentalItem[];
+}
 
 export async function generateMetadata({
   params: { locale, id },
@@ -11,7 +15,13 @@ export async function generateMetadata({
   params: { locale: string; id: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "seo.rentalDetail" });
-  const rentals = rentalsData.rentals as RentalItem[];
+  let rentals: RentalItem[] = [];
+  try {
+    const data = await readDataFile<RentalsData>('rentals');
+    rentals = data.rentals || [];
+  } catch {
+    rentals = [];
+  }
   const rentalId = parseInt(id);
   const rental = getRentalById(rentals, rentalId);
 
