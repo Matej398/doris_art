@@ -73,13 +73,22 @@ export default function ImageUploader({ value, onChange, label = 'Slika' }: Imag
 
       {value && (
         <div className="relative w-full h-48 rounded-lg overflow-hidden bg-gray-100">
-          <Image
-            src={value}
-            alt="Preview"
-            fill
-            className="object-contain"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
+          {value.startsWith('/images/uploads/') ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={value}
+              alt="Preview"
+              className="absolute inset-0 w-full h-full object-contain"
+            />
+          ) : (
+            <Image
+              src={value}
+              alt="Preview"
+              fill
+              className="object-contain"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          )}
           <button
             type="button"
             onClick={() => onChange('')}

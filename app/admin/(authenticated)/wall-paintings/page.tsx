@@ -136,13 +136,22 @@ export default function WallPaintingsPage() {
                 className="relative bg-gray-50 rounded-lg p-3"
               >
                 <div className="relative h-32 rounded overflow-hidden">
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 768px) 50vw, 25vw"
-                  />
+                  {img.src.startsWith('/images/uploads/') ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="absolute inset-0 w-full h-full object-contain"
+                    />
+                  ) : (
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
+                  )}
                 </div>
                 <div className="mt-2">
                   <input

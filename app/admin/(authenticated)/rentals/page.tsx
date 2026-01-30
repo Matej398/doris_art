@@ -50,7 +50,12 @@ export default function RentalsPage() {
       render: (item: Rental) => (
         <div className="relative w-12 h-12 rounded overflow-hidden bg-gray-100">
           {item.image && (
-            <Image src={item.image} alt={item.title} fill className="object-cover" sizes="48px" />
+            item.image.startsWith('/images/uploads/') ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover" />
+            ) : (
+              <Image src={item.image} alt={item.title} fill className="object-cover" sizes="48px" />
+            )
           )}
         </div>
       ),

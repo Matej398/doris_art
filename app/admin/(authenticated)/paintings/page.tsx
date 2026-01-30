@@ -99,13 +99,22 @@ export default function PaintingsPage() {
             >
               <div className="relative h-48 bg-gray-100">
                 {painting.images[0] ? (
-                  <Image
-                    src={painting.images[0].src}
-                    alt={painting.title}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
+                  painting.images[0].src.startsWith('/images/uploads/') ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={painting.images[0].src}
+                      alt={painting.title}
+                      className="absolute inset-0 w-full h-full object-contain"
+                    />
+                  ) : (
+                    <Image
+                      src={painting.images[0].src}
+                      alt={painting.title}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  )
                 ) : (
                   <div className="flex items-center justify-center h-full text-gray-400">
                     <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
