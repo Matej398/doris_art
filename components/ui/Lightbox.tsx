@@ -127,34 +127,37 @@ export function Lightbox({ images, currentIndex, onClose, onNavigate }: Lightbox
           : "opacity-0 scale-95"
       }`}>
         <div className="relative inline-block max-w-full max-h-[90vh] shadow-lg">
-          <Image
-            src={currentImage.src}
-            alt={currentImage.alt}
-            width={1200}
-            height={1200}
-            className="object-contain max-w-full max-h-[90vh] w-auto h-auto block"
-            onClick={(e) => e.stopPropagation()}
-            onLoad={handleImageLoad}
-            priority
-          />
+          {currentImage.src.startsWith('/images/uploads/') ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={currentImage.src}
+              alt={currentImage.alt}
+              className="object-contain max-w-full max-h-[90vh] w-auto h-auto block"
+              onClick={(e) => e.stopPropagation()}
+              onLoad={handleImageLoad}
+            />
+          ) : (
+            <Image
+              src={currentImage.src}
+              alt={currentImage.alt}
+              width={1200}
+              height={1200}
+              className="object-contain max-w-full max-h-[90vh] w-auto h-auto block"
+              onClick={(e) => e.stopPropagation()}
+              onLoad={handleImageLoad}
+              priority
+            />
+          )}
         </div>
       </div>
 
       {/* Preload adjacent images */}
       {hasMultipleImages && (
         <div className="hidden">
-          <Image
-            src={images[(localIndex + 1) % images.length].src}
-            alt=""
-            width={100}
-            height={100}
-          />
-          <Image
-            src={images[(localIndex - 1 + images.length) % images.length].src}
-            alt=""
-            width={100}
-            height={100}
-          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={images[(localIndex + 1) % images.length].src} alt="" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={images[(localIndex - 1 + images.length) % images.length].src} alt="" />
         </div>
       )}
 

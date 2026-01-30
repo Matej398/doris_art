@@ -124,15 +124,25 @@ export function PaintingDetailModal({ painting, onClose }: PaintingDetailModalPr
 
           {/* Main image */}
           <div className="relative w-full h-full">
-            <Image
-              src={currentImage.src}
-              alt={currentImage.alt}
-              fill
-              className="object-contain p-4 md:p-8"
-              sizes="(max-width: 1024px) 100vw, 70vw"
-              priority
-              onLoad={handleImageLoad}
-            />
+            {currentImage.src.startsWith('/images/uploads/') ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={currentImage.src}
+                alt={currentImage.alt}
+                className="absolute inset-0 w-full h-full object-contain p-4 md:p-8"
+                onLoad={handleImageLoad}
+              />
+            ) : (
+              <Image
+                src={currentImage.src}
+                alt={currentImage.alt}
+                fill
+                className="object-contain p-4 md:p-8"
+                sizes="(max-width: 1024px) 100vw, 70vw"
+                priority
+                onLoad={handleImageLoad}
+              />
+            )}
           </div>
 
           {/* Next button */}
@@ -205,18 +215,27 @@ export function PaintingDetailModal({ painting, onClose }: PaintingDetailModalPr
                     key={image.id}
                     onClick={() => setCurrentImageIndex(index)}
                     className={`relative flex-shrink-0 w-16 h-16 rounded overflow-hidden border-2 transition-all ${
-                      index === currentImageIndex 
-                        ? "border-accent" 
+                      index === currentImageIndex
+                        ? "border-accent"
                         : "border-transparent hover:border-stone-300"
                     }`}
                   >
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      fill
-                      className="object-cover"
-                      sizes="64px"
-                    />
+                    {image.src.startsWith('/images/uploads/') ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    ) : (
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        className="object-cover"
+                        sizes="64px"
+                      />
+                    )}
                   </button>
                 ))}
               </div>

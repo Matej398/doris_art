@@ -27,6 +27,9 @@ export function Image3D({
   const cardRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState("");
 
+  // Use regular img for uploaded images (Next.js Image has issues with dynamic uploads)
+  const isUpload = src.startsWith('/images/uploads/');
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     
@@ -51,20 +54,28 @@ export function Image3D({
   };
 
   const useFill = className?.includes('aspect-');
-  
+
   return (
-    <div 
+    <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
       className={`relative w-full overflow-hidden transition-transform duration-200 ease-out ${onClick ? 'cursor-pointer' : ''} ${className || ''}`}
-      style={{ 
+      style={{
         transform,
         transformStyle: "preserve-3d",
       }}
     >
-      {useFill ? (
+      {isUpload ? (
+        // Regular img for uploaded images (bypasses Next.js optimization issues)
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={src}
+          alt={alt}
+          className={useFill ? "absolute inset-0 w-full h-full object-cover" : "w-full h-auto object-cover"}
+        />
+      ) : useFill ? (
         <Image
           src={src}
           alt={alt}
