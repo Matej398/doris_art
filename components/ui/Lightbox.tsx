@@ -113,10 +113,17 @@ export function Lightbox({ images, currentIndex, onClose, onNavigate }: Lightbox
         </button>
       )}
 
+      {/* Loading spinner */}
+      {!imageLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-8 h-8 border-2 border-stone-300 border-t-stone-600 rounded-full animate-spin"></div>
+        </div>
+      )}
+
       {/* Main image */}
-      <div className={`relative max-w-5xl max-h-[90vh] w-full h-full flex items-center justify-center transition-all duration-700 ${
-        imageLoaded && isVisible 
-          ? "opacity-100 scale-100" 
+      <div className={`relative max-w-5xl max-h-[90vh] w-full h-full flex items-center justify-center transition-all duration-300 ${
+        imageLoaded && isVisible
+          ? "opacity-100 scale-100"
           : "opacity-0 scale-95"
       }`}>
         <div className="relative inline-block max-w-full max-h-[90vh] shadow-lg">
@@ -132,6 +139,24 @@ export function Lightbox({ images, currentIndex, onClose, onNavigate }: Lightbox
           />
         </div>
       </div>
+
+      {/* Preload adjacent images */}
+      {hasMultipleImages && (
+        <div className="hidden">
+          <Image
+            src={images[(localIndex + 1) % images.length].src}
+            alt=""
+            width={100}
+            height={100}
+          />
+          <Image
+            src={images[(localIndex - 1 + images.length) % images.length].src}
+            alt=""
+            width={100}
+            height={100}
+          />
+        </div>
+      )}
 
       {/* Next button */}
       {hasMultipleImages && (

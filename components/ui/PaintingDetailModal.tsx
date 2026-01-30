@@ -79,10 +79,10 @@ export function PaintingDetailModal({ painting, onClose }: PaintingDetailModalPr
       onClick={onClose}
     >
       {/* Modal content - fullscreen white background */}
-      <div 
-        className={`relative bg-white w-full h-full md:w-[95vw] md:h-[95vh] md:max-w-[1800px] md:rounded-lg overflow-hidden flex flex-col lg:flex-row transition-all duration-700 ${
-          imageLoaded && isVisible 
-            ? "opacity-100 scale-100" 
+      <div
+        className={`relative bg-white w-full h-full md:w-[95vw] md:h-[95vh] md:max-w-[1800px] md:rounded-lg overflow-hidden flex flex-col lg:flex-row transition-all duration-300 ${
+          isVisible
+            ? "opacity-100 scale-100"
             : "opacity-0 scale-95"
         }`}
         onClick={(e) => e.stopPropagation()}
@@ -102,6 +102,13 @@ export function PaintingDetailModal({ painting, onClose }: PaintingDetailModalPr
 
         {/* Image section */}
         <div className="relative flex-1 bg-stone-50 flex items-center justify-center min-h-[50vh] lg:min-h-0">
+          {/* Loading spinner */}
+          {!imageLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center z-5">
+              <div className="w-8 h-8 border-2 border-stone-300 border-t-stone-600 rounded-full animate-spin"></div>
+            </div>
+          )}
+
           {/* Previous button */}
           {hasMultipleImages && (
             <button
