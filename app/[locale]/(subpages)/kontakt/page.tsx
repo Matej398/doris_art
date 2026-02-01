@@ -22,17 +22,9 @@ export default function KontaktPage() {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Doris Einfalt s.p.",
     "image": `${BASE_URL}/images/cards/delavnice.png`,
     "telephone": "+386-31-596-756",
     "email": "info@doriseinfalt.art",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Gabrovlje 1A",
-      "addressLocality": "Slovenske Konjice",
-      "postalCode": "3210",
-      "addressCountry": "SI"
-    },
     "url": `${BASE_URL}/${locale}/kontakt`,
     "priceRange": "€€"
   };
@@ -70,21 +62,6 @@ export default function KontaktPage() {
               </h2>
               
               <div className="space-y-4">
-                {/* Company */}
-                <div>
-                  <p className="text-base text-stone-900">
-                    Doris Einfalt s.p.
-                  </p>
-                </div>
-
-                {/* Address */}
-                <div>
-                  <p className="text-base text-stone-900">
-                    Gabrovlje 1A<br />
-                    3210 Slovenske Konjice
-                  </p>
-                </div>
-
                 {/* Email */}
                 <div>
                   <p className="text-base text-stone-900">
